@@ -5,9 +5,26 @@
 
 {block name=content}
 <div class="page_menu">
-	Menu: <a href="#">zaloguj</a>
+	<a href="#">zaloguj</a>
 </div>
-Skrocony rozklad zajec:
-Aktualny miesiac:
+Zapraszamy na zajęcia w bieżącym miesiącu
+<table>
+	<caption>
+		Aktualny miesiac:
+	</caption>
+	<thead>
+		<th>Pon</th>
+		<th>Wt</th>
+		<th>Sr</th>
+		<th>Czw</th>
+		<th>Pt</th>
+		<th>Sob</th>
+		<th>Nd</th>
+	</thead>
+	<tbody>
+		<tr><td></td></tr>
+	</tbody>
+</table>
+
 
 {/block}
