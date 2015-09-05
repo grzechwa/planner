@@ -13,6 +13,7 @@ class CalendarCtrl {
 	public $month;
 	public $day;
 	public $arrtime = array();	// tablica kalendarza
+	public $nameDayPl = array('Pon', 'Wt', 'Sr', 'Czw', 'Pt', 'Sb', 'Nd');
 
 	public function __construct($year, $month, $day) {
 		$this->year = $year;
@@ -55,6 +56,23 @@ class CalendarCtrl {
 	public function numberDay($paramTime) {
 		// valid
 		return (int) date('w', strtotime($paramTime));
+	}
+
+	// ktory tydzien w miesiacu
+	public function actualWeek() {
+		$paramTime = $this->year . '-' . $this->month . '-' . $this->day;
+		// valid
+		// +1, bo zwraca od zaera
+		return intval(date('j', strtotime($paramTime))/7)+1; 
+	}
+
+	// kotry dzien dzisiaj
+	public function actualDay() {
+		return date('j', time());
+	}
+
+	public function actualMonth() {
+		return date('M', time());
 	}
 
 	// calykal
@@ -138,11 +156,16 @@ class CalendarCtrl {
 				++$x;
 			}
 		}
-		
+
+		// next
+		for($i = 1; $i <= 14; $i++)
+		{
+			$next_mth_last_days[] = $i;
+		}
 		
 		// uzupelnia ostatni tydzien o liczby
 
-/*
+
 		$y = 0;
 		$next_counter = 0;
 		for($i = 0; $i < 7; $i++)
@@ -153,7 +176,9 @@ class CalendarCtrl {
 				++$next_counter;
 			}
 		}
-		
+
+		// 5 kolumna
+	/*	
 		if(!isset($curr_mth_days[5]) || (isset($curr_mth_days[5]) && empty($curr_mth_days[5])))
 		{
 			$curr_mth_days[5] = array_slice($next_mth_last_days, $next_counter, 7);
@@ -162,30 +187,45 @@ class CalendarCtrl {
 		{
 			$curr_mth_days[5] = array_merge($curr_mth_days[5], array_slice($next_mth_last_days, $next_counter, 7-count($curr_mth_days[5])));
 		}
-  
+ 	*/ 
   
  		
-		// next
-		for($i = 1; $i <= 14; $i++)
-		{
-			$next_mth_last_days[] = $i;
-		}
-*/
+		
+
 		
 		$this->arrtime[] = $curr_mth_days;
 
 
-		// tutaj return kalendarz
+
 
 	}
 
+/*
+	public function generateView(){
+		global $conf;
+		
+		$smarty = new Smarty();
+		$smarty->assign('conf',$conf);
+		
+		$smarty->assign('page_title','Fit');
+		$smarty->assign('page_description','Prosty projekt zarzadzania klubem');
+		$smarty->assign('page_header','Strona glowna');
+	
+        
+		$smarty->assign('calendar', $this->arrtime);
+
+		$smarty->display($conf->root_path.'/app/calendar/Calendar.tpl');
+	}
+ * 
+ */
 }
 
 // test show view
 
-$testData = new CalendarCtrl('2015', '8', '1');
-$testData->calendar();
-var_dump($testData->arrtime);
+// $testData = new CalendarCtrl('2015', '9', '1');
+// $testData->calendar();
+// $testData->generateView();
+// var_dump($testData->arrtime);
 
 /*
 $cal = '2015-09-03';
