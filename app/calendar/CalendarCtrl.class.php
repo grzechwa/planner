@@ -75,6 +75,29 @@ class CalendarCtrl {
 		return date('M', time());
 	}
 
+	public function actualWeekDay() {
+		return date('w', time());
+	}
+
+	public function actualYear() {
+
+	}
+
+	public function getDay() {
+		return $this->day;
+	}
+
+	public function setDay($day) {
+		$this->day = $day;
+	}
+	
+	public function getMonth() {
+		return $this->month;
+	}
+
+	public function getYear() {
+		return $this->year;
+	}
 	// calykal
 	public function calendar() 
 	{
@@ -104,9 +127,12 @@ class CalendarCtrl {
 		if ($this->numberDay($time) > 1) 
 		{
 			$a = 0;
+			$d = array();
 			for ($i = $this->numberDay($time) - 1; $i < 7; $i++) 
-			{
+			{	
 				$curr_mth_days[0][$i] = ++$a;
+				// $curr_mth_days[0][$d] = 'test';
+
 			}
 
 			$curr_mth_days[0] = array_merge(
@@ -195,8 +221,8 @@ class CalendarCtrl {
 		
 		$this->arrtime[] = $curr_mth_days;
 
-
-
+		// add to arrtime zajecia
+		var_dump($curr_mth_days);
 
 	}
 
@@ -219,30 +245,3 @@ class CalendarCtrl {
  * 
  */
 }
-
-// test show view
-
-// $testData = new CalendarCtrl('2015', '9', '1');
-// $testData->calendar();
-// $testData->generateView();
-// var_dump($testData->arrtime);
-
-/*
-$cal = '2015-09-03';
-echo $testData->year;
-
-echo ' ';
-echo $testData->month;
-echo ' Miesiac poprzedni: ';
-echo $testData->prevMonth();
-echo ' Miesiac nastepny: ';
-echo $testData->nextMonth();
-echo ' ';
-echo $testData->Days(strtotime($cal));
-echo ' ';
-echo $testData->nameDay($cal);
-echo ' ';
-echo $testData->numberDay($cal);
-echo ' ';
-echo $testData->render();
-*/

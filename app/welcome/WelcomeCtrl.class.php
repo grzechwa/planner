@@ -8,11 +8,13 @@ class WelcomeCtrl {
 	
 	private $msg;
 	public $cal;
+	public $q;	// query
 
 	public function __construct() {
 		$this->msg = new Messages();
 		$this->cal = new CalendarCtrl(2015, 9,  1);
 		$this->cal->calendar();
+		$this->q = new QueryDB();
 	}
 
 	public function generateView() {
@@ -24,10 +26,26 @@ class WelcomeCtrl {
 		$smarty->assign('page_title','Welcome page!');
 
 		$smarty->assign('msgs',$this->msg);
+
+
+		
+		$smarty->assign('getDay', $this->cal->getDay());
+		$smarty->assign('getMonth', $this->cal->getMonth());
+		$smarty->assign('getYear', $this->cal->getYear());
+
+
+		
+		$smarty->assign('getAllPlan', $this->q->getAllPlan());
+		$smarty->assign('getAllHours', $this->q->getAllHours());
+		$smarty->assign('getSinceTo', $this->q->getSinceTo());
+		$smarty->assign('getPlanZajecia', $this->q->getPlanZajecia());
+		$smarty->assign('getDay', $this->q->getDay($this->cal->getYear() .'-'. $this->cal->getMonth() .'-' . $this->cal->actualDay()));
+
 										
 		$smarty->assign('actualDay', $this->cal->actualDay());
 		$smarty->assign('actualWeek', $this->cal->actualWeek());
 		$smarty->assign('actualMonth', $this->cal->actualMonth());
+		$smarty->assign('actualWeekDay', $this->cal->actualWeekDay());
 		$smarty->assign('calendar', $this->cal->arrtime);
 		$smarty->assign('nameDayPl', $this->cal->nameDayPl);
 		$smarty->display($conf->root_path.'/app/welcome/Welcome.tpl');
