@@ -104,20 +104,31 @@ class QueryDB {
 
 	public function getDay($data) {
 		$this->db->connect();
-		$select = "SELECT zajecia.nazwa";
+		$select = "SELECT zajecia.nazwa, godziny.od, godziny.do, godziny.id";
 		$from = " FROM plan";
 		$where = " WHERE data = '" . $data ."'";
 		$join = " LEFT JOIN zajecia";
 		$where2 = " ON plan.zajecia_id = zajecia.id";
+		$join2 = " LEFT JOIN godziny";
+		$where3 = " ON plan.godz_id = godziny.id";
 		$orderBy = " ORDER BY data";
 
-		$sql = $select . $from  . $join . $where2 .  $where. $orderBy;
+		$sql = $select . $from  . $join . $where2 .  $join2 . $where3 . $where. $orderBy;
 		var_dump($sql);
 
 		$conn = $this->db->getConn();
 		$result = mysqli_query($conn, $sql);
 		$this->db->disconnect();
 		return $result;
+	}
+
+	public function getDayAsArray() {
+		$tmp = array();
+		foreach($this->getDay($data) as $x) {
+			$tmp[] = $x;
+		}
+
+		return $tmp;
 	}
 
 	// ... other methods ...

@@ -1,30 +1,53 @@
-<table width="20%">
+<table width="20%" style="float:left">
 	<caption>
-
-		Aktualny dzien tygodnia: {$actualWeekDay}
-		Aktualny tydzien: {$actualWeek}
-
+<br />
+<br />
 	</caption>
 	<thead>
 		<th>
-
-			{$nameDayPl[$actualWeekDay-1]}
-
+		Godz
 		</th>
 	</thead>
-	<tr>
-		<td align="center">
-
-		{$calendar[0][$actualWeek][$actualWeekDay-1]}
-
-		</td>	
-	</tr>
-
-	{foreach item=item from=$getDay}
+	<tr
+	{foreach item=item from=$getAllHours}
 		<tr><td align="center">
-		{$item.nazwa} 
+		{$item.od} 
 		</td></tr>
 
 	{/foreach}
+</table>
+
+
+
+
+
+
+<table width="20%">
+	<caption>
+		Aktualny dzien tygodnia: {$actualWeekDay}
+		Aktualny tydzien: {$actualWeek}
+	</caption>
+	<thead>
+		<th>
+			{$nameDayPl[$actualWeekDay-1]}
+		</th>
+	</thead>
+
+{$var = array()}
+{foreach key=key item=item from=$getDay}
+	{$var[] = $item.id}
+	{$zaj[] = $item.nazwa}
+{/foreach}
+
+{$count=0}
+	{for $foo=1 to 8}
+		<tr><td>
+		{if in_array($foo, $var)}
+			{$zaj[$count++]}
+			{else}
+			&nbsp;
+		{/if}
+		</td></tr>
+	{/for}
 
 </table>

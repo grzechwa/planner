@@ -5,6 +5,6 @@
 
 {block name=content}
 	<hr />
-	{include file=$conf->root_path|cat:"/app/calendar/CalendarDay.tpl"}
+	{include file=$conf->root_path|cat:"/app/calendar/CalendarWeek.tpl"}
 	<hr />
 {/block}
