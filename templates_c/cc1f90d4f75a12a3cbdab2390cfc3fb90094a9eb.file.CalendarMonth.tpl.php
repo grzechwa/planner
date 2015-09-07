@@ -1,27 +1,28 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-08 00:03:32
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-08 00:42:54
          compiled from "/home/greg/www_pv/plannersmarty/app/calendar/CalendarMonth.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:72598792155eafd8f7f6ff3-08685001%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:142890470955ee1046ca0666-13810085%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'cc1f90d4f75a12a3cbdab2390cfc3fb90094a9eb' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/calendar/CalendarMonth.tpl',
-      1 => 1441663407,
+      1 => 1441665771,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '72598792155eafd8f7f6ff3-08685001',
+  'nocache_hash' => '142890470955ee1046ca0666-13810085',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_55eafd8f832462_72977069',
+  'unifunc' => 'content_55ee1046d07553_55231355',
   'variables' => 
   array (
     'actualMonth' => 0,
     'nameDayPl' => 0,
     'name' => 0,
+    'getTime' => 0,
     'calendar' => 0,
     'cal' => 0,
     'item' => 0,
@@ -30,7 +31,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55eafd8f832462_72977069')) {function content_55eafd8f832462_72977069($_smarty_tpl) {?><table witdh="20%">
+<?php if ($_valid && !is_callable('content_55ee1046d07553_55231355')) {function content_55ee1046d07553_55231355($_smarty_tpl) {?><table witdh="20%">
 	<caption>
 		Aktualny miesiac: <?php echo $_smarty_tpl->tpl_vars['actualMonth']->value;?>
 
@@ -47,6 +48,8 @@ $_smarty_tpl->tpl_vars['name']->_loop = true;
 		</th>
 		<?php } ?>
 	</thead>
+	<?php echo $_smarty_tpl->tpl_vars['getTime']->value;?>
+
 	<?php  $_smarty_tpl->tpl_vars['cal'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['cal']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['calendar']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['cal']->key => $_smarty_tpl->tpl_vars['cal']->value){
@@ -66,11 +69,18 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 foreach ($_from as $_smarty_tpl->tpl_vars['value']->key => $_smarty_tpl->tpl_vars['value']->value){
 $_smarty_tpl->tpl_vars['value']->_loop = true;
 ?>
-				<td align="center">
 				<?php $_smarty_tpl->tpl_vars["day"] = new Smarty_variable(explode("-",$_smarty_tpl->tpl_vars['value']->value), null, 0);?>
+				<?php if ($_smarty_tpl->tpl_vars['getTime']->value==$_smarty_tpl->tpl_vars['value']->value){?>
+				<td align="center" style="background-color: silver">
 				<?php echo $_smarty_tpl->tpl_vars['day']->value[2];?>
 
 				</td>
+				<?php }else{ ?>
+				<td align="center">
+				<?php echo $_smarty_tpl->tpl_vars['day']->value[2];?>
+
+				</td>
+				<?php }?>
 			<?php } ?>
 		</tr>
 		<?php } ?>

@@ -75,6 +75,33 @@ class CalendarCtrl {
 		return date('M', time());
 	}
 
+	public function actualWeekDay() {
+		return date('w', time());
+	}
+
+	public function actualYear() {
+
+	}
+
+	public function getDay() {
+		return $this->day;
+	}
+
+	public function setDay($day) {
+		$this->day = $day;
+	}
+	
+	public function getMonth() {
+		return $this->month;
+	}
+
+	public function getYear() {
+		return $this->year;
+	}
+
+	public function getTime() {
+		return $this->year .'-'.$this->month.'-'.$this->day;
+	}
 	// calykal
 	public function calendar() 
 	{
@@ -193,15 +220,8 @@ class CalendarCtrl {
 			$curr_mth_days[5] = array_merge($curr_mth_days[5], array_slice($next_mth_last_days, $next_counter, 7-count($curr_mth_days[5])));
 		}
 
-  
- 		
-		
-
 		
 		$this->arrtime[] = $curr_mth_days;
-
-
-
 
 	}
 
@@ -224,30 +244,3 @@ class CalendarCtrl {
  * 
  */
 }
-
-// test show view
-
-// $testData = new CalendarCtrl('2015', '9', '1');
-// $testData->calendar();
-// $testData->generateView();
-// var_dump($testData->arrtime);
-
-/*
-$cal = '2015-09-03';
-echo $testData->year;
-
-echo ' ';
-echo $testData->month;
-echo ' Miesiac poprzedni: ';
-echo $testData->prevMonth();
-echo ' Miesiac nastepny: ';
-echo $testData->nextMonth();
-echo ' ';
-echo $testData->Days(strtotime($cal));
-echo ' ';
-echo $testData->nameDay($cal);
-echo ' ';
-echo $testData->numberDay($cal);
-echo ' ';
-echo $testData->render();
-*/

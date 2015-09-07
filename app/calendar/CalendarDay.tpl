@@ -1,15 +1,39 @@
-<table width="20%">
+<table width="20%" style="float:left">
 	<caption>
-		Aktualny dzien: {$actualDay}
+<br />
+<br />
 	</caption>
 	<thead>
 		<th>
-			{$nameDayPl[$actualDay]}
+		Godz
+		</th>
+	</thead>
+	<tr
+	{foreach item=item from=$getAllHours}
+		<tr><td align="center">
+		{$item.od} 
+		</td></tr>
+
+	{/foreach}
+</table>
+
+
+
+
+
+{* na razie dla akutalnego dnia, przerobic dla get *}
+<table width="20%">
+	<caption>
+		Aktualny dzien tygodnia: {$actualWeekDay}
+		Aktualny tydzien: {$actualWeek}
+	</caption>
+	<thead>
+		<th>
+			{$nameDayPl[$actualWeekDay-1]}
 		</th>
 	</thead>
 	<tr>
-		<td align="center">
-		{$calendar[0][$actualWeek-1][$actualDay]}
-		</td>	
+
 	</tr>
+
 </table>
