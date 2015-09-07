@@ -11,7 +11,7 @@ class WelcomeCtrl {
 
 	public function __construct() {
 		$this->msg = new Messages();
-		$this->cal = new CalendarCtrl(2015, 9,  1);
+		$this->cal = new CalendarCtrl(2015, 8,  1);
 		$this->cal->calendar();
 	}
 

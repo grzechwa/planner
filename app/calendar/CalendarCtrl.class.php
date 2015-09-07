@@ -93,7 +93,8 @@ class CalendarCtrl {
 		{
 			for ($i = $prev_mth_days - 6; $i <= $prev_mth_days; $i++) 
 			{
-				$prev_mth_last_days[] = $i;
+				// $prev_mth_last_days[] = $i;
+				$prev_mth_last_days[] = $this->year . '-' . $this->prevMonth() . '-' . $i;
 			}
 
 		}
@@ -106,7 +107,7 @@ class CalendarCtrl {
 			$a = 0;
 			for ($i = $this->numberDay($time) - 1; $i < 7; $i++) 
 			{
-				$curr_mth_days[0][$i] = ++$a;
+				$curr_mth_days[0][$i] = $this->year . '-' . $this->month . '-' . ++$a;
 			}
 
 			$curr_mth_days[0] = array_merge(
@@ -127,7 +128,8 @@ class CalendarCtrl {
 			$a = 0;
 			for($i = 6; $i < 7; $i++)
 			{
-				$curr_mth_days[0][$i] = ++$a;
+				// $curr_mth_days[0][$i] = ++$a;
+				$curr_mth_days[0][$i] = $this->year . '-' . $this->month . '-' . ++$a;
 			}
 			
 			$curr_mth_days[0] = array_merge(array_slice($prev_mth_last_days, 1), $curr_mth_days[0]);
@@ -146,12 +148,15 @@ class CalendarCtrl {
 		{
 			if($rowWeek < 7)
 			{
-				$curr_mth_days[$x][] = $i;
+				// $curr_mth_days[$x][] = $i;
+
+				$curr_mth_days[$x][] = $this->year . '-' . $this->month . '-' . $i;
 				$rowWeek++;
 			}
 			else
 			{
-				$curr_mth_days[$x][] = $i;
+				// $curr_mth_days[$x][] = $i;
+				$curr_mth_days[$x][] = $this->year . '-' . $this->month . '-' . $i;
 				$rowWeek = 1;
 				++$x;
 			}
@@ -160,11 +165,11 @@ class CalendarCtrl {
 		// next
 		for($i = 1; $i <= 14; $i++)
 		{
-			$next_mth_last_days[] = $i;
+			// $next_mth_last_days[] = $i;
+			$next_mth_last_days[] = $this->year . '-' . $this->nextMonth() . '-' . $i;
 		}
 		
 		// uzupelnia ostatni tydzien o liczby
-
 
 		$y = 0;
 		$next_counter = 0;
@@ -172,13 +177,13 @@ class CalendarCtrl {
 		{
 			if(!isset($curr_mth_days[4][$i]))
 			{
-				$curr_mth_days[4][$i] = ++$y;
+				$curr_mth_days[4][$i] = $this->year . '-' . $this->nextMonth() . '-' . ++$y;
 				++$next_counter;
 			}
 		}
 
 		// 5 kolumna
-	/*	
+
 		if(!isset($curr_mth_days[5]) || (isset($curr_mth_days[5]) && empty($curr_mth_days[5])))
 		{
 			$curr_mth_days[5] = array_slice($next_mth_last_days, $next_counter, 7);
@@ -187,7 +192,7 @@ class CalendarCtrl {
 		{
 			$curr_mth_days[5] = array_merge($curr_mth_days[5], array_slice($next_mth_last_days, $next_counter, 7-count($curr_mth_days[5])));
 		}
- 	*/ 
+
   
  		
 		

@@ -15,7 +15,8 @@
 
 			{foreach item=value from=$item}
 				<td align="center">
-				{$value}
+				{assign var="day" value="-"|explode:$value}
+				{$day[2]}
 				</td>
 			{/foreach}
 		</tr>
