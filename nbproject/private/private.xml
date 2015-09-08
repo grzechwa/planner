@@ -5,9 +5,7 @@
         <group>
             <file>file:/home/greg/www_pv/plannersmarty/app/calendar/CalendarWeek.tpl</file>
             <file>file:/home/greg/www_pv/plannersmarty/app/db/QueryDB.php</file>
-            <file>file:/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl</file>
             <file>file:/home/greg/www_pv/plannersmarty/app/welcome/Welcome.tpl</file>
-            <file>file:/home/greg/www_pv/plannersmarty/app/calendar/CalendarMonth.tpl</file>
             <file>file:/home/greg/www_pv/plannersmarty/app/welcome/WelcomeCtrl.class.php</file>
             <file>file:/home/greg/www_pv/plannersmarty/app/calendar/CalendarCtrl.class.php</file>
         </group>

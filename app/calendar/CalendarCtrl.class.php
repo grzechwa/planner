@@ -13,12 +13,15 @@ class CalendarCtrl {
 	public $month;
 	public $day;
 	public $arrtime = array();	// tablica kalendarza
+	public $plan = array();
+	public $q;
 	public $nameDayPl = array('Pon', 'Wt', 'Sr', 'Czw', 'Pt', 'Sb', 'Nd');
 
 	public function __construct($year, $month, $day) {
 		$this->year = $year;
 		$this->month = $month;
 		$this->day = $day;
+		$this->q = new QueryDB();
 	}
 
 	// poprzedni m-c
@@ -224,8 +227,32 @@ class CalendarCtrl {
 		$this->arrtime[] = $curr_mth_days;
 
 	}
+	
+	// TODO: przepisac te metode, za duzo petli
+	/*
+	 * Metoda zawiera przypisane datom zajecia
+	 * nie trzeba sie trudzic w widoku
+	 */
+	public function addPlanner() {
+		
+		foreach ($this->arrtime as $t) {
 
-/*
+			// var_dump($t);
+			foreach ($t as $key=>$tmp) {
+				foreach($tmp as $key2=>$tmp2){
+				$query = $this->q->getDay($tmp2);
+				$this->plan[] = $tmp2;
+					foreach ($query as $key3=>$tmp3) {
+					$this->plan[$tmp2][] = $tmp3;
+					// var_dump($tmp3);
+					}
+				}
+			}
+		}
+		return $this->plan;
+	}
+
+	/*
 	public function generateView(){
 		global $conf;
 		

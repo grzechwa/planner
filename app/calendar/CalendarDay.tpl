@@ -32,8 +32,21 @@
 			{$nameDayPl[$actualWeekDay-1]}
 		</th>
 	</thead>
-	<tr>
+{$var = array()}
+{foreach key=key item=item from=$getDay}
+	{$var[] = $item.id}
+	{$zaj[] = $item.nazwa}
+{/foreach}
 
-	</tr>
+{$count=0}
+	{for $foo=1 to 8}
+		<tr><td>
+		{if in_array($foo, $var)}
+			{$zaj[$count++]}
+			{else}
+			&nbsp;
+		{/if}
+		</td></tr>
+	{/for}
 
 </table>

@@ -1,95 +1,55 @@
-{$getYear}-{$getMonth} ----<br />
 
-<table width="20%" style="float:left">
+
+<table width="10%" style="float:left">
 	<caption>
-<br />
-<br />
 	</caption>
 	<thead>
 		<th>
 		Godz
+		<br />
+		{$actualWeek}
 		</th>
 	</thead>
-	<tr
+
 	{foreach item=item from=$getAllHours}
 		<tr><td align="center">
 		{$item.od} 
 		</td></tr>
-
 	{/foreach}
 </table>
 
-<table width="20%" style="float:left">
+{for $i=0 to 6}
+{$var = array() }
+<table width="10%" style="float:left">
 	<caption>
-		Aktualny tydzien: {$actualWeek}
 	</caption>
 	<thead>
-	<th></th>
-
 		<th>
-		{$nameDayPl[0]}
+		{$nameDayPl[$i]}
+		<br />
+		{$day = $calendar[0][$actualWeek-1][$i]}
+		{$day}
 		</th>
-
 	</thead>
-	<tr>
-	<td>
-	{$calendar[0][$actualWeek][0]}
-	</td>	
-{$var = array()}
-{foreach key=key item=item from=$getDay}
-	{$var[] = $item.id}
-	{$zaj[] = $item.nazwa}
-{/foreach}
-
-{$count=0}
-	{for $foo=1 to 8}
-		<tr><td>
-		{if in_array($foo, $var)}
-			{$zaj[$count++]}
-			{else}
-			&nbsp;
+	{if array_key_exists($day, $plan)}
+		{if is_array($plan.$day)}
+			{foreach key=key item=item from=$plan.$day}
+				{$var[$item.id] = {$item.nazwa}}
+			{/foreach}
 		{/if}
-		</td></tr>
-	{/for}
-	</tr>
-</table>
-
-<table width="20%" style="float:left">
-	<caption>
-		Aktualny tydzien: {$actualWeek}
-	</caption>
-	<thead>
-	<th></th>
-
-		<th>
-		{$nameDayPl[1]}
-		</th>
-
-	</thead>
+	{/if}
+	{for $y=0 to 6}
 	<tr>
-	<td>
-	{$calendar[0][$actualWeek][1]}
-	</td>	
-{$var = array()}
-{foreach key=key item=item from=$getDay}
-	{$var[] = $item.id}
-	{$zaj[] = $item.nazwa}
-{/foreach}
-
-{$count=0}
-	{for $foo=1 to 8}
-		<tr><td>
-		{if in_array($foo, $var)}
-			{$zaj[$count++]}
-			{else}
-			&nbsp;
-		{/if}
-		</td></tr>
-	{/for}
+	<td align='center'>	
+	{if isset($var.$y)}
+	{$var.$y}
+	{else}
+	&nbsp;
+	{/if}
+	</td>
 	</tr>
+	{/for}
 </table>
-<br />
-	-------- {$calendar[0][$actualWeek][0]} -------- <br />
-	-------- {$calendar[0][$actualWeek][1]} --------<br />
-
-
+{$var=null}
+{/for}
+<div style="clear:both" ></div>

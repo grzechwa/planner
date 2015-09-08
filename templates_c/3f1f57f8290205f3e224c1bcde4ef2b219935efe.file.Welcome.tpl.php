@@ -1,13 +1,13 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-08 00:43:40
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-08 19:08:52
          compiled from "/home/greg/www_pv/plannersmarty/app/welcome/Welcome.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:146758786555ee1046c4ef84-96049443%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:14828530155ef1624264922-52511223%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '3f1f57f8290205f3e224c1bcde4ef2b219935efe' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/welcome/Welcome.tpl',
-      1 => 1441665814,
+      1 => 1441724964,
       2 => 'file',
     ),
     'b8f53d7dd0dd9cb25cf4d2b53469db3cab0bbd71' => 
@@ -17,20 +17,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '146758786555ee1046c4ef84-96049443',
+  'nocache_hash' => '14828530155ef1624264922-52511223',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_55ee1046c9a3a2_93684961',
   'variables' => 
   array (
     'conf' => 0,
     'page_title' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_55ef16242b1aa2_05957174',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55ee1046c9a3a2_93684961')) {function content_55ee1046c9a3a2_93684961($_smarty_tpl) {?><!doctype html>
+<?php if ($_valid && !is_callable('content_55ef16242b1aa2_05957174')) {function content_55ef16242b1aa2_05957174($_smarty_tpl) {?><!doctype html>
 <html lang="pl">
 <head>
     <meta charset="utf-8">
@@ -48,7 +48,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div id="content">
 			
 	<hr />
-	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['conf']->value->root_path).("/app/calendar/CalendarDay.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['conf']->value->root_path).("/app/calendar/CalendarWeek.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 	<hr />
 

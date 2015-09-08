@@ -9,6 +9,7 @@ class WelcomeCtrl {
 	private $msg;
 	public $cal;
 	public $q;	// query
+	public $data;	// parameter
 
 	public function __construct() {
 		$this->msg = new Messages();
@@ -40,7 +41,9 @@ class WelcomeCtrl {
 		$smarty->assign('getAllHours', $this->q->getAllHours());
 		$smarty->assign('getSinceTo', $this->q->getSinceTo());
 		$smarty->assign('getPlanZajecia', $this->q->getPlanZajecia());
-		$smarty->assign('getDay', $this->q->getDay($this->cal->getYear() .'-'. $this->cal->getMonth() .'-' . $this->cal->actualDay()));
+
+		// $smarty->assign('getDay', $this->q->getDay($this->cal->getYear() .'-'. $this->cal->getMonth() .'-' . $this->cal->actualDay()));
+		$smarty->assign('getDay', $this->q->getDay($this->cal->getTime()));
 
 										
 		$smarty->assign('actualDay', $this->cal->actualDay());
@@ -48,6 +51,7 @@ class WelcomeCtrl {
 		$smarty->assign('actualMonth', $this->cal->actualMonth());
 		$smarty->assign('actualWeekDay', $this->cal->actualWeekDay());
 		$smarty->assign('calendar', $this->cal->arrtime);
+		$smarty->assign('plan', $this->cal->addPlanner());
 		$smarty->assign('nameDayPl', $this->cal->nameDayPl);
 		$smarty->display($conf->root_path.'/app/welcome/Welcome.tpl');
 	}
