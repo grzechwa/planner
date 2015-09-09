@@ -1,13 +1,12 @@
-
-
-<table width="10%" style="float:left">
+<div class="calendarweek" >
+<table width="12%" class="_fL" border="0" cellspacing="0" cellpadding="0">
 	<caption>
 	</caption>
-	<thead>
+	<thead class="header">
 		<th>
-		Godz
+		&nbsp;
 		<br />
-		{$actualWeek}
+		Godz
 		</th>
 	</thead>
 
@@ -20,10 +19,10 @@
 
 {for $i=0 to 6}
 {$var = array() }
-<table width="10%" style="float:left">
-	<caption>
+<table width="12%" class="_fL" border="0" cellspacing="0" cellpadding="0">
+<caption>
 	</caption>
-	<thead>
+	<thead class="header">
 		<th>
 		{$nameDayPl[$i]}
 		<br />
@@ -52,4 +51,5 @@
 </table>
 {$var=null}
 {/for}
+</div>
 <div style="clear:both" ></div>

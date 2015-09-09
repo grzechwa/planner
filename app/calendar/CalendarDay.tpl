@@ -1,14 +1,15 @@
-<table width="20%" style="float:left">
+<div class="calendarday" >
+<table width="40%" class="_fL" border="0" cellspacing="0" cellpadding="0">
 	<caption>
-<br />
-<br />
 	</caption>
-	<thead>
+	<thead class="header">
 		<th>
+		&nbsp;
+		<br />
 		Godz
 		</th>
 	</thead>
-	<tr
+	
 	{foreach item=item from=$getAllHours}
 		<tr><td align="center">
 		{$item.od} 
@@ -22,31 +23,54 @@
 
 
 {* na razie dla akutalnego dnia, przerobic dla get *}
-<table width="20%">
+{$var = array() }
+
+<table width="40 %" class="_fL" border="0" cellspacing="0" cellpadding="0">
 	<caption>
-		Aktualny dzien tygodnia: {$actualWeekDay}
-		Aktualny tydzien: {$actualWeek}
 	</caption>
-	<thead>
+	<thead class="header">
 		<th>
-			{$nameDayPl[$actualWeekDay-1]}
+		{$nameDayPl[$actualWeekDay-1]}
+		<br />
+		{$day = $calendar[0][$actualWeek-1][$actualWeekDay-1]}
+		{$day}
 		</th>
 	</thead>
-{$var = array()}
-{foreach key=key item=item from=$getDay}
-	{$var[] = $item.id}
-	{$zaj[] = $item.nazwa}
-{/foreach}
-
-{$count=0}
-	{for $foo=1 to 8}
-		<tr><td>
-		{if in_array($foo, $var)}
-			{$zaj[$count++]}
-			{else}
-			&nbsp;
+	{if array_key_exists($day, $plan)}
+		{if is_array($plan.$day)}
+			{foreach key=key item=item from=$plan.$day}
+				{$var[$item.id] = {$item.nazwa}}
+			{/foreach}
 		{/if}
-		</td></tr>
+	{/if}
+	{for $y=0 to 6}
+	<tr>
+		<td align='center' class="today">	
+		{if isset($var.$y)}
+		{$var.$y}
+		{else}
+		&nbsp;
+		{/if}
+		</td>
+	</tr>
 	{/for}
-
 </table>
+{$var=null}
+</div>
+<div class="dane _fR" >
+
+	<div class="danetop" >
+	
+	DANE:
+
+	</div>
+
+	<div class="danebottom" >
+	
+	Zapis na zajecia
+
+	</div>
+
+</div>
+
+<div class="clear" ></div>
