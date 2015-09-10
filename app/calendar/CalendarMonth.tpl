@@ -1,5 +1,5 @@
 <div class="calendarMonth" >
-<table width="100%" class="_fL" border="0" cellspacing="0" cellpadding="0">
+<table class="table" width="100%" class="_fL" border="0" cellspacing="0" cellpadding="0">
 <caption>
 	</caption>
 	<thead class="header">
@@ -22,7 +22,7 @@
 				{$day[2]}
 				</td>
 				{else}
-				<td align="center">
+				<td id="{$day[2]}" align="center">
 				{$day[2]}
 				</td>
 				{/if}
@@ -33,16 +33,18 @@
 </table>
 </div>
 <div style="clear:both" ></div>
-<script>
-$(document).ready( function() {
 
-    $('#8').hover( 
+<script>
+	
+var test = {json_encode($plan)};
+$(document).ready( function() {
+    $('.table td').hover( 
     	function() {
-        // alert("The paragraph was clicked.");
-	$(this).append($("<span> HOVERING!!!!! </span>"));
+	$(this).html("<span>" + test[$(this).attr("id")] + "</span>");
+	
     },
     	function() {
-		$(this).html($("8"));
+		$(this).html($("<span>" + $(this).attr("id") + "</span>"));
 	}
 	);
 	

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-10 01:19:58
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-11 01:37:24
          compiled from "/home/greg/www_pv/plannersmarty/app/calendar/CalendarMonth.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:80411729255f0a0d64d84c9-54566449%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cc1f90d4f75a12a3cbdab2390cfc3fb90094a9eb' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/calendar/CalendarMonth.tpl',
-      1 => 1441840796,
+      1 => 1441928240,
       2 => 'file',
     ),
   ),
@@ -27,11 +27,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'value' => 0,
     'getTime' => 0,
     'day' => 0,
+    'plan' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_55f0a0d65568a7_16632854')) {function content_55f0a0d65568a7_16632854($_smarty_tpl) {?><div class="calendarMonth" >
-<table width="100%" class="_fL" border="0" cellspacing="0" cellpadding="0">
+<table class="table" width="100%" class="_fL" border="0" cellspacing="0" cellpadding="0">
 <caption>
 	</caption>
 	<thead class="header">
@@ -75,7 +76,8 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 
 				</td>
 				<?php }else{ ?>
-				<td align="center">
+				<td id="<?php echo $_smarty_tpl->tpl_vars['day']->value[2];?>
+" align="center">
 				<?php echo $_smarty_tpl->tpl_vars['day']->value[2];?>
 
 				</td>
@@ -87,16 +89,19 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 </table>
 </div>
 <div style="clear:both" ></div>
-<script>
-$(document).ready( function() {
 
-    $('#8').hover( 
+<script>
+	
+var test = <?php echo json_encode($_smarty_tpl->tpl_vars['plan']->value);?>
+;
+$(document).ready( function() {
+    $('.table td').hover( 
     	function() {
-        // alert("The paragraph was clicked.");
-	$(this).append($("<span> HOVERING!!!!! </span>"));
+	$(this).html("<span>" + test[$(this).attr("id")] + "</span>");
+	
     },
     	function() {
-		$(this).html($("8"));
+		$(this).html($("<span>" + $(this).attr("id") + "</span>"));
 	}
 	);
 	

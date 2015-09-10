@@ -13,7 +13,7 @@ class WelcomeCtrl {
 
 	public function __construct() {
 		$this->msg = new Messages();
-		$this->cal = new CalendarCtrl(2015, 9,  8);
+		$this->cal = new CalendarCtrl(2015, 9,  1);
 		$this->cal->calendar();
 		$this->q = new QueryDB();
 	}
