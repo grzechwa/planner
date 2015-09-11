@@ -243,6 +243,8 @@ class CalendarCtrl {
 				$query = $this->q->getDay($tmp2);
 				$this->plan[] = $tmp2;
 					foreach ($query as $key3=>$tmp3) {
+						$res = $this->q->getCountUser(15);
+
 					$this->plan[$tmp2][] = $tmp3;
 					// var_dump($tmp3);
 					}
@@ -251,7 +253,7 @@ class CalendarCtrl {
 		}
 		return $this->plan;
 	}
-
+	
 	/*
 	public function generateView(){
 		global $conf;

@@ -33,6 +33,7 @@
 </table>
 </div>
 <div style="clear:both" ></div>
+{$plan|@var_dump}
 
 <script>
 	
@@ -40,7 +41,8 @@ var test = {json_encode($plan)};
 $(document).ready( function() {
     $('.table td').hover( 
     	function() {
-	$(this).html("<span>" + test[$(this).attr("id")] + "</span>");
+	$(this).html("<span>" + test[$(this).attr("id")] + "</span><br />\n\
+			<span>" + test['2015-9-8'][0]["nazwa"] + "</span>");
 	
     },
     	function() {
@@ -48,5 +50,6 @@ $(document).ready( function() {
 	}
 	);
 	
+// $(this).attr($(this).attr("id"))
 });
 </script>

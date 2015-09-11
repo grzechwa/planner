@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-11 01:37:24
-         compiled from "/home/greg/www_pv/plannersmarty/app/calendar/CalendarMonth.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:80411729255f0a0d64d84c9-54566449%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-11 12:40:19
+         compiled from "D:\_programs\xampp\htdocs\plannersmarty\app\calendar\CalendarMonth.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:3184355f26c560573e4-28914342%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'cc1f90d4f75a12a3cbdab2390cfc3fb90094a9eb' => 
+    'ff3eecb722fe5d80b4e9fb1fda21c73cd709f265' => 
     array (
-      0 => '/home/greg/www_pv/plannersmarty/app/calendar/CalendarMonth.tpl',
-      1 => 1441928240,
+      0 => 'D:\\_programs\\xampp\\htdocs\\plannersmarty\\app\\calendar\\CalendarMonth.tpl',
+      1 => 1441968017,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '80411729255f0a0d64d84c9-54566449',
+  'nocache_hash' => '3184355f26c560573e4-28914342',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_55f0a0d65568a7_16632854',
+  'unifunc' => 'content_55f26c5614afd3_44515613',
   'variables' => 
   array (
     'nameDayPl' => 0,
@@ -31,7 +31,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55f0a0d65568a7_16632854')) {function content_55f0a0d65568a7_16632854($_smarty_tpl) {?><div class="calendarMonth" >
+<?php if ($_valid && !is_callable('content_55f26c5614afd3_44515613')) {function content_55f26c5614afd3_44515613($_smarty_tpl) {?><div class="calendarMonth" >
 <table class="table" width="100%" class="_fL" border="0" cellspacing="0" cellpadding="0">
 <caption>
 	</caption>
@@ -89,6 +89,8 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 </table>
 </div>
 <div style="clear:both" ></div>
+<?php echo var_dump($_smarty_tpl->tpl_vars['plan']->value);?>
+
 
 <script>
 	
@@ -97,7 +99,8 @@ var test = <?php echo json_encode($_smarty_tpl->tpl_vars['plan']->value);?>
 $(document).ready( function() {
     $('.table td').hover( 
     	function() {
-	$(this).html("<span>" + test[$(this).attr("id")] + "</span>");
+	$(this).html("<span>" + test[$(this).attr("id")] + "</span><br />\n\
+			<span>" + test['2015-9-8'][0]["nazwa"] + "</span>");
 	
     },
     	function() {
@@ -105,6 +108,6 @@ $(document).ready( function() {
 	}
 	);
 	
+// $(this).attr($(this).attr("id"))
 });
-</script>
-<?php }} ?>
+</script><?php }} ?>

@@ -128,5 +128,26 @@ class QueryDB {
 		return $tmp;
 	}
 
+	/*
+	 * Zwraca liczbe uuserow bioracych udzial
+	 * w danych zajeciach
+	 */
+	public function getCountUser($userid) {
+		$this->db->connect();
+		$select = "SELECT COUNT(1)";
+		$from = " FROM plan_user";
+		$join = " LEFT JOIN user";
+		$on = " ON user.user.id = plan_user.user_id";
+		$where = " WHERE plan_user.plan.id = '" . $userid ."'";
+		$orderBy = null;
+
+		$sql = $select . $from  . $join . $on . $where . $orderBy;
+
+		$conn = $this->db->getConn();
+		$result = mysqli_query($conn, $sql);
+		$this->db->disconnect();
+		return $result;
+	}
+	
 	// ... other methods ...
 }

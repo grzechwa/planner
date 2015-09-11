@@ -52,6 +52,7 @@ class WelcomeCtrl {
 		$smarty->assign('actualWeekDay', $this->cal->actualWeekDay());
 		$smarty->assign('calendar', $this->cal->arrtime);
 		$smarty->assign('plan', $this->cal->addPlanner());
+
 		$smarty->assign('nameDayPl', $this->cal->nameDayPl);
 		$smarty->display($conf->root_path.'/app/welcome/Welcome.tpl');
 	}
