@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-11 12:40:19
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-11 14:35:20
          compiled from "D:\_programs\xampp\htdocs\plannersmarty\app\calendar\CalendarMonth.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3184355f26c560573e4-28914342%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ff3eecb722fe5d80b4e9fb1fda21c73cd709f265' => 
     array (
       0 => 'D:\\_programs\\xampp\\htdocs\\plannersmarty\\app\\calendar\\CalendarMonth.tpl',
-      1 => 1441968017,
+      1 => 1441974917,
       2 => 'file',
     ),
   ),
@@ -100,7 +100,7 @@ $(document).ready( function() {
     $('.table td').hover( 
     	function() {
 	$(this).html("<span>" + test[$(this).attr("id")] + "</span><br />\n\
-			<span>" + test['2015-9-8'][0]["nazwa"] + "</span>");
+			<span>" + test[$(this).attr("id")][0]["count"] + "</span>");
 	
     },
     	function() {

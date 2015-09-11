@@ -5,7 +5,6 @@
         <group>
             <file>file:/D:/_programs/xampp/htdocs/plannersmarty/app/calendar/CalendarMonth.tpl</file>
             <file>file:/D:/_programs/xampp/htdocs/plannersmarty/app/calendar/CalendarCtrl.class.php</file>
-            <file>file:/D:/_programs/xampp/htdocs/plannersmarty/app/welcome/WelcomeCtrl.class.php</file>
             <file>file:/D:/_programs/xampp/htdocs/plannersmarty/app/db/QueryDB.php</file>
         </group>
     </open-files>

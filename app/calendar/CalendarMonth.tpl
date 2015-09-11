@@ -42,7 +42,7 @@ $(document).ready( function() {
     $('.table td').hover( 
     	function() {
 	$(this).html("<span>" + test[$(this).attr("id")] + "</span><br />\n\
-			<span>" + test['2015-9-8'][0]["nazwa"] + "</span>");
+			<span>" + test[$(this).attr("id")][0]["count"] + "</span>");
 	
     },
     	function() {

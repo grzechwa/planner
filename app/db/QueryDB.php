@@ -100,9 +100,11 @@ class QueryDB {
 		return $result;
 	}
 
+	// TODO: poprawic kolejnosc zmiennych w zapytaniu
+	// generuje blad w czystym sql
 	public function getDay($data) {
 		$this->db->connect();
-		$select = "SELECT zajecia.nazwa, godziny.od, godziny.do, godziny.id";
+		$select = "SELECT zajecia.nazwa, godziny.od, godziny.do, godziny.id, plan.id as planid";
 		$from = " FROM plan";
 		$where = " WHERE data = '" . $data ."'";
 		$join = " LEFT JOIN zajecia";
@@ -112,7 +114,7 @@ class QueryDB {
 		$orderBy = " ORDER BY data";
 
 		$sql = $select . $from  . $join . $where2 .  $join2 . $where3 . $where. $orderBy;
-
+		
 		$conn = $this->db->getConn();
 		$result = mysqli_query($conn, $sql);
 		$this->db->disconnect();
@@ -132,17 +134,17 @@ class QueryDB {
 	 * Zwraca liczbe uuserow bioracych udzial
 	 * w danych zajeciach
 	 */
-	public function getCountUser($userid) {
+	public function getCountUser($planid) {
 		$this->db->connect();
-		$select = "SELECT COUNT(1)";
+		$select = "SELECT COUNT(1) as many";
 		$from = " FROM plan_user";
 		$join = " LEFT JOIN user";
-		$on = " ON user.user.id = plan_user.user_id";
-		$where = " WHERE plan_user.plan.id = '" . $userid ."'";
+		$on = " ON user.id = plan_user.user_id";
+		$where = " WHERE plan_user.plan_id = '" . $planid ."'";
 		$orderBy = null;
 
 		$sql = $select . $from  . $join . $on . $where . $orderBy;
-
+		
 		$conn = $this->db->getConn();
 		$result = mysqli_query($conn, $sql);
 		$this->db->disconnect();
