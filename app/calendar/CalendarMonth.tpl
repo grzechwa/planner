@@ -32,18 +32,34 @@
 	{/foreach}
 </table>
 </div>
-<div style="clear:both" ></div>
+<div class="json" style="clear:both" ></div>
 {$plan|@var_dump}
 
 <script>
 	
 var test = {json_encode($plan)};
+
 $(document).ready( function() {
     $('.table td').hover( 
     	function() {
-	$(this).html("<span>" + test[$(this).attr("id")] + "</span><br />\n\
-			<span>" + test[$(this).attr("id")][0]["count"] + "</span>");
-	
+	for(var i in test["2015-9-7"]) {
+		$('.json').append("<span> " + test["2015-9-7"][i].nazwa + " </span>");
+	}
+
+	// alert("\""+test[$(this).attr("id")]+"\"");
+
+	var tmp1 = test[$(this).attr("id")];
+	// var tmp2 = "2015-9-7";
+	// alert(tmp1 +  " : " + tmp2) ;
+	// alert(tmp1 === tmp2) ;
+	// alert(tmp);
+         // alert(tmp);
+	 $(this).html("<span>" + test[$(this).attr("id")] + "</span><br />");
+
+	for(var i in test[tmp1]) {
+	 $(this).append("<span>" + test[tmp1][i].nazwa + "</span><br />");
+	 }
+
     },
     	function() {
 		$(this).html($("<span>" + $(this).attr("id") + "</span>"));
