@@ -11,9 +11,9 @@ class WelcomeCtrl {
 	public $q;	// query
 	public $data;	// parameter
 
-	public function __construct() {
+	public function __construct($year=null, $month=null, $day=NULL) {
 		$this->msg = new Messages();
-		$this->cal = new CalendarCtrl(2015, 9,  1);
+		$this->cal = new CalendarCtrl($year, $month,  $day);
 		$this->cal->calendar();
 		$this->q = new QueryDB();
 	}

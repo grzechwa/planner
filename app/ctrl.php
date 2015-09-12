@@ -8,11 +8,24 @@ isset($_REQUEST['action'])?$action = $_REQUEST['action']:$action = '';
 switch ($action) {
 	default : // 'welcome'
 		include_once $conf->root_path.'/app/welcome/WelcomeCtrl.class.php';
-		$ctrl = new WelcomeCtrl ();
+
+		if(isset($_GET['date']) && !empty($_GET['date']))
+		{
+			$date_parts = explode(",", $_GET['date']);
+			$ctrl = new WelcomeCtrl ($date_parts[0], $date_parts[1], $date_parts[2]);
+		}
+		else
+		{
+			$ctrl = new WelcomeCtrl (2015, 9, 1);
+		}
 		$ctrl->generateView ();
 		// $ctrl->process();
 	break;
 	case 'admin' :
 		echo 'hello admin';
 	break;
+	case 'user' :
+		echo 'hello user';
+	break;
+
 }

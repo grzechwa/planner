@@ -1,3 +1,5 @@
+{* przerobicn na link *}
+<div id="prevm"> PREV </div>
 <div class="calendarMonth" >
 <table class="table" width="100%" class="_fL" border="0" cellspacing="0" cellpadding="0">
 <caption>
@@ -32,40 +34,29 @@
 	{/foreach}
 </table>
 </div>
+<div id="nextm"> NEXT </div>
 <div class="json" style="clear:both" ></div>
-{$plan|@var_dump}
 
 <script>
-	
+// dane z tablicy plan
 var test = {json_encode($plan)};
 
 $(document).ready( function() {
     $('.table td').hover( 
     	function() {
-	for(var i in test["2015-9-7"]) {
-		$('.json').append("<span> " + test["2015-9-7"][i].nazwa + " </span>");
-	}
 
-	// alert("\""+test[$(this).attr("id")]+"\"");
+		var tmp1 = test[$(this).attr("id")];
+		$(this).html("<span>" + test[$(this).attr("id")] + "</span><br />");
 
-	var tmp1 = test[$(this).attr("id")];
-	// var tmp2 = "2015-9-7";
-	// alert(tmp1 +  " : " + tmp2) ;
-	// alert(tmp1 === tmp2) ;
-	// alert(tmp);
-         // alert(tmp);
-	 $(this).html("<span>" + test[$(this).attr("id")] + "</span><br />");
+		for(var i in test[tmp1]) {
+			$(this).append("<span>" + test[tmp1][i].nazwa + " : " + test[tmp1][i].count + "</span><br />");
+		}
 
-	for(var i in test[tmp1]) {
-	 $(this).append("<span>" + test[tmp1][i].nazwa + "</span><br />");
-	 }
 
-    },
+    	},
     	function() {
 		$(this).html($("<span>" + $(this).attr("id") + "</span>"));
 	}
-	);
-	
-// $(this).attr($(this).attr("id"))
+    );
 });
 </script>

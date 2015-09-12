@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-12 02:17:18
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-12 17:10:15
          compiled from "/home/greg/www_pv/plannersmarty/app/calendar/CalendarMonth.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:101907621155f33584d25922-73543111%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cc1f90d4f75a12a3cbdab2390cfc3fb90094a9eb' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/calendar/CalendarMonth.tpl',
-      1 => 1442017030,
+      1 => 1442070607,
       2 => 'file',
     ),
   ),
@@ -31,7 +31,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55f33584da90f8_67462127')) {function content_55f33584da90f8_67462127($_smarty_tpl) {?><div class="calendarMonth" >
+<?php if ($_valid && !is_callable('content_55f33584da90f8_67462127')) {function content_55f33584da90f8_67462127($_smarty_tpl) {?><div id="prevm"> PREV </div>
+<div class="calendarMonth" >
 <table class="table" width="100%" class="_fL" border="0" cellspacing="0" cellpadding="0">
 <caption>
 	</caption>
@@ -88,42 +89,30 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 	<?php } ?>
 </table>
 </div>
+<div id="nextm"> NEXT </div>
 <div class="json" style="clear:both" ></div>
-<?php echo var_dump($_smarty_tpl->tpl_vars['plan']->value);?>
-
 
 <script>
-	
+// dane z tablicy plan
 var test = <?php echo json_encode($_smarty_tpl->tpl_vars['plan']->value);?>
 ;
 
 $(document).ready( function() {
     $('.table td').hover( 
     	function() {
-	for(var i in test["2015-9-7"]) {
-		$('.json').append("<span> " + test["2015-9-7"][i].nazwa + " </span>");
-	}
 
-	// alert("\""+test[$(this).attr("id")]+"\"");
+		var tmp1 = test[$(this).attr("id")];
+		$(this).html("<span>" + test[$(this).attr("id")] + "</span><br />");
 
-	var tmp1 = test[$(this).attr("id")];
-	// var tmp2 = "2015-9-7";
-	// alert(tmp1 +  " : " + tmp2) ;
-	// alert(tmp1 === tmp2) ;
-	// alert(tmp);
-         // alert(tmp);
-	 $(this).html("<span>" + test[$(this).attr("id")] + "</span><br />");
+		for(var i in test[tmp1]) {
+			$(this).append("<span>" + test[tmp1][i].nazwa + " : " + test[tmp1][i].count + "</span><br />");
+		}
 
-	for(var i in test[tmp1]) {
-	 $(this).append("<span>" + test[tmp1][i].nazwa + "</span><br />");
-	 }
 
-    },
+    	},
     	function() {
 		$(this).html($("<span>" + $(this).attr("id") + "</span>"));
 	}
-	);
-	
-// $(this).attr($(this).attr("id"))
+    );
 });
 </script><?php }} ?>

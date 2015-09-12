@@ -94,6 +94,14 @@ class CalendarCtrl {
 		$this->day = $day;
 	}
 	
+	public function setMonth($month) {
+		$this->month = $month;
+	}
+
+	public function setYear($year) {
+		$this->year = $year;
+	}
+
 	public function getMonth() {
 		return $this->month;
 	}
@@ -237,7 +245,6 @@ class CalendarCtrl {
 		
 		foreach ($this->arrtime as $t) {
 
-			// var_dump($t);
 			foreach ($t as $key=>$tmp) {
 				foreach($tmp as $key2=>$tmp2){
 				$query = $this->q->getDay($tmp2);
@@ -248,10 +255,8 @@ class CalendarCtrl {
 						$res = $v['many'];
 					}
 					
-					var_dump($res);
 						$tmp3['count'] = $res;
 					$this->plan[$tmp2][] = $tmp3;
-					// var_dump($tmp3);
 					}
 				}
 			}

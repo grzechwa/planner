@@ -15,15 +15,27 @@ and open the template in the editor.
 	margin: 0 auto;
 }
 .calendarMonth {
-	width: 80%;
-	margin: 0 auto;
+	width: 88%;
+	margin: 0% auto;
+	float: left;
 }
 .calendarMonth td {
 	height: 80px;
 }
 
+#prevm {
+	width:5%;
+	float: left;
+	display: block;
+}
+#nextm {
+	width:5%;
+	float:right;
+}
+
 .dane {
 	width: 27%;
+	display: block;
 }
 .danetop {
 	height: 320px;
