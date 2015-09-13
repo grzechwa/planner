@@ -150,6 +150,23 @@ class QueryDB {
 		$this->db->disconnect();
 		return $result;
 	}
-	
+
+	public function getListUser($planid) {
+		$this->db->connect();
+		$select = "SELECT user.id_user, user.imie";
+		$from = " FROM plan_user";
+		$join = " LEFT JOIN user";
+		$on = " ON user.id_user = plan_user.id_user";
+		$where = " WHERE plan_user.id_plan = '" . $planid ."'";
+		$orderBy = null;
+
+		$sql = $select . $from  . $join . $on . $where . $orderBy;
+
+		$conn = $this->db->getConn();
+		$result = mysqli_query($conn, $sql);
+		$this->db->disconnect();
+		return $result;
+	}
+
 	// ... other methods ...
 }

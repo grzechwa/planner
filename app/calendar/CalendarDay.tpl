@@ -24,15 +24,14 @@
 
 {* na razie dla akutalnego dnia, przerobic dla get *}
 {$var = array() }
-
-<table width="40 %" class="_fL" border="0" cellspacing="0" cellpadding="0">
+<table width="40 %" class="table _fL" border="0" cellspacing="0" cellpadding="0">
 	<caption>
 	</caption>
 	<thead class="header">
 		<th>
-		{$nameDayPl[$actualWeekDay-1]}
+		{$nameDay}
 		<br />
-		{$day = $calendar[0][$actualWeek-1][$actualWeekDay-1]}
+		{$day = $getDate}
 		{$day}
 		</th>
 	</thead>
@@ -43,9 +42,10 @@
 			{/foreach}
 		{/if}
 	{/if}
+	{* podac wielkosc tabeli godziny*}
 	{for $y=0 to 6}
 	<tr>
-		<td align='center' class="today">	
+		<td id={$y} align='center' class="today">	
 		{if isset($var.$y)}
 		{$var.$y}
 		{else}
@@ -55,22 +55,34 @@
 	</tr>
 	{/for}
 </table>
-{$var=null}
+
 </div>
 <div class="dane _fR" >
 
 	<div class="danetop" >
-	
 	DANE:
-
 	</div>
-
 	<div class="danebottom" >
-	
 	Zapis na zajecia
-
 	</div>
-
 </div>
-
 <div class="clear" ></div>
+
+<script>
+// dane z tablicy plan
+var test = {json_encode($plan.$day)};
+
+$(document).ready( function() {
+    $('.table td').click( 
+    	function() {
+		var loops = test[$(this).attr("id")];
+		
+		for(var i in loops.imie[0]) {
+			$('.danetop').append("<br /><span>" + loops.imie[0][i] + "</span>");
+		}
+
+
+    	}
+    );
+});
+</script>
