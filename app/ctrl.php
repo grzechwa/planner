@@ -1,36 +1,42 @@
 <?php
-require_once dirname (__FILE__).'/../config.php';
-// TODO: zastosowac funkcje filtrujace
-isset($_REQUEST['action'])?$action = $_REQUEST['action']:$action = '';
 
+require_once dirname(__FILE__) . '/../config.php';
+// TODO: zastosowac funkcje filtrujace
+isset($_REQUEST['action']) ? $action = $_REQUEST['action'] : $action = '';
+session_start();
 //2. wykonanie akcji
 switch ($action) {
 	default : // 'welcome'
-		include_once $conf->root_path.'/app/welcome/WelcomeCtrl.class.php';
-		if(isset($_GET['date']) && !empty($_GET['date']))
-		{
+		include_once $conf->root_path . '/app/welcome/WelcomeCtrl.class.php';
+		if (isset($_GET['date']) && !empty($_GET['date'])) {
 			$date_parts = explode(",", $_GET['date']);
-			$ctrl = new WelcomeCtrl ($date_parts[0], $date_parts[1], $date_parts[2]);
+			$ctrl = new WelcomeCtrl($date_parts[0], $date_parts[1], $date_parts[2]);
+		} else {
+			$ctrl = new WelcomeCtrl(2015, 9, 1);
 		}
-		else
-		{
-			$ctrl = new WelcomeCtrl (2015, 9, 1);
-		}
-		$ctrl->generateView ();
+		$ctrl->generateView();
 		// $ctrl->process();
-	break;
+		break;
 	case 'admin' :
 		echo 'hello admin';
-	break;
+		break;
 	case 'user' :
 		echo 'hello user';
-	break;
+		break;
 	case 'add' :
-echo 'HHHHHHHHHHHHHHHHHHHHHH';
-		include_once $conf->root_path.'/app/welcome/WelcomeCtrl.class.php';
-		$ctrl = new CalendarDayCtrl();
+		echo 'HHHHHHHHHHHHHHHHHHHHHH';
+		
+		include_once $conf->root_path . '/app/calendar/CalendarDayCtrl.class.php';
+		if (isset($_GET['date']) && !empty($_GET['date'])) {
+			$date_parts = explode(",", $_GET['date']);
+			$ctrl = new CalendarDayCtrl($date_parts[0], $date_parts[1], $date_parts[2]);
+		} else {
+			$ctrl = new CalendarDayCtrl(2015, 9, 1);
+		}
+		
+
+		$ctrl->addUserToPlanner($_REQUEST['planid'], $_REQUEST['userid']);
 		$ctrl->generateView();
 
-	break;
-
+		break;
 }

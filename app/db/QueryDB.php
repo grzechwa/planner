@@ -139,8 +139,8 @@ class QueryDB {
 		$select = "SELECT COUNT(1) as many";
 		$from = " FROM plan_user";
 		$join = " LEFT JOIN user";
-		$on = " ON user.id_user = plan_user.user_id";
-		$where = " WHERE plan_user.plan_id = '" . $planid ."'";
+		$on = " ON user.id_user = plan_user.id_user";
+		$where = " WHERE plan_user.id_plan = '" . $planid ."'";
 		$orderBy = null;
 
 		$sql = $select . $from  . $join . $on . $where . $orderBy;
@@ -156,8 +156,8 @@ class QueryDB {
 		$select = "SELECT user.id_user, user.imie";
 		$from = " FROM plan_user";
 		$join = " LEFT JOIN user";
-		$on = " ON user.id_user = plan_user.user_id";
-		$where = " WHERE plan_user.plan_id = '" . $planid ."'";
+		$on = " ON user.id_user = plan_user.id_user";
+		$where = " WHERE plan_user.id_plan = '" . $planid ."'";
 		$orderBy = null;
 
 		$sql = $select . $from  . $join . $on . $where . $orderBy;
@@ -173,10 +173,10 @@ class QueryDB {
 	public function addOnZajecia($planid, $userid) {
 		$this->db->connect();
 		$insert = "INSERT INTO plan_user";
-		$values = " VALUES($planid, $userid)";
+		$values = " VALUES($userid, $planid)";
 
-		$sql = $insert . $values;;
-
+		$sql = $insert . $values;
+		var_dump($sql);
 		$conn = $this->db->getConn();
 		$result = mysqli_query($conn, $sql);
 		$this->db->disconnect();

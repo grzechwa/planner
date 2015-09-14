@@ -33,9 +33,11 @@
 		<br />
 		{$day = $getDate}
 		{$day}
+
 		</th>
 	</thead>
 	{if array_key_exists($day, $plan)}
+
 		{if is_array($plan.$day)}
 			{foreach key=key item=item from=$plan.$day}
 				{$var[$item.id] = {$item.nazwa}}
@@ -70,8 +72,11 @@
 	</div>
 	<div class="danebottom" >
 	Zapis na zajecia
-	<form action="?add" >
+	<form action="{$conf->action_root}add" method="post">
 	    {*TODO validacja danych *}
+	    
+
+
 	    <button type="submit"> Dodaj sie </button>
 	</form>
 	</div>
@@ -80,25 +85,33 @@
 
 <script>
 // dane z tablicy plan
+// var test = {json_encode($plan.$day)};
 var test = {json_encode($plan.$day)};
 
 $(document).ready( function() {
     $('.table td').click( 
     	function() {
 		var loops = test[$(this).attr("id")];
-		
+		// alert(loops.planid);
 		// alert(loops.imie[0]);
+
+		// $('div.danebottom form').append('<input type="hidden" value="'+ $(this).attr("id")+ '" name="godzid" id="' + $(this).attr("id")+  '"/>');
+		// $('div.danebottom form').append('<input type="hidden" value="'+ test[$(this).attr("id")].planid + '" name="planid" id="' + test[$(this).attr("id")].planid +  '"/>');
+		$('div.danebottom form').append('<input type="hidden" value="'+ loops.planid + '" name="planid" id="' + loops.planid +  '"/>');
+		$('div.danebottom form').append('<input type="hidden" value="2" name="userid" id="aaa" />');
+
 		var a = new String(); 
 		a = loops.imie.toString();
+	
+		// $.session.set("planid", "val");
+		// sessionStorage.setItem("planid", $(this).attr("id"));
+
 		var x = new Array();
 		x = a.split(",");
-
-		// alert(x[1]);
-
-	
-	 
+		if(x !== null) {
 		for(var i in x) {
-			$('.danetop').append("<br /><span>" + x[i] + "</span>");
+			$('.danetop').append("<br /><span>" + x[i] + sessionStorage.getItem("planid") + "</span>");
+		}
 		}
 
 		

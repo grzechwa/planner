@@ -1,17 +1,29 @@
 <?php
+ //session_start();
 require_once $conf->root_path . '/app/welcome/WelcomeCtrl.class.php';
 require_once $conf->root_path . '/app/db/QueryDB.php';
 
 require_once $conf->root_path.'/app/util/Messages.class.php';
 require_once $conf->root_path.'/app/calendar/CalendarCtrl.class.php';
 require_once $conf->root_path.'/vendor/smarty/smarty/libs/Smarty.class.php';
-
+var_dump($_REQUEST);
 class CalendarDayCtrl 
 {
 	public $q;
+	public $msg;
+	public $cal;
 	public $planid;
 	public $userid;
 
+	public function __construct($year, $month, $day) {
+		$this->msg = new Messages();
+		$this->cal = new CalendarCtrl($year, $month,  $day);
+		$this->cal->calendar();
+		$this->q = new QueryDB();
+;
+	}
+
+	
 	public function addUserToPlanner($planid, $userid) {
 		$this->q = new QueryDB();
 		return $this->q->addOnZajecia($planid, $userid);
@@ -25,7 +37,7 @@ class CalendarDayCtrl
 		$smarty->assign('user',$user);
 		$smarty->assign('page_title','Welcome page!');
 
-		$smarty->assign('msgs',$this->msg);
+		// $smarty->assign('msgs',$this->msg);
 
 
 		
@@ -53,7 +65,7 @@ class CalendarDayCtrl
 		$smarty->assign('plan', $this->cal->addPlanner());
 
 
-		$smarty->assign('adToPlan', $this->addUserToPlanner($planid, $userid));
+		$smarty->assign('adToPlan', $this->addUserToPlanner($_REQUEST['planid'], $_REQUEST['userid']));
 
 		$smarty->assign('nameDayPl', $this->cal->nameDayPl);
 		$smarty->assign('nameDay', $this->cal->getNameDay());
