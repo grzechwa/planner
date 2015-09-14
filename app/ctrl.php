@@ -1,6 +1,5 @@
 <?php
 require_once dirname (__FILE__).'/../config.php';
-
 // TODO: zastosowac funkcje filtrujace
 isset($_REQUEST['action'])?$action = $_REQUEST['action']:$action = '';
 
@@ -15,7 +14,7 @@ switch ($action) {
 		}
 		else
 		{
-			$ctrl = new WelcomeCtrl (2015, 9, 7);
+			$ctrl = new WelcomeCtrl (2015, 9, 1);
 		}
 		$ctrl->generateView ();
 		// $ctrl->process();
@@ -25,6 +24,13 @@ switch ($action) {
 	break;
 	case 'user' :
 		echo 'hello user';
+	break;
+	case 'add' :
+echo 'HHHHHHHHHHHHHHHHHHHHHH';
+		include_once $conf->root_path.'/app/welcome/WelcomeCtrl.class.php';
+		$ctrl = new CalendarDayCtrl();
+		$ctrl->generateView();
+
 	break;
 
 }

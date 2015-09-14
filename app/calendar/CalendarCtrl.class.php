@@ -258,22 +258,5 @@ class CalendarCtrl {
 		return $this->plan;
 	}
 
-	/*
-	  public function generateView(){
-	  global $conf;
-
-	  $smarty = new Smarty();
-	  $smarty->assign('conf',$conf);
-
-	  $smarty->assign('page_title','Fit');
-	  $smarty->assign('page_description','Prosty projekt zarzadzania klubem');
-	  $smarty->assign('page_header','Strona glowna');
-
-
-	  $smarty->assign('calendar', $this->arrtime);
-
-	  $smarty->display($conf->root_path.'/app/calendar/Calendar.tpl');
-	  }
-	 * 
-	 */
+	  
 }

@@ -43,12 +43,18 @@
 		{/if}
 	{/if}
 	{* podac wielkosc tabeli godziny*}
+	{$count=0}
 	{for $y=0 to 6}
 	<tr>
-		<td id={$y} align='center' class="today">	
 		{if isset($var.$y)}
+
+		<td id={$count++} align='center' class="today">	
+		
 		{$var.$y}
+
+
 		{else}
+		<td align='center' class="today">	
 		&nbsp;
 		{/if}
 		</td>
@@ -64,6 +70,10 @@
 	</div>
 	<div class="danebottom" >
 	Zapis na zajecia
+	<form action="?add" >
+	    {*TODO validacja danych *}
+	    <button type="submit"> Dodaj sie </button>
+	</form>
 	</div>
 </div>
 <div class="clear" ></div>
@@ -77,9 +87,30 @@ $(document).ready( function() {
     	function() {
 		var loops = test[$(this).attr("id")];
 		
-		for(var i in loops.imie[0]) {
-			$('.danetop').append("<br /><span>" + loops.imie[0][i] + "</span>");
+		// alert(loops.imie[0]);
+		var a = new String(); 
+		a = loops.imie.toString();
+		var x = new Array();
+		x = a.split(",");
+
+		// alert(x[1]);
+
+	
+	 
+		for(var i in x) {
+			$('.danetop').append("<br /><span>" + x[i] + "</span>");
 		}
+
+		
+
+		$.map(loops.imie, function(value, key) {
+		  // console.log(key, value);
+			  $('.danetop').append("<br /><span>" + j   +  "</span>");
+		// $('.danetop').append("<br /><span>" + value + key  +  "</span>");
+		// ss = value;
+		});
+
+
 
 
     	}
