@@ -65,11 +65,11 @@ class CalendarDayCtrl
 		$smarty->assign('plan', $this->cal->addPlanner());
 
 
-		$smarty->assign('adToPlan', $this->addUserToPlanner($_REQUEST['planid'], $_REQUEST['userid']));
+		// $smarty->assign('adToPlan', $this->addUserToPlanner($_REQUEST['planid'], $_REQUEST['userid']));
 
 		$smarty->assign('nameDayPl', $this->cal->nameDayPl);
 		$smarty->assign('nameDay', $this->cal->getNameDay());
-		$smarty->display($conf->root_path.'/app/calendar/CalendarDay.tpl');
+		$smarty->display($conf->root_path.'/app/welcome/Welcome.tpl');
 	}
 	
 	

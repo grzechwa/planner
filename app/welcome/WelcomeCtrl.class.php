@@ -19,6 +19,11 @@ class WelcomeCtrl {
 		$this->q = new QueryDB();
 	}
 
+	public function addUserToPlanner($planid, $userid) {
+	$this->q = new QueryDB();
+	return $this->q->addOnZajecia($planid, $userid);
+}
+	
 	public function generateView() {
 		global $conf, $user;
 
