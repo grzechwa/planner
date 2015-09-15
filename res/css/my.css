@@ -72,3 +72,17 @@ td {
 .footer {
 	text-align: center;
 }
+.left, .right {
+	width:48%;
+	margin: 0 auto;
+}
+
+.right {
+	width:48%;
+	margin: 0 auto;
+	float: right;
+}
+.container {
+	width: 90%;
+	margin: 0 auto;
+}
