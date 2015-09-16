@@ -29,12 +29,15 @@ switch ($action) {
 	case 'delUser' :
 		include_once $conf->root_path . '/app/admin/Admin.class.php';
 		$adm = new Admin();
-		$adm->delUser();
+		$adm->delUser($_REQUEST['idel']);
 		$adm->generateView();
 		var_dump($_REQUEST);
 		break;
 	case 'goAddUser' :
-		include_once $conf->root_path . '/app/admin/adminAddUser.tpl';
+		// include_once $conf->root_path . '/app/admin/adminadd.tpl';
+		include_once $conf->root_path . '/app/admin/AdminAddUser.class.php';
+		$adm = new AdminAddUser();
+		$adm->generateView();
 		break;
 	case 'addUser' :
 		include_once $conf->root_path . '/app/admin/Admin.class.php';
@@ -43,21 +46,26 @@ switch ($action) {
 		$adm->generateView();
 		var_dump($_REQUEST);
 		break;
-	case 'delActiv' :
-		include_once $conf->root_path . '/app/admin/Admin.class.php';
-		$adm = new Admin();
-		$adm-
+	case 'goAddActiv' :
+		// include_once $conf->root_path . '/app/admin/adminAddActiv.tpl';
+		include_once $conf->root_path . '/app/admin/AdminAddActiv.class.php';
+		$adm = new AdminAddActiv();
 		$adm->generateView();
-		var_dump($_REQUEST);
 		break;
 	case 'addActiv' :
 		include_once $conf->root_path . '/app/admin/Admin.class.php';
 		$adm = new Admin();
-		$adm->addUser();
+		$adm->addActiv($_REQUEST['nazwa']);
 		$adm->generateView();
 		var_dump($_REQUEST);
 		break;
-
+	case 'delActiv' :
+		include_once $conf->root_path . '/app/admin/Admin.class.php';
+		$adm = new Admin();
+		$adm->delActiv($_REQUEST['idelact']);
+		$adm->generateView();
+		var_dump($_REQUEST);
+		break;
 	case 'add' :
 		/*
 		include_once $conf->root_path . '/app/calendar/CalendarDayCtrl.class.php';

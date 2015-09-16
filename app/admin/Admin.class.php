@@ -37,13 +37,19 @@ class Admin {
 		return $this->q->addNewUser($imie, $haslo);
 	}
 	
-	public function delUser() {
-
+	public function delUser($id) {
+		return $this->q->delUser($id);
 	}
 
-	public function addActiv() {
-
+	public function addActiv($nazwa) {
+		return $this->q->addNewActive($nazwa);
 	}
+
+	public function delActiv($nazwa) {
+		return $this->q->delActiv($nazwa);
+	}
+
+
 	public function listUsers() {
 		return $this->q->getListUsers();
 	}
@@ -63,6 +69,8 @@ class Admin {
 		$smarty->assign('activs', $this->listActivs());
 		$smarty->display($conf->root_path . '/app/admin/adminwelcome.tpl');
 	}
+
+
 
 }
 

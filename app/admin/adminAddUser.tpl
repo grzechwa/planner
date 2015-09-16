@@ -2,7 +2,7 @@
 
 Hello Adder
 
-<form action="{$conf->action_root}addUser" method="post" >
+<form action="?action=addUser" method="post" >
     <label for="imie">imie</label>
     <input type="text" name="imie" />
     <br />

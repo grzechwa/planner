@@ -1,13 +1,13 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-17 00:33:07
-         compiled from "/home/greg/www_pv/plannersmarty/app/welcome/Welcome.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:98238522455f9ee23ed2078-85118444%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-17 00:49:49
+         compiled from "/home/greg/www_pv/plannersmarty/app/admin/adminadd.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:34448228955f9f20da65216-53940433%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '3f1f57f8290205f3e224c1bcde4ef2b219935efe' => 
+    '9d9838159618de00242e907ab52e92e3ab289169' => 
     array (
-      0 => '/home/greg/www_pv/plannersmarty/app/welcome/Welcome.tpl',
-      1 => 1442095711,
+      0 => '/home/greg/www_pv/plannersmarty/app/admin/adminadd.tpl',
+      1 => 1442443583,
       2 => 'file',
     ),
     'b8f53d7dd0dd9cb25cf4d2b53469db3cab0bbd71' => 
@@ -17,7 +17,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '98238522455f9ee23ed2078-85118444',
+  'nocache_hash' => '34448228955f9f20da65216-53940433',
   'function' => 
   array (
   ),
@@ -28,9 +28,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_55f9ee2400def2_11653178',
+  'unifunc' => 'content_55f9f20dad3c41_54292841',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55f9ee2400def2_11653178')) {function content_55f9ee2400def2_11653178($_smarty_tpl) {?><!doctype html>
+<?php if ($_valid && !is_callable('content_55f9f20dad3c41_54292841')) {function content_55f9f20dad3c41_54292841($_smarty_tpl) {?><!doctype html>
 <html lang="pl">
 <head>
     <meta charset="utf-8">
@@ -54,8 +54,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div id="content">
 			
 	<hr />
-	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['conf']->value->root_path).("/app/calendar/CalendarDay.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+	<?php if ($_smarty_tpl->tpl_vars['showid']->value==1){?>
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['conf']->value->root_path).("/app/admin/adminAddUser.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
+	<?php }else{ ?>
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['conf']->value->root_path).("/app/admin/adminAddActiv.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+	<?php }?>
 	<hr />
 
 		</div>

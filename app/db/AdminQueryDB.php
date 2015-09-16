@@ -38,7 +38,7 @@ class AdminQueryDB {
 	 */
 	public function getListActivs() {
 		$this->db->connect();
-		$select = "SELECT zajecia.id, zajecia.nazwa";
+		$select = "SELECT id, nazwa";
 		$from = " FROM zajecia";
 
 		$sql = $select . $from; 
@@ -54,11 +54,11 @@ class AdminQueryDB {
 	 */
 	public function addNewUser($imie, $haslo) {
 		$this->db->connect();
-		$insert = "INSER INTO user";
-		$values = " VALUES(null, $imie, $haslo)";
+		$insert = "INSERT INTO user";
+		$values = " VALUES(null, '".$imie."','". $haslo."')";
 
 		$sql = $insert . $values; 
-
+		var_dump($sql);
 		$conn = $this->db->getConn();
 		$result = mysqli_query($conn, $sql);
 		$this->db->disconnect();
@@ -70,15 +70,52 @@ class AdminQueryDB {
 	 */
 	public function addNewActive($nazwa) {
 		$this->db->connect();
-		$insert = "INSER INTO zajecia";
-		$values = " VALUES(null, $nazwa";
+		$insert = "INSERT INTO zajecia";
+		$values = " VALUES(null, '" . $nazwa . "')";
 
 		$sql = $insert . $values; 
-
+		var_dump($sql);
 		$conn = $this->db->getConn();
 		$result = mysqli_query($conn, $sql);
 		$this->db->disconnect();
 		return $result;
+	}
 	
+	/*
+	 * Usuniecie uzytkownika z bazy
+	 */
+	public function delUser($id) {
+		$this->db->connect();
+		$delete = "DELETE";
+		$from = " FROM user";
+		$where = " WHERE id_user=$id";
+
+		$sql = $delete . $from . $where;
+		var_dump($sql);
+		$conn = $this->db->getConn();
+		$result = mysqli_query($conn, $sql);
+		$this->db->disconnect();
+		return $result;
+
+	}
+	
+	/*
+	 * Usuniecie rodzaju zajec z bazy
+	 */
+	public function delActiv($id) {
+		$this->db->connect();
+		$delete = "DELETE";
+		$from = " FROM zajecia";
+		$where = " WHERE id=$id";
+
+		$sql = $delete . $from . $where;
+		var_dump($sql);
+		$conn = $this->db->getConn();
+		$result = mysqli_query($conn, $sql);
+		$this->db->disconnect();
+		return $result;
+
+	}
+
 	// ... other methods ...
 }

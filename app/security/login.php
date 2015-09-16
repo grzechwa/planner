@@ -3,14 +3,6 @@ require_once $conf->root_path.'/app/model/QueryDB.php';
 include_once $conf->root_path.'/app/view/snip/header.php';
 
 
-
-// $q = new QueryDB();
-
-// $listEmpl = $q->getShortInfoAll();
-// $count = $q->getCount()->fetch_row();
-
-
-// ... generowanie widoku ....
 ?>
 <div class="container"> 
 
