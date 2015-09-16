@@ -33,8 +33,8 @@ class Admin {
 
 	}
 
-	public function addUser() {
-
+	public function addUser($imie, $haslo) {
+		return $this->q->addNewUser($imie, $haslo);
 	}
 	
 	public function delUser() {

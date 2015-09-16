@@ -39,7 +39,7 @@ switch ($action) {
 	case 'addUser' :
 		include_once $conf->root_path . '/app/admin/Admin.class.php';
 		$adm = new Admin();
-		$adm->addUser();
+		$adm->addUser($_REQUEST['imie'], $_REQUEST['haslo']);
 		$adm->generateView();
 		var_dump($_REQUEST);
 		break;

@@ -49,5 +49,36 @@ class AdminQueryDB {
 		return $result;
 	}
 
+	/*
+	 * Dodaawanie nowego uzytkownika
+	 */
+	public function addNewUser($imie, $haslo) {
+		$this->db->connect();
+		$insert = "INSER INTO user";
+		$values = " VALUES(null, $imie, $haslo)";
+
+		$sql = $insert . $values; 
+
+		$conn = $this->db->getConn();
+		$result = mysqli_query($conn, $sql);
+		$this->db->disconnect();
+		return $result;
+	}
+
+	/*
+	 * Dodawanie nowego rodzaju zajec
+	 */
+	public function addNewActive($nazwa) {
+		$this->db->connect();
+		$insert = "INSER INTO zajecia";
+		$values = " VALUES(null, $nazwa";
+
+		$sql = $insert . $values; 
+
+		$conn = $this->db->getConn();
+		$result = mysqli_query($conn, $sql);
+		$this->db->disconnect();
+		return $result;
+	
 	// ... other methods ...
 }
