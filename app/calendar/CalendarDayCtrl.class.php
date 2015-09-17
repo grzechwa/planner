@@ -6,7 +6,7 @@ require_once $conf->root_path . '/app/db/QueryDB.php';
 require_once $conf->root_path.'/app/util/Messages.class.php';
 require_once $conf->root_path.'/app/calendar/CalendarCtrl.class.php';
 require_once $conf->root_path.'/vendor/smarty/smarty/libs/Smarty.class.php';
-var_dump($_REQUEST);
+
 class CalendarDayCtrl 
 {
 	public $q;
@@ -65,7 +65,7 @@ class CalendarDayCtrl
 		$smarty->assign('plan', $this->cal->addPlanner());
 
 
-		// $smarty->assign('adToPlan', $this->addUserToPlanner($_REQUEST['planid'], $_REQUEST['userid']));
+
 
 		$smarty->assign('nameDayPl', $this->cal->nameDayPl);
 		$smarty->assign('nameDay', $this->cal->getNameDay());

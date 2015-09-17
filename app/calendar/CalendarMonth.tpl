@@ -1,5 +1,7 @@
 {* przerobicn na link *}
-<div id="prevm"> PREV </div>
+<div id="prevm"> <a href="?date={$getYear},{$getMonth},{$getDay}&prev">PREV</a> </div>
+
+
 <div class="calendarMonth" >
 <table class="table" width="100%" class="_fL" border="0" cellspacing="0" cellpadding="0">
 <caption>
@@ -34,7 +36,9 @@
 	{/foreach}
 </table>
 </div>
-<div id="nextm"> NEXT </div>
+
+<div id="nextm"> <a href="?date={$getYear},{$getMonth},{$getDay}&next">NEXT</a> </div>
+
 <div class="json" style="clear:both" ></div>
 
 <script>

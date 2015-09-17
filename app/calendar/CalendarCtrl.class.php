@@ -13,16 +13,18 @@ class CalendarCtrl {
 	public $month;
 	public $day;
 	public $arrtime = array(); // tablica kalendarza
-	public $plan = array();
+	public $plan = array();	   // tablica zajec
 	public $q;
 	public $nameDayPl = array('Pon', 'Wt', 'Sr', 'Czw', 'Pt', 'Sb', 'Nd');
 
-	public function __construct($year, $month, $day) {
+	public function __construct($year = null, $month = null, $day = null) {
 		$this->year = $year;
 		$this->month = $month;
 		$this->day = $day;
 		$this->q = new QueryDB();
 	}
+
+
 
 	// poprzedni m-c
 	public function prevMonth() {
@@ -101,7 +103,9 @@ class CalendarCtrl {
 	}
 
 	public function setMonth($month) {
+
 		$this->month = $month;
+
 	}
 
 	public function setYear($year) {
@@ -120,16 +124,32 @@ class CalendarCtrl {
 		return $this->year . '-' . $this->month . '-' . $this->day;
 	}
 
+	public function firstDayweekNumber()
+	{
+		// $this->_validateDates();
+		$time = strtotime($this->year . '-' . $this->month. '-' . 1);
+		if($time)
+		{
+			return ((int)date("w", $time));
+		}
+		
+		return false;
+	}
+
 	// calykal
 	public function calendar() {
 		// format daty do przetwarzania
+		// $time = $this->year . '-' . $this->month . '-' . $this->day;
 		$time = $this->year . '-' . $this->month . '-' . $this->day;
+
 		$curr_mth_days = Array();
 		$prev_mth_last_days = Array();
 		$next_mth_last_days = Array();
 
 		// format daty dla poprzedniego miesiaca
-		$prev_time = strtotime($this->year . '-' . $this->prevMonth() . '-' . $this->day);
+		// $prev_time = strtotime($this->year . '-' . $this->prevMonth() . '-' . $this->day);
+		$prev_time = strtotime($this->year . '-' . $this->prevMonth() . '-' . 1);
+
 		$prev_mth_days = $this->Days($prev_time);
 
 		// poprzedni tydzien, jakie dni
@@ -143,19 +163,20 @@ class CalendarCtrl {
 
 
 		// pierwszy tydzien razem z poprzednim
-		if ($this->numberDay($time) > 1) {
+		// if ($this->numberDay($time) > 1) { //poprawa
+		if ($this->firstDayweekNumber() > 1) { 
 			$a = 0;
-			for ($i = $this->numberDay($time) - 1; $i < 7; $i++) {
+			for ($i = $this->firstDayweekNumber() - 1; $i < 7; $i++) {
 				$curr_mth_days[0][$i] = $this->year . '-' . $this->month . '-' . ++$a;
 			}
 
 			$curr_mth_days[0] = array_merge(
-				array_slice($prev_mth_last_days, (($this->numberDay($time) - 1) * -1)), $curr_mth_days[0]);
-			$i = 7 - $this->numberDay($time) + 2;
-		} else if ($this->numberDay($time) == 1) {
+				array_slice($prev_mth_last_days, (($this->firstDayweekNumber() - 1) * -1)), $curr_mth_days[0]);
+			$i = 7 - $this->firstDayweekNumber() + 2;
+		} else if($this->firstDayweekNumber() == 1) {
 			$curr_mth_days[0] = $prev_mth_last_days;
 			$i = 1;
-		} else if ($this->numberDay($time) == 0) {
+		} else if($this->firstDayweekNumber() == 0) {
 			$a = 0;
 			for ($i = 6; $i < 7; $i++) {
 				// $curr_mth_days[0][$i] = ++$a;
@@ -214,6 +235,7 @@ class CalendarCtrl {
 
 
 		$this->arrtime[] = $curr_mth_days;
+	
 	}
 
 	// TODO: przepisac te metode, za duzo petli

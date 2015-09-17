@@ -11,6 +11,7 @@ class WelcomeCtrl {
 	public $cal;
 	public $q; // query
 	public $data; // parameter
+	public $typeCal;
 
 	public function __construct($year = null, $month = null, $day = NULL) {
 
@@ -18,6 +19,16 @@ class WelcomeCtrl {
 		$this->cal = new CalendarCtrl($year, $month, $day);
 		$this->cal->calendar();
 		$this->q = new QueryDB();
+		if(isset($_REQUEST['typecal'])) {
+			$this->typeCal = $_REQUEST['typecal'];
+		} else {
+			$this->typeCal = 1;
+		}
+	}
+
+	public function setCalMonth() {
+		var_dump($this->cal->nextMonth());
+		var_dump($this->cal->setMonth($this->cal->nextMonth()));
 	}
 
 	public function addUserToPlanner($planid, $userid) {
@@ -42,7 +53,7 @@ class WelcomeCtrl {
 		$smarty->assign('getYear', $this->cal->getYear());
 		$smarty->assign('getTime', $this->cal->getTime());
 		$smarty->assign('getDate', $this->cal->getTime());
-		$smarty->assign('getDay', $this->q->getDay($this->cal->getTime()));
+		// $smarty->assign('getDay', $this->q->getDay($this->cal->getTime()));
 
 
 
@@ -62,6 +73,8 @@ class WelcomeCtrl {
 
 		$smarty->assign('nameDayPl', $this->cal->nameDayPl);
 		$smarty->assign('nameDay', $this->cal->getNameDay());
+
+		$smarty->assign('type', $this->typeCal);
 		$smarty->display($conf->root_path . '/app/welcome/Welcome.tpl');
 	}
 
