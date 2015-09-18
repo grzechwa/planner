@@ -1,6 +1,8 @@
 {extends file=$conf->root_path|cat:"/templates/main.tpl"}
 
-{block name=header}HEADERLOCAL{/block}
+{block name=header}
+	{include file=$conf->root_path|cat:"/app/snip/welcomeheader.tpl"}
+{/block}
 {block name=footer}FOOTERLOCAL{/block}
 
 {block name=content}

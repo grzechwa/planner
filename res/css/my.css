@@ -15,22 +15,27 @@ and open the template in the editor.
 	margin: 0 auto;
 }
 .calendarMonth {
-	width: 88%;
+	width: 80%;
 	margin: 0% auto;
-	float: left;
+	
 }
 .calendarMonth td {
-	height: 80px;
+	height: 60px;
 }
 
 #prevm {
 	width:5%;
 	float: left;
-	display: block;
+
 }
 #nextm {
 	width:5%;
-	float:right;
+	float:left;
+}
+#centerm{
+	float: left;
+	width: 88%;
+
 }
 
 .dane {
@@ -63,7 +68,7 @@ table {
 }
 
 td {
-	height: 50px;
+	height: 60px;
 }
 
 .navheader {
@@ -85,4 +90,18 @@ td {
 .container {
 	width: 90%;
 	margin: 0 auto;
+}
+
+/* -- header -- */
+#left_header {
+	float: left;
+	width: 8%;
+}
+#center_header {
+	width:80%;
+	float: left;
+}
+#right_header {
+	width: 8%;
+	float: right;
 }
