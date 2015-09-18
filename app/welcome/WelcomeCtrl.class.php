@@ -22,7 +22,7 @@ class WelcomeCtrl {
 		if(isset($_REQUEST['typecal'])) {
 			$this->typeCal = $_REQUEST['typecal'];
 		} else {
-			$this->typeCal = 1;
+			$this->typeCal = 2;
 		}
 	}
 

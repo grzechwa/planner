@@ -1,27 +1,39 @@
 <?php
 
 require_once dirname(__FILE__) . '/../config.php';
-
+global $usertest;
 
 // TODO: zastosowac funkcje filtrujace
 isset($_REQUEST['action']) ? $action = $_REQUEST['action'] : $action = '';
 // isset($_REQUEST['newdate']) ? $newdate = $_REQUEST['newdate'] : $date = '';
 
 session_start();
+$_SESSION['usertest'] = 'Test';
 
 	include_once $conf->root_path . '/app/welcome/WelcomeCtrl.class.php';
 	if (isset($_GET['date']) && !empty($_GET['date'])) {
 		$date_parts = explode(",", $_GET['date']);
 		// valid nextprev
 		// miech do przodu
-		if(isset($_REQUEST['next'])){
+		if(isset($_REQUEST['nextm'])){
 			$date_parts[1]++;
-			unset($_REQUEST['next']);
+			unset($_REQUEST['nextm']);
 		}
 		
-		if(isset($_REQUEST['prev'])){
+		if(isset($_REQUEST['prevm'])){
 			$date_parts[1]--;
-			unset($_REQUEST['prev']);
+			unset($_REQUEST['prevm']);
+		}
+
+
+		if(isset($_REQUEST['nextd'])){
+			$date_parts[2]++;
+			unset($_REQUEST['nextd']);
+		}
+		
+		if(isset($_REQUEST['prevd'])){
+			$date_parts[2]--;
+			unset($_REQUEST['prevd']);
 		}
 
 		$ctrl = new WelcomeCtrl($date_parts[0], $date_parts[1], $date_parts[2]);

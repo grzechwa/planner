@@ -8,8 +8,13 @@
 		<h1>HEADER</h2>
 	</div>
 	<div id="right_header">
-		logowanie
+		{if $smarty.session.usertest}
+			<div>jestes zalogowany jako {$smarty.session.usertest}</div>
+			<br />
+			<div>wyloguj</div>
+		{else}
+		 	zaloguj
+		{/if}
 	</div>
-
 </div>
 <div class="clear" ></div>

@@ -20,7 +20,6 @@ class CalendarDayCtrl
 		$this->cal = new CalendarCtrl($year, $month,  $day);
 		$this->cal->calendar();
 		$this->q = new QueryDB();
-;
 	}
 
 	

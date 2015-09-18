@@ -24,8 +24,6 @@ class CalendarCtrl {
 		$this->q = new QueryDB();
 	}
 
-
-
 	// poprzedni m-c
 	public function prevMonth() {
 
@@ -272,7 +270,6 @@ class CalendarCtrl {
 						}
 						$tmp3['count'] = $res;
 						$this->plan[$tmp2][] = $tmp3;
-
 					}
 				}
 			}
@@ -280,5 +277,4 @@ class CalendarCtrl {
 		return $this->plan;
 	}
 
-	  
 }
