@@ -64,6 +64,7 @@
 	</table>
 
 	</div>
+	{* dane *}
 	<div class="dane _fR" >
 		<div class="danetop" >
 			DANE:
@@ -83,32 +84,60 @@
 
 <script>
 // dane z tablicy plan
-var test = {json_encode($plan.$day)};
+var jqplan = {json_encode($plan.$day)};
 
 $(document).ready( function() {
     $('.table td').click( 
 	function() {
-		var loops = test[$(this).attr("id")];
-
-		$('div.danebottom form').append('<input type="hidden" value="'+ loops.planid + '" name="planid" id="' + loops.planid +  '"/>');
+		var item = jqplan[$(this).attr("id")];
+		
+		if(typeof item !== 'undefined') {
+		// dodanie ukrytych pol do formularza
+		// TODO: usuwanie ukrytych pol przed jq
+		$('div.danebottom form').append('<input type="hidden" value="'+ item.planid + '" name="planid" id="' + item.planid +  '"/>');
 		$('div.danebottom form').append('<input type="hidden" value="2" name="userid" id="aaa" />');
 
-		// var a = new String(); 
-		var a = loops.imie.toString();
-		
-
-		var x = new Array();
-		x = a.split(",");
-	
+		// przygotowanie do wyswietlenia imion
+		var itemName = new Array();
+		itemName = item.imie.toString().split(",");
 		$('.danemiddle').html("<br /><span></span>");
 
-		if(x !== null) {
-			for(var i in x) {
-				$('.danemiddle').append("<br /><span>" + x[i] + "</span>");
+
+		var formstart = {json_encode($conf->action_root)};
+		// alert(formstart);
+		// wyswietlenie imion w obszarze danemiddle
+		if(itemName !== 'undefined') {
+			for(var i in itemName) {
+				$('.danemiddle').append("<br /><span>" + itemName[i] + "</span>");
 			}
+
+			if(".danemiddle:contains('aaa')"){
+				$('.danebottom button').html("Ususn sie");
+				$('.danebottom form').attr('action', formstart+ 'del');
+			} 
+		} 
+
+		} else {
+			// alert(item);
+			$('.danemiddle').html("<span></span>");
+			$('.danebottom button').html("<div>Dodaj sie</di>");
 		}
+
+
+		// $('.danemiddle').change();
 	}
-	
-    );
+    ),
+    $('.danemiddle').change(
+    	function() {
+		// alert('hej');
+		// $( ".danemiddle:contains('aaa')" ).css( "text-decoration", "underline" );
+			// if($(".danemiddle").contains("aaa")){
+			if(".danemiddle:contains('aaa')"){
+				$('.danebottom').html("<div>ususn sie</di>");
+			} else {
+				$('.danebottom').append("<div>bee !!!</di>");
+			}   		
+		}
+	);
 });
 </script>

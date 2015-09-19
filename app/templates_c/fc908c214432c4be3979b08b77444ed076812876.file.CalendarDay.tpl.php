@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-19 01:20:14
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-19 17:48:43
          compiled from "/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:113204345255f70d8fc21df9-57397266%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fc908c214432c4be3979b08b77444ed076812876' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl',
-      1 => 1442618394,
+      1 => 1442677719,
       2 => 'file',
     ),
   ),
@@ -133,6 +133,7 @@ $_smarty_tpl->tpl_vars['y']->first = $_smarty_tpl->tpl_vars['y']->iteration == 1
 	</table>
 
 	</div>
+	
 	<div class="dane _fR" >
 		<div class="danetop" >
 			DANE:
@@ -153,33 +154,62 @@ add" method="post">
 
 <script>
 // dane z tablicy plan
-var test = <?php echo json_encode($_smarty_tpl->tpl_vars['plan']->value[$_smarty_tpl->tpl_vars['day']->value]);?>
+var jqplan = <?php echo json_encode($_smarty_tpl->tpl_vars['plan']->value[$_smarty_tpl->tpl_vars['day']->value]);?>
 ;
 
 $(document).ready( function() {
     $('.table td').click( 
 	function() {
-		var loops = test[$(this).attr("id")];
-
-		$('div.danebottom form').append('<input type="hidden" value="'+ loops.planid + '" name="planid" id="' + loops.planid +  '"/>');
+		var item = jqplan[$(this).attr("id")];
+		
+		if(typeof item !== 'undefined') {
+		// dodanie ukrytych pol do formularza
+		// TODO: usuwanie ukrytych pol przed jq
+		$('div.danebottom form').append('<input type="hidden" value="'+ item.planid + '" name="planid" id="' + item.planid +  '"/>');
 		$('div.danebottom form').append('<input type="hidden" value="2" name="userid" id="aaa" />');
 
-		// var a = new String(); 
-		var a = loops.imie.toString();
-		
-
-		var x = new Array();
-		x = a.split(",");
-	
+		// przygotowanie do wyswietlenia imion
+		var itemName = new Array();
+		itemName = item.imie.toString().split(",");
 		$('.danemiddle').html("<br /><span></span>");
 
-		if(x !== null) {
-			for(var i in x) {
-				$('.danemiddle').append("<br /><span>" + x[i] + "</span>");
+
+		var formstart = <?php echo json_encode($_smarty_tpl->tpl_vars['conf']->value->action_root);?>
+;
+		// alert(formstart);
+		// wyswietlenie imion w obszarze danemiddle
+		if(itemName !== 'undefined') {
+			for(var i in itemName) {
+				$('.danemiddle').append("<br /><span>" + itemName[i] + "</span>");
 			}
+
+			if(".danemiddle:contains('aaa')"){
+				$('.danebottom button').html("Ususn sie");
+				$('.danebottom form').attr('action', formstart+ 'del');
+			} 
+		} 
+
+		} else {
+			// alert(item);
+			$('.danemiddle').html("<span></span>");
+			$('.danebottom button').html("<div>Dodaj sie</di>");
 		}
+
+
+		// $('.danemiddle').change();
 	}
-	
-    );
+    ),
+    $('.danemiddle').change(
+    	function() {
+		// alert('hej');
+		// $( ".danemiddle:contains('aaa')" ).css( "text-decoration", "underline" );
+			// if($(".danemiddle").contains("aaa")){
+			if(".danemiddle:contains('aaa')"){
+				$('.danebottom').html("<div>ususn sie</di>");
+			} else {
+				$('.danebottom').append("<div>bee !!!</di>");
+			}   		
+		}
+	);
 });
 </script><?php }} ?>
