@@ -27,11 +27,11 @@
 				{foreach item=value from=$item}
 					{assign var="day" value="-"|explode:$value}
 					{if $getTime == $value}
-					<td id="{$counter++}" align="center" style="background-color: silver">
+					<td id="{$counter++}" align="center" style="background-color: silver; width: 10%" data-toggle="popover" data-html="true" title="popver header" data-content="test">
 					{$day[2]}
 					</td>
 					{else}
-					<td id="{$counter++}" align="center">
+					<td id="{$counter++}" align="center" style="width: 10%" data-toggle="popover" data-html="true" title="popver header" data-content="aaaa">
 					{$day[2]}
 					</td>
 					{/if}
@@ -46,7 +46,7 @@
 		<a href="?date={$getYear},{$getMonth},{$getDay}&nextm">NEXT</a>
 	</div>
 	<div class="json" style="clear:both" ></div>
-
+<div data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</div>
 </div> {* final content page *}
 
 
@@ -59,11 +59,14 @@ $(document).ready( function() {
     	function() {
 		var tmp1 = test[$(this).attr("id")];
 		// alert(tmp1);
-		$(this).html("<span>" + test[$(this).attr("id")] + "</span><br />");
-
+		// $(this).html("<span>" + test[$(this).attr("id")] + "</span><br />");
+		var result = "";
 		for(var i in test[tmp1]) {
-			$(this).append("<span>" + test[tmp1][i].nazwa + " : " + test[tmp1][i].count + "</span><br />");
+			// $(this).append("<span>" + test[tmp1][i].nazwa + " : " + test[tmp1][i].count + "</span><br />");
+			result += test[tmp1][i].nazwa + "<br />" ;
 		}
+		$(this).attr("data-content", result);
+		// $('[data-toggle="popover"]').popover();
     	},
     	function() {
 		// rozbicie tablicy w celu wyswietlenia tylko wartosci dnia
@@ -71,6 +74,8 @@ $(document).ready( function() {
 		
 		$(this).html($("<span>" + day[2] + "</span>"));
 	}
+	// ,$('[data-toggle="popover"]').popover();
     );
+	$('[data-toggle="popover"]').popover();
 });
 </script>

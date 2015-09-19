@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-19 17:47:43
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-19 23:31:55
          compiled from "/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:77361369155f9ee240637b9-05956814%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fc908c214432c4be3979b08b77444ed076812876' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl',
-      1 => 1442677659,
+      1 => 1442677719,
       2 => 'file',
     ),
   ),
@@ -151,7 +151,6 @@ add" method="post">
 		</div>
 	</div>
 <div class="clear" ></div>
-<?php echo var_dump($_smarty_tpl->tpl_vars['plan']->value[$_smarty_tpl->tpl_vars['day']->value]);?>
 
 <script>
 // dane z tablicy plan
