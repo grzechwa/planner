@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-19 00:42:26
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-21 00:27:58
          compiled from "/home/greg/www_pv/plannersmarty/app/welcome/Welcome.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:113461336855f70d8fbb2527-73490271%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3f1f57f8290205f3e224c1bcde4ef2b219935efe' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/welcome/Welcome.tpl',
-      1 => 1442588999,
+      1 => 1442748567,
       2 => 'file',
     ),
     'b8f53d7dd0dd9cb25cf4d2b53469db3cab0bbd71' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/templates/main.tpl',
-      1 => 1441832621,
+      1 => 1442748110,
       2 => 'file',
     ),
   ),
@@ -39,18 +39,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </title>
 	<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
 /res/css/my.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 	<script src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
 /res/js/calendar.js"></script>
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
-	<div id="wrapper">
+	<div class="container">
 		<div class="navheader">
 			
+	<div class="row">
 	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['conf']->value->root_path).("/app/snip/welcomeheader.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+	</div>
 
 
 		</div>

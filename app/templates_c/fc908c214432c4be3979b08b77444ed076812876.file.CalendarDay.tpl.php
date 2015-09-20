@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-19 17:48:43
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-21 00:32:51
          compiled from "/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:113204345255f70d8fc21df9-57397266%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fc908c214432c4be3979b08b77444ed076812876' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl',
-      1 => 1442677719,
+      1 => 1442788367,
       2 => 'file',
     ),
   ),
@@ -36,8 +36,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_55f70d8fcc3685_47428157')) {function content_55f70d8fcc3685_47428157($_smarty_tpl) {?><div class="calendarday _fL" >
-	<div id="navday">
-		<div id="prevd"> 
+
+	<div id="navday" class="container">
+		<div id="prevd" class="col-md-2"> 
 			<a href="?date=<?php echo $_smarty_tpl->tpl_vars['getYear']->value;?>
 ,<?php echo $_smarty_tpl->tpl_vars['getMonth']->value;?>
 ,<?php echo $_smarty_tpl->tpl_vars['getDay']->value;?>
@@ -47,7 +48,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ,<?php echo $_smarty_tpl->tpl_vars['getDay']->value;?>
 &prevd">PREVDAY</a>  <br />
 		</div>
-		<div id="nextd"> 
+		<div id="nextd" class="col-md-3"> 
 			<a href="?date=<?php echo $_smarty_tpl->tpl_vars['getYear']->value;?>
 ,<?php echo $_smarty_tpl->tpl_vars['getMonth']->value;?>
 ,<?php echo $_smarty_tpl->tpl_vars['getDay']->value;?>
@@ -57,13 +58,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ,<?php echo $_smarty_tpl->tpl_vars['getDay']->value;?>
 &nextd">NEXTDAY</a> <br >
 		</div>
+		<div class="col-md-7"></div>
 	</div>
 	<div class="clear"></div>
 	
+	<div class="container">
 	
-	<table width="30%" class="_fL" border="0" cellspacing="0" cellpadding="0">
-		<thead class="header">
-			<th>
+	<table width="30%" class="_fL col-md-2" border="0" cellspacing="0" cellpadding="0">
+		<thead class="header ">
+			<th class="text-center">
 			&nbsp;
 			<br />
 			Godz
@@ -84,9 +87,9 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 
 	
 	<?php $_smarty_tpl->tpl_vars['var'] = new Smarty_variable(array(), null, 0);?>
-	<table width="40 %" class="table _fL" border="0" cellspacing="0" cellpadding="0">
-		<thead class="header">
-			<th>
+	<table width="40 %" class=" _fL col-md-3" border="0" cellspacing="0" cellpadding="0">
+		<thead class="header ">
+			<th class="text-center">
 			<?php echo $_smarty_tpl->tpl_vars['nameDay']->value;?>
 
 			<br />
@@ -132,24 +135,27 @@ $_smarty_tpl->tpl_vars['y']->first = $_smarty_tpl->tpl_vars['y']->iteration == 1
 		<?php }} ?>
 	</table>
 
-	</div>
 	
-	<div class="dane _fR" >
-		<div class="danetop" >
-			DANE:
+	<div class="dane _fR col-md-offset-2 col-md-5" >
+		<div class="danetop row" >
+			<h3 class="">Lista zapisanych</h3>
 		</div>
-		<div class="danemiddle" >
+		<div class="danemiddle row" >
 	     	</div>
 
-		<div class="danebottom" >
-			Zapis na zajecia
+		<div class="danebottom row" >
+
 			<form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 add" method="post">
 			    
-			    <button type="submit"> Dodaj sie </button>
+			    <button type="submit"> Dopisz sie </button>
 			</form>
 		</div>
 	</div>
+	</div>
+
+	</div>
+
 <div class="clear" ></div>
 
 <script>
@@ -161,7 +167,7 @@ $(document).ready( function() {
     $('.table td').click( 
 	function() {
 		var item = jqplan[$(this).attr("id")];
-		
+		alert('hej');
 		if(typeof item !== 'undefined') {
 		// dodanie ukrytych pol do formularza
 		// TODO: usuwanie ukrytych pol przed jq

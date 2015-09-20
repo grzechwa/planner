@@ -16,7 +16,7 @@
 </head>
 
 <body>
-	<div id="wrapper">
+	<div class="container">
 		<div class="navheader">
 			{block name=header} Domyślna treść nagłówka .... {/block}
 		</div>

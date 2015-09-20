@@ -1,20 +1,23 @@
 <div class="calendarday _fL" >
-	<div id="navday">
-		<div id="prevd"> 
+
+	<div id="navday" class="container">
+		<div id="prevd" class="col-md-2"> 
 			<a href="?date={$getYear},{$getMonth},{$getDay}&prevm">PREVMONTH</a>  <br />
 			<a href="?date={$getYear},{$getMonth},{$getDay}&prevd">PREVDAY</a>  <br />
 		</div>
-		<div id="nextd"> 
+		<div id="nextd" class="col-md-3"> 
 			<a href="?date={$getYear},{$getMonth},{$getDay}&nextm">NEXTMONTH</a> <br >
 			<a href="?date={$getYear},{$getMonth},{$getDay}&nextd">NEXTDAY</a> <br >
 		</div>
+		<div class="col-md-7"></div>
 	</div>
 	<div class="clear"></div>
 	
+	<div class="container">
 	{* godziny *}
-	<table width="30%" class="_fL" border="0" cellspacing="0" cellpadding="0">
-		<thead class="header">
-			<th>
+	<table width="30%" class="_fL col-md-2" border="0" cellspacing="0" cellpadding="0">
+		<thead class="header ">
+			<th class="text-center">
 			&nbsp;
 			<br />
 			Godz
@@ -30,9 +33,9 @@
 
 	{* zajecia *}
 	{$var = array() }
-	<table width="40 %" class="table _fL" border="0" cellspacing="0" cellpadding="0">
-		<thead class="header">
-			<th>
+	<table width="40 %" class=" _fL col-md-3" border="0" cellspacing="0" cellpadding="0">
+		<thead class="header ">
+			<th class="text-center">
 			{$nameDay}
 			<br />
 			{$day = $getDate}
@@ -63,23 +66,26 @@
 		{/for}
 	</table>
 
-	</div>
 	{* dane *}
-	<div class="dane _fR" >
-		<div class="danetop" >
-			DANE:
+	<div class="dane _fR col-md-offset-2 col-md-5" >
+		<div class="danetop row" >
+			<h3 class="">Lista zapisanych</h3>
 		</div>
-		<div class="danemiddle" >
+		<div class="danemiddle row" >
 	     	</div>
 
-		<div class="danebottom" >
-			Zapis na zajecia
+		<div class="danebottom row" >
+
 			<form action="{$conf->action_root}add" method="post">
 			    {*TODO validacja danych *}
-			    <button type="submit"> Dodaj sie </button>
+			    <button type="submit"> Dopisz sie </button>
 			</form>
 		</div>
 	</div>
+	</div>
+
+	</div>
+
 <div class="clear" ></div>
 
 <script>
@@ -90,7 +96,7 @@ $(document).ready( function() {
     $('.table td').click( 
 	function() {
 		var item = jqplan[$(this).attr("id")];
-		
+		alert('hej');
 		if(typeof item !== 'undefined') {
 		// dodanie ukrytych pol do formularza
 		// TODO: usuwanie ukrytych pol przed jq

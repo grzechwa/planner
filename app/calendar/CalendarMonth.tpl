@@ -1,20 +1,20 @@
 
 <div class="calendarMonth" >  {* contentt strony *}
 
-<div id="prevm"> 
+<div id="prevm" class="col-md-4 text-righ"> 
 	<a href="?date={$getYear},{$getMonth},{$getDay}&prevm">PREV</a> 
 </div>
 
-<div id="centerm">
-	<table class="table" width="100%"  border="0" cellspacing="0" cellpadding="0">
+<div id="centerm" class="col-md-4">
+	<table class="table table-bordered table-hover" width="100%"  border="0" cellspacing="0" cellpadding="0">
 	<caption>
 		</caption>
 		<thead class="header">
 			{foreach item=name from=$nameDayPl}
-			<th>
-				<br />
+			<th class="text-center" >
+
 				{$name}
-				<br />
+
 			</th>
 			{/foreach}
 		</thead>
@@ -27,8 +27,8 @@
 				{foreach item=value from=$item}
 					{assign var="day" value="-"|explode:$value}
 					{if $getTime == $value}
-						<td align="center" style="background-color: silver; width: 10%" >
-							<div id={$counter++} class="inner" style="height: 100%"
+						<td align="center" valign="middle" style="background-color: silver; width: 10%" >
+							<div id={$counter++} class="inner vcenter" style="height: 100%"
 								 data-toggle="popover" data-html="true" title="popver header" data-content="brak zajec">
 								<span>{$day[2]}</span>
 							
@@ -36,7 +36,7 @@
 						</td>
 					{else}
 						<td  align="center" style="width: 10%">
-							<div id={$counter++} class="inner" style="height: 100%"
+							<div id={$counter++} class="inner vcenter" style="height: 100%"
 								 data-toggle="popover" data-html="true" title="popver header" data-content="brak zajec">
 								<span>{$day[2]}</span>
 							</div>
@@ -49,11 +49,11 @@
 	</table>
 </div>
 
-	<div id="nextm"> 
+	<div id="nextm" class="col-md-4 text-left">  
 		<a href="?date={$getYear},{$getMonth},{$getDay}&nextm">NEXT</a>
 	</div>
 	<div class="json" style="clear:both" ></div>
-<div data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</div>
+
 </div> {* final content page *}
 
 

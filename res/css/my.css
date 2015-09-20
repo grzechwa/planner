@@ -140,3 +140,12 @@ td {
 
 }
 
+
+/* -- other -- */
+.vcenter span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.4em;
+    line-height: 2em;
+    float: none;
+}
