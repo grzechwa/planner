@@ -27,13 +27,20 @@
 				{foreach item=value from=$item}
 					{assign var="day" value="-"|explode:$value}
 					{if $getTime == $value}
-					<td id="{$counter++}" align="center" style="background-color: silver; width: 10%" data-toggle="popover" data-html="true" title="popver header" data-content="test">
-					{$day[2]}
-					</td>
+						<td align="center" style="background-color: silver; width: 10%" >
+							<div id={$counter++} class="inner" style="height: 100%"
+								 data-toggle="popover" data-html="true" title="popver header" data-content="brak zajec">
+								<span>{$day[2]}</span>
+							
+							</div>
+						</td>
 					{else}
-					<td id="{$counter++}" align="center" style="width: 10%" data-toggle="popover" data-html="true" title="popver header" data-content="aaaa">
-					{$day[2]}
-					</td>
+						<td  align="center" style="width: 10%">
+							<div id={$counter++} class="inner" style="height: 100%"
+								 data-toggle="popover" data-html="true" title="popver header" data-content="brak zajec">
+								<span>{$day[2]}</span>
+							</div>
+						</td>
 					{/if}
 				{/foreach}
 			</tr>
@@ -55,27 +62,18 @@
 var test = {json_encode($plan)};
 
 $(document).ready( function() {
-    $('.table td').hover( 
+    $('.inner').hover( 
     	function() {
 		var tmp1 = test[$(this).attr("id")];
 		// alert(tmp1);
-		// $(this).html("<span>" + test[$(this).attr("id")] + "</span><br />");
+
 		var result = "";
 		for(var i in test[tmp1]) {
-			// $(this).append("<span>" + test[tmp1][i].nazwa + " : " + test[tmp1][i].count + "</span><br />");
 			result += test[tmp1][i].nazwa + "<br />" ;
 		}
 		$(this).attr("data-content", result);
-		// $('[data-toggle="popover"]').popover();
-    	},
-    	function() {
-		// rozbicie tablicy w celu wyswietlenia tylko wartosci dnia
-		var day = test[$(this).attr("id")].split('-');
-		
-		$(this).html($("<span>" + day[2] + "</span>"));
-	}
-	// ,$('[data-toggle="popover"]').popover();
-    );
+		$(this).attr("data-original-title", tmp1 );
+    	}    );
 	$('[data-toggle="popover"]').popover();
 });
 </script>
