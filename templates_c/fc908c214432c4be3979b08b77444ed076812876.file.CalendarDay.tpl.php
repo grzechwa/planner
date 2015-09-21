@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-21 00:27:32
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-21 00:49:13
          compiled from "/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:77361369155f9ee240637b9-05956814%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fc908c214432c4be3979b08b77444ed076812876' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl',
-      1 => 1442788046,
+      1 => 1442788848,
       2 => 'file',
     ),
   ),
@@ -64,7 +64,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	
 	<div class="container">
 	
-	<table width="30%" class="_fL col-md-2" border="0" cellspacing="0" cellpadding="0">
+	<table width="30%" class=" _fL col-md-2" border="0" cellspacing="0" cellpadding="0">
 		<thead class="header ">
 			<th class="text-center">
 			&nbsp;
@@ -87,7 +87,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 
 	
 	<?php $_smarty_tpl->tpl_vars['var'] = new Smarty_variable(array(), null, 0);?>
-	<table width="40 %" class=" _fL col-md-3" border="0" cellspacing="0" cellpadding="0">
+	<table width="40 %" class="tab _fL col-md-3" border="0" cellspacing="0" cellpadding="0">
 		<thead class="header ">
 			<th class="text-center">
 			<?php echo $_smarty_tpl->tpl_vars['nameDay']->value;?>
@@ -164,10 +164,10 @@ var jqplan = <?php echo json_encode($_smarty_tpl->tpl_vars['plan']->value[$_smar
 ;
 
 $(document).ready( function() {
-    $('.table td').click( 
+    $('.tab td').click( 
 	function() {
 		var item = jqplan[$(this).attr("id")];
-		
+		// alert('hej');
 		if(typeof item !== 'undefined') {
 		// dodanie ukrytych pol do formularza
 		// TODO: usuwanie ukrytych pol przed jq
@@ -211,7 +211,7 @@ $(document).ready( function() {
 		// $( ".danemiddle:contains('aaa')" ).css( "text-decoration", "underline" );
 			// if($(".danemiddle").contains("aaa")){
 			if(".danemiddle:contains('aaa')"){
-				$('.danebottom').html("<div>ususn sie</di>");
+				$('.danebottom').html("<div>Wypisz sie</di>");
 			} else {
 				$('.danebottom').append("<div>bee !!!</di>");
 			}   		

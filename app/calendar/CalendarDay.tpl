@@ -15,7 +15,7 @@
 	
 	<div class="container">
 	{* godziny *}
-	<table width="30%" class="_fL col-md-2" border="0" cellspacing="0" cellpadding="0">
+	<table width="30%" class=" _fL col-md-2" border="0" cellspacing="0" cellpadding="0">
 		<thead class="header ">
 			<th class="text-center">
 			&nbsp;
@@ -33,7 +33,7 @@
 
 	{* zajecia *}
 	{$var = array() }
-	<table width="40 %" class=" _fL col-md-3" border="0" cellspacing="0" cellpadding="0">
+	<table width="40 %" class="tab _fL col-md-3" border="0" cellspacing="0" cellpadding="0">
 		<thead class="header ">
 			<th class="text-center">
 			{$nameDay}
@@ -93,10 +93,10 @@
 var jqplan = {json_encode($plan.$day)};
 
 $(document).ready( function() {
-    $('.table td').click( 
+    $('.tab td').click( 
 	function() {
 		var item = jqplan[$(this).attr("id")];
-		alert('hej');
+		// alert('hej');
 		if(typeof item !== 'undefined') {
 		// dodanie ukrytych pol do formularza
 		// TODO: usuwanie ukrytych pol przed jq
@@ -139,7 +139,7 @@ $(document).ready( function() {
 		// $( ".danemiddle:contains('aaa')" ).css( "text-decoration", "underline" );
 			// if($(".danemiddle").contains("aaa")){
 			if(".danemiddle:contains('aaa')"){
-				$('.danebottom').html("<div>ususn sie</di>");
+				$('.danebottom').html("<div>Wypisz sie</di>");
 			} else {
 				$('.danebottom').append("<div>bee !!!</di>");
 			}   		
