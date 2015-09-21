@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-21 00:49:13
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-21 20:28:11
          compiled from "/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:77361369155f9ee240637b9-05956814%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:449317915600277070de39-67285729%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'fc908c214432c4be3979b08b77444ed076812876' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl',
-      1 => 1442788848,
+      1 => 1442860087,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '77361369155f9ee240637b9-05956814',
+  'nocache_hash' => '449317915600277070de39-67285729',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_55f9ee2420c1d6_32042888',
+  'unifunc' => 'content_5600277081e2b3_61452242',
   'variables' => 
   array (
     'getYear' => 0,
@@ -35,27 +35,27 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55f9ee2420c1d6_32042888')) {function content_55f9ee2420c1d6_32042888($_smarty_tpl) {?><div class="calendarday _fL" >
+<?php if ($_valid && !is_callable('content_5600277081e2b3_61452242')) {function content_5600277081e2b3_61452242($_smarty_tpl) {?><div class="calendarday _fL" >
 
 	<div id="navday" class="container">
 		<div id="prevd" class="col-md-2"> 
 			<a href="?date=<?php echo $_smarty_tpl->tpl_vars['getYear']->value;?>
-,<?php echo $_smarty_tpl->tpl_vars['getMonth']->value;?>
+,<?php echo $_smarty_tpl->tpl_vars['getMonth']->value-1;?>
 ,<?php echo $_smarty_tpl->tpl_vars['getDay']->value;?>
 &prevm">PREVMONTH</a>  <br />
 			<a href="?date=<?php echo $_smarty_tpl->tpl_vars['getYear']->value;?>
 ,<?php echo $_smarty_tpl->tpl_vars['getMonth']->value;?>
-,<?php echo $_smarty_tpl->tpl_vars['getDay']->value;?>
+,<?php echo $_smarty_tpl->tpl_vars['getDay']->value-1;?>
 &prevd">PREVDAY</a>  <br />
 		</div>
 		<div id="nextd" class="col-md-3"> 
 			<a href="?date=<?php echo $_smarty_tpl->tpl_vars['getYear']->value;?>
-,<?php echo $_smarty_tpl->tpl_vars['getMonth']->value;?>
+,<?php echo $_smarty_tpl->tpl_vars['getMonth']->value+1;?>
 ,<?php echo $_smarty_tpl->tpl_vars['getDay']->value;?>
 &nextm">NEXTMONTH</a> <br >
 			<a href="?date=<?php echo $_smarty_tpl->tpl_vars['getYear']->value;?>
 ,<?php echo $_smarty_tpl->tpl_vars['getMonth']->value;?>
-,<?php echo $_smarty_tpl->tpl_vars['getDay']->value;?>
+,<?php echo $_smarty_tpl->tpl_vars['getDay']->value+1;?>
 &nextd">NEXTDAY</a> <br >
 		</div>
 		<div class="col-md-7"></div>
@@ -136,9 +136,17 @@ $_smarty_tpl->tpl_vars['y']->first = $_smarty_tpl->tpl_vars['y']->iteration == 1
 	</table>
 
 	
-	<div class="dane _fR col-md-offset-2 col-md-5" >
-		<div class="danetop row" >
-			<h3 class="">Lista zapisanych</h3>
+	<div class="dane _fR col-md-offset-2 col-md-3" >
+		<div class="danetop " >
+			<table width="100%">
+			<thead class="header ">
+			<th class="text-center">
+			&nbsp;
+			<br />
+			Lista zapisanych
+			</th>
+			</thead>
+			</table>
 		</div>
 		<div class="danemiddle row" >
 	     	</div>
@@ -162,6 +170,8 @@ add" method="post">
 // dane z tablicy plan
 var jqplan = <?php echo json_encode($_smarty_tpl->tpl_vars['plan']->value[$_smarty_tpl->tpl_vars['day']->value]);?>
 ;
+var reqdate = <?php echo json_encode($_REQUEST['date']);?>
+;
 
 $(document).ready( function() {
     $('.tab td').click( 
@@ -171,8 +181,9 @@ $(document).ready( function() {
 		if(typeof item !== 'undefined') {
 		// dodanie ukrytych pol do formularza
 		// TODO: usuwanie ukrytych pol przed jq
-		$('div.danebottom form').append('<input type="hidden" value="'+ item.planid + '" name="planid" id="' + item.planid +  '"/>');
-		$('div.danebottom form').append('<input type="hidden" value="2" name="userid" id="aaa" />');
+		$('div.danebottom form').html('<input type="hidden" value="' + reqdate +'" name="date" id="date" />');
+		$('div.danebottom form').append('<input type="hidden" value="'+ item.planid + '" name="planid" id="plan_' + item.planid +  '"/>');
+		$('div.danebottom form').append('<input type="hidden" value="1" name="userid" id="user_1" /><br /><button type="submit">Dopisz sie</button>');
 
 		// przygotowanie do wyswietlenia imion
 		var itemName = new Array();
@@ -189,16 +200,16 @@ $(document).ready( function() {
 				$('.danemiddle').append("<br /><span>" + itemName[i] + "</span>");
 			}
 
-			if(".danemiddle:contains('aaa')"){
-				$('.danebottom button').html("Ususn sie");
-				$('.danebottom form').attr('action', formstart+ 'del');
+			if($(".danemiddle:contains('Kalka')").length){
+				$('.danebottom button').html("Wypisz sie");
+				$('.danebottom form').attr('action', formstart + 'del');
 			} 
 		} 
 
 		} else {
 			// alert(item);
 			$('.danemiddle').html("<span></span>");
-			$('.danebottom button').html("<div>Dodaj sie</di>");
+			$('.danebottom button').html("<div>Dopisz się</di>");
 		}
 
 

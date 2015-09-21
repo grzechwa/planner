@@ -11,28 +11,30 @@ session_start();
 $_SESSION['usertest'] = 'Test';
 
 	include_once $conf->root_path . '/app/welcome/WelcomeCtrl.class.php';
-	if (isset($_GET['date']) && !empty($_GET['date'])) {
-		$date_parts = explode(",", $_GET['date']);
+	if (isset($_REQUEST['date']) && !empty($_REQUEST['date'])) {
+		$date_parts = explode(",", $_REQUEST['date']);
 		// valid nextprev
 		// miech do przodu
 		if(isset($_REQUEST['nextm'])){
-			$date_parts[1]++;
+			$date_parts[1];
 			unset($_REQUEST['nextm']);
 		}
 		
 		if(isset($_REQUEST['prevm'])){
-			$date_parts[1]--;
+			$date_parts[1];
 			unset($_REQUEST['prevm']);
 		}
 
 
 		if(isset($_REQUEST['nextd'])){
-			$date_parts[2]++;
+			// var_dump($date_parts[2]);
+			$date_parts[2];
+			// var_dump($date_parts[2]);
 			unset($_REQUEST['nextd']);
 		}
 		
 		if(isset($_REQUEST['prevd'])){
-			$date_parts[2]--;
+			$date_parts[2];
 			unset($_REQUEST['prevd']);
 		}
 
@@ -77,36 +79,25 @@ switch ($action) {
 		$adm = new Admin();
 		$adm->addActiv($_REQUEST['nazwa']);
 		$adm->generateView();
-
 		break;
 	case 'delUser' :
 		include_once $conf->root_path . '/app/admin/Admin.class.php';
 		$adm = new Admin();
 		$adm->delUser($_REQUEST['idel']);
 		$adm->generateView();
-		
 		break;
 	case 'delActiv' :
 		include_once $conf->root_path . '/app/admin/Admin.class.php';
 		$adm = new Admin();
 		$adm->delActiv($_REQUEST['idelact']);
 		$adm->generateView();
-	
 		break;
-
 	case 'add' :
-		/*
-		include_once $conf->root_path . '/app/calendar/CalendarDayCtrl.class.php';
-		if (isset($_GET['date']) && !empty($_GET['date'])) {
-			$date_parts = explode(",", $_GET['date']);
-			$ctrl = new CalendarDayCtrl($date_parts[0], $date_parts[1], $date_parts[2]);
-		} else {
-			$ctrl = new CalendarDayCtrl(2015, 9, 1);
-		}
-		 * 
-		 */
 		$ctrl->addUserToPlanner($_REQUEST['planid'], $_REQUEST['userid']);
 		$ctrl->generateView();
-
+		break;
+	case 'del' :
+		$ctrl->dellUserFromPlanner($_REQUEST['planid'], $_REQUEST['userid']);
+		$ctrl->generateView();
 		break;
 }

@@ -176,10 +176,24 @@ class QueryDB {
 		$values = " VALUES($userid, $planid)";
 
 		$sql = $insert . $values;
-		var_dump($sql);
+
 		$conn = $this->db->getConn();
 		$result = mysqli_query($conn, $sql);
 		$this->db->disconnect();
 		return $result;
 	}
+
+	public function delFromZajecia($planid, $userid) {
+		$this->db->connect();
+		$delete = "DELETE FROM plan_user";
+		$where = " WHERE id_plan = $planid AND id_user = $userid";
+
+		$sql = $delete . $where;
+
+		$conn = $this->db->getConn();
+		$result = mysqli_query($conn, $sql);
+		$this->db->disconnect();
+		return $result;
+	}
+
 }

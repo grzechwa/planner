@@ -3,9 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/home/greg/www_pv/plannersmarty/app/welcome/Welcome.tpl</file>
             <file>file:/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl</file>
             <file>file:/home/greg/www_pv/plannersmarty/app/welcome/WelcomeCtrl.class.php</file>
+=======
+            <file>file:/D:/_programs/xampp/htdocs/plannersmarty/app/calendar/CalendarDay.tpl</file>
+            <file>file:/D:/_programs/xampp/htdocs/plannersmarty/app/ctrl.php</file>
+            <file>file:/D:/_programs/xampp/htdocs/plannersmarty/app/welcome/WelcomeCtrl.class.php</file>
+            <file>file:/D:/_programs/xampp/htdocs/plannersmarty/app/db/QueryDB.php</file>
+>>>>>>> 07ba836233289b94af8156853cf8a372cf10d9db
         </group>
     </open-files>
 </project-private>

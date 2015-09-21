@@ -2,12 +2,12 @@
 
 	<div id="navday" class="container">
 		<div id="prevd" class="col-md-2"> 
-			<a href="?date={$getYear},{$getMonth},{$getDay}&prevm">PREVMONTH</a>  <br />
-			<a href="?date={$getYear},{$getMonth},{$getDay}&prevd">PREVDAY</a>  <br />
+			<a href="?date={$getYear},{$getMonth-1},{$getDay}&prevm">PREVMONTH</a>  <br />
+			<a href="?date={$getYear},{$getMonth},{$getDay-1}&prevd">PREVDAY</a>  <br />
 		</div>
 		<div id="nextd" class="col-md-3"> 
-			<a href="?date={$getYear},{$getMonth},{$getDay}&nextm">NEXTMONTH</a> <br >
-			<a href="?date={$getYear},{$getMonth},{$getDay}&nextd">NEXTDAY</a> <br >
+			<a href="?date={$getYear},{$getMonth+1},{$getDay}&nextm">NEXTMONTH</a> <br >
+			<a href="?date={$getYear},{$getMonth},{$getDay+1}&nextd">NEXTDAY</a> <br >
 		</div>
 		<div class="col-md-7"></div>
 	</div>
@@ -67,9 +67,17 @@
 	</table>
 
 	{* dane *}
-	<div class="dane _fR col-md-offset-2 col-md-5" >
-		<div class="danetop row" >
-			<h3 class="">Lista zapisanych</h3>
+	<div class="dane _fR col-md-offset-2 col-md-3" >
+		<div class="danetop " >
+			<table width="100%">
+			<thead class="header ">
+			<th class="text-center">
+			&nbsp;
+			<br />
+			Lista zapisanych
+			</th>
+			</thead>
+			</table>
 		</div>
 		<div class="danemiddle row" >
 	     	</div>
@@ -78,7 +86,7 @@
 
 			<form action="{$conf->action_root}add" method="post">
 			    {*TODO validacja danych *}
-			    <button type="submit"> Dopisz sie </button>
+			    {*<button type="submit"> Dopisz sie </button>*}
 			</form>
 		</div>
 	</div>
@@ -91,6 +99,7 @@
 <script>
 // dane z tablicy plan
 var jqplan = {json_encode($plan.$day)};
+var reqdate = {json_encode($smarty.request.date)};
 
 $(document).ready( function() {
     $('.tab td').click( 
@@ -100,8 +109,9 @@ $(document).ready( function() {
 		if(typeof item !== 'undefined') {
 		// dodanie ukrytych pol do formularza
 		// TODO: usuwanie ukrytych pol przed jq
-		$('div.danebottom form').append('<input type="hidden" value="'+ item.planid + '" name="planid" id="' + item.planid +  '"/>');
-		$('div.danebottom form').append('<input type="hidden" value="2" name="userid" id="aaa" />');
+		$('div.danebottom form').html('<input type="hidden" value="' + reqdate +'" name="date" id="date" />');
+		$('div.danebottom form').append('<input type="hidden" value="'+ item.planid + '" name="planid" id="plan_' + item.planid +  '"/>');
+		$('div.danebottom form').append('<input type="hidden" value="1" name="userid" id="user_1" /><br /><button type="submit">Dopisz sie</button>');
 
 		// przygotowanie do wyswietlenia imion
 		var itemName = new Array();
@@ -117,16 +127,20 @@ $(document).ready( function() {
 				$('.danemiddle').append("<br /><span>" + itemName[i] + "</span>");
 			}
 
-			if(".danemiddle:contains('aaa')"){
-				$('.danebottom button').html("Ususn sie");
-				$('.danebottom form').attr('action', formstart+ 'del');
+			if($(".danemiddle:contains('Kalka')").length){
+				$('.danebottom button').html("Wypisz sie");
+				$('.danebottom form').attr('action', formstart + 'del');
 			} 
 		} 
 
 		} else {
 			// alert(item);
 			$('.danemiddle').html("<span></span>");
-			$('.danebottom button').html("<div>Dodaj sie</di>");
+			$('.danebottom form').empty();
+
+
+
+			// $('.danebottom button').html("<div>Dopisz się</di>");
 		}
 
 

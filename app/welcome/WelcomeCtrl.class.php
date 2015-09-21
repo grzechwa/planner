@@ -36,6 +36,11 @@ class WelcomeCtrl {
 		return $this->q->addOnZajecia($planid, $userid);
 	}
 
+	public function dellUserFromPlanner($planid, $userid) {
+		$this->q = new QueryDB();
+		$this->q->delFromZajecia($planid, $userid);
+	}
+
 	public function generateView() {
 		global $conf, $user;
 

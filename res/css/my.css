@@ -49,7 +49,11 @@ and open the template in the editor.
 	height: 50px;
 }
 .danemiddle {
-	height: 320px;
+	height: 380px;
+}
+
+.danebottom button{
+	width: 100%;
 }
 .danebottom {
 	height: 50px
