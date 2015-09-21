@@ -1,5 +1,5 @@
 <div class="calendarday _fL" >
-
+{$_REQUEST|@var_dump}
 	<div id="navday" class="container">
 		<div id="prevd" class="col-md-2"> 
 			<a href="?date={$getYear},{$getMonth},{$getDay}&prevm">PREVMONTH</a>  <br />
@@ -33,7 +33,7 @@
 
 	{* zajecia *}
 	{$var = array() }
-	<table width="40 %" class=" _fL col-md-3" border="0" cellspacing="0" cellpadding="0">
+	<table width="40 %" class="tab _fL col-md-3" border="0" cellspacing="0" cellpadding="0">
 		<thead class="header ">
 			<th class="text-center">
 			{$nameDay}
@@ -87,21 +87,23 @@
 	</div>
 
 <div class="clear" ></div>
-
+<pre>
+{$plan.$day|@print_r}
+</pre>
 <script>
 // dane z tablicy plan
 var jqplan = {json_encode($plan.$day)};
 
 $(document).ready( function() {
-    $('.table td').click( 
+    $('.tab td').click( 
 	function() {
 		var item = jqplan[$(this).attr("id")];
-		alert('hej');
+		// alert('hej');
 		if(typeof item !== 'undefined') {
 		// dodanie ukrytych pol do formularza
 		// TODO: usuwanie ukrytych pol przed jq
-		$('div.danebottom form').append('<input type="hidden" value="'+ item.planid + '" name="planid" id="' + item.planid +  '"/>');
-		$('div.danebottom form').append('<input type="hidden" value="2" name="userid" id="aaa" />');
+		$('div.danebottom form').append('<input type="hidden" value="'+ item.planid + '" name="planid" id="plan_' + item.planid +  '"/>');
+		$('div.danebottom form').append('<input type="hidden" value="1" name="userid" id="user_1" />');
 
 		// przygotowanie do wyswietlenia imion
 		var itemName = new Array();
@@ -117,16 +119,16 @@ $(document).ready( function() {
 				$('.danemiddle').append("<br /><span>" + itemName[i] + "</span>");
 			}
 
-			if(".danemiddle:contains('aaa')"){
-				$('.danebottom button').html("Ususn sie");
-				$('.danebottom form').attr('action', formstart+ 'del');
+			if($(".danemiddle:contains('Kalka')").length){
+				$('.danebottom button').html("Wypisz sie");
+				$('.danebottom form').attr('action', formstart + 'del');
 			} 
 		} 
 
 		} else {
 			// alert(item);
 			$('.danemiddle').html("<span></span>");
-			$('.danebottom button').html("<div>Dodaj sie</di>");
+			$('.danebottom button').html("<div>Dopisz się</di>");
 		}
 
 

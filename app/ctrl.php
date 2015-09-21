@@ -109,4 +109,8 @@ switch ($action) {
 		$ctrl->generateView();
 
 		break;
+	case 'del' :
+		$ctrl->dellUserFromPlanner($_REQUEST['planid'], $_REQUEST['userid']);
+		$ctrl->generateView();
+		break;
 }
