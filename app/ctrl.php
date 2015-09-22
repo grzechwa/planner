@@ -15,16 +15,26 @@ $_SESSION['usertest'] = 'Test';
 		$date_parts = explode(",", $_REQUEST['date']);
 		// valid nextprev
 		// miech do przodu
+
 		if(isset($_REQUEST['nextm'])){
-			$date_parts[1];
+			$date_parts[1]++;
 			unset($_REQUEST['nextm']);
 		}
 		
 		if(isset($_REQUEST['prevm'])){
-			$date_parts[1];
+			$date_parts[1]--;
 			unset($_REQUEST['prevm']);
 		}
 
+		if(isset($_REQUEST['nextmd'])){
+			$date_parts[1];
+			unset($_REQUEST['nextmd']);
+		}
+		
+		if(isset($_REQUEST['prevmd'])){
+			$date_parts[1];
+			unset($_REQUEST['prevmd']);
+		}
 
 		if(isset($_REQUEST['nextd'])){
 			// var_dump($date_parts[2]);

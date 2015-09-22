@@ -1,36 +1,36 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-21 17:51:12
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-22 22:05:54
          compiled from "/home/greg/www_pv/plannersmarty/app/welcome/Welcome.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:114655492256002770632044-01109658%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:9131748025601ac392d2f55-84287607%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '3f1f57f8290205f3e224c1bcde4ef2b219935efe' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/welcome/Welcome.tpl',
-      1 => 1442788643,
+      1 => 1442950666,
       2 => 'file',
     ),
     'b8f53d7dd0dd9cb25cf4d2b53469db3cab0bbd71' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/templates/main.tpl',
-      1 => 1442788643,
+      1 => 1442950078,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '114655492256002770632044-01109658',
+  'nocache_hash' => '9131748025601ac392d2f55-84287607',
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_5601ac3935ff01_69759382',
   'variables' => 
   array (
     'conf' => 0,
     'page_title' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_560027706d1b97_86783169',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_560027706d1b97_86783169')) {function content_560027706d1b97_86783169($_smarty_tpl) {?><!doctype html>
+<?php if ($_valid && !is_callable('content_5601ac3935ff01_69759382')) {function content_5601ac3935ff01_69759382($_smarty_tpl) {?><!doctype html>
 <html lang="pl">
 <head>
     <meta charset="utf-8">
@@ -75,7 +75,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 		</div>
 		<div class="footer">
-			FOOTERLOCAL
+			
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['conf']->value->root_path).("/app/snip/welcomefooter.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+
 		</div>
 	</div>
 </body>

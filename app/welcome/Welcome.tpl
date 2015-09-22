@@ -6,7 +6,9 @@
 	</div>
 
 {/block}
-{block name=footer}FOOTERLOCAL{/block}
+{block name=footer}
+	{include file=$conf->root_path|cat:"/app/snip/welcomefooter.tpl"}
+{/block}
 
 {block name=content}
 	<hr />

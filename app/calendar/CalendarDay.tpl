@@ -2,11 +2,11 @@
 
 	<div id="navday" class="container">
 		<div id="prevd" class="col-md-2"> 
-			<a href="?date={$getYear},{$getMonth-1},{$getDay}&prevm">PREVMONTH</a>  <br />
+			<a href="?date={$getYear},{$getMonth-1},{$getDay}&prevmd">PREVMONTH</a>  <br />
 			<a href="?date={$getYear},{$getMonth},{$getDay-1}&prevd">PREVDAY</a>  <br />
 		</div>
 		<div id="nextd" class="col-md-3"> 
-			<a href="?date={$getYear},{$getMonth+1},{$getDay}&nextm">NEXTMONTH</a> <br >
+			<a href="?date={$getYear},{$getMonth+1},{$getDay}&nextmd">NEXTMONTH</a> <br >
 			<a href="?date={$getYear},{$getMonth},{$getDay+1}&nextd">NEXTDAY</a> <br >
 		</div>
 		<div class="col-md-7"></div>
@@ -15,7 +15,7 @@
 	
 	<div class="container">
 	{* godziny *}
-	<table width="30%" class=" _fL col-md-2" border="0" cellspacing="0" cellpadding="0">
+	<table class="table _fL col-md-2"  style="width:15%"  border="0" cellspacing="0" cellpadding="0">
 		<thead class="header ">
 			<th class="text-center">
 			&nbsp;
@@ -33,7 +33,7 @@
 
 	{* zajecia *}
 	{$var = array() }
-	<table width="40 %" class="tab _fL col-md-3" border="0" cellspacing="0" cellpadding="0">
+	<table  class="table tab _fL col-md-3" style="width: 25%" border="0" cellspacing="0" cellpadding="0">
 		<thead class="header ">
 			<th class="text-center">
 			{$nameDay}
@@ -69,7 +69,7 @@
 	{* dane *}
 	<div class="dane _fR col-md-offset-2 col-md-3" >
 		<div class="danetop " >
-			<table width="100%">
+			<table class="table" width="100%">
 			<thead class="header ">
 			<th class="text-center">
 			&nbsp;
@@ -116,16 +116,24 @@ $(document).ready( function() {
 		// przygotowanie do wyswietlenia imion
 		var itemName = new Array();
 		itemName = item.imie.toString().split(",");
-		$('.danemiddle').html("<br /><span></span>");
+		$('.danemiddle').html("<span></span>");
 
 
 		var formstart = {json_encode($conf->action_root)};
 		// alert(formstart);
 		// wyswietlenie imion w obszarze danemiddle
 		if(itemName !== 'undefined') {
+				// $('.danemiddle').append("<table>");
+				var tabtd = "";
+				var cltab = "table ";
+				var clcen = "text-center";
 			for(var i in itemName) {
-				$('.danemiddle').append("<br /><span>" + itemName[i] + "</span>");
+				// $('.danemiddle').append("<tr><td>" + itemName[i] + "</td></tr>");
+				tabtd += "<tr><td class=" + clcen + ">" + itemName[i] + "</tr></td>";
+
 			}
+				// $('.danemiddle').append("</table>");
+				 $('.danemiddle').append("<table class=" + cltab +">" + tabtd + "</tabtd>");
 
 			if($(".danemiddle:contains('Kalka')").length){
 				$('.danebottom button').html("Wypisz sie");
@@ -135,7 +143,7 @@ $(document).ready( function() {
 
 		} else {
 			// alert(item);
-			$('.danemiddle').html("<span></span>");
+			$('.danemiddle').html("<table></table>");
 			$('.danebottom form').empty();
 
 
@@ -152,10 +160,10 @@ $(document).ready( function() {
 		// alert('hej');
 		// $( ".danemiddle:contains('aaa')" ).css( "text-decoration", "underline" );
 			// if($(".danemiddle").contains("aaa")){
-			if(".danemiddle:contains('aaa')"){
+			if(".danemiddle:contains('Kalka')"){
 				$('.danebottom').html("<div>Wypisz sie</di>");
 			} else {
-				$('.danebottom').append("<div>bee !!!</di>");
+				$('.danebottom').append("<div>bee !!!</div>");
 			}   		
 		}
 	);
