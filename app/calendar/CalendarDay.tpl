@@ -1,4 +1,4 @@
-<div class="calendarday _fL" >
+<div class=" _fL" >
 
 	<div id="navday" class="container">
 		<div id="prevd" class="col-md-2"> 
@@ -13,10 +13,10 @@
 	</div>
 	<div class="clear"></div>
 	
-	<div class="container">
+	<div class="container line">
 	{* godziny *}
 	<table class="table _fL col-md-2"  style="width:15%"  border="0" cellspacing="0" cellpadding="0">
-		<thead class="header ">
+		<thead class="header rowgrey">
 			<th class="text-center">
 			&nbsp;
 			<br />
@@ -34,7 +34,7 @@
 	{* zajecia *}
 	{$var = array() }
 	<table  class="table tab _fL col-md-3" style="width: 25%" border="0" cellspacing="0" cellpadding="0">
-		<thead class="header ">
+		<thead class="header rowgrey">
 			<th class="text-center">
 			{$nameDay}
 			<br />
@@ -70,7 +70,7 @@
 	<div class="dane _fR col-md-offset-2 col-md-3" >
 		<div class="danetop " >
 			<table class="table" width="100%">
-			<thead class="header ">
+			<thead class="header rowgrey">
 			<th class="text-center">
 			&nbsp;
 			<br />

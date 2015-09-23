@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-23 07:34:22
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-23 07:51:36
          compiled from "D:\_programs\xampp\htdocs\plannersmarty\app\welcome\Welcome.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1869155f7cab35b3af9-22268905%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '966db239022eebaa0ca41159473c5d027483cd75' => 
     array (
       0 => 'D:\\_programs\\xampp\\htdocs\\plannersmarty\\app\\welcome\\Welcome.tpl',
-      1 => 1442986322,
+      1 => 1442987494,
       2 => 'file',
     ),
     '0a6f48d3bf9f63ea493158a328e72083dd0993cb' => 
@@ -63,7 +63,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		</div>
 		<div id="content">
 			
-	<hr />
 	<?php if ($_smarty_tpl->tpl_vars['type']->value==1){?>
 	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['conf']->value->root_path).("/app/calendar/CalendarMonth.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
@@ -71,13 +70,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['conf']->value->root_path).("/app/calendar/CalendarDay.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 	<?php }?>
-	<hr />
 
 		</div>
 		<div class="footer">
 			
+	<div class="row">
 	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['conf']->value->root_path).("/app/snip/welcomefooter.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
+	</div>
 
 		</div>
 	</div>
