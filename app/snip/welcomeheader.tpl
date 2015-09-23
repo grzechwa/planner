@@ -10,9 +10,9 @@
 		{if $smarty.session.usertest}
 			<div>jestes zalogowany jako {$smarty.session.usertest}</div>
 			<br />
-			<div>wyloguj</div>
+			<div><a href="?typcal=1">wyloguj</a></div>
 		{else}
-		 	zaloguj
+			<a href="?typcal=2">zaloguj</a>
 		{/if}
 	</div>
 </div>

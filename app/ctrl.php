@@ -5,55 +5,68 @@ global $usertest;
 
 // TODO: zastosowac funkcje filtrujace
 isset($_REQUEST['action']) ? $action = $_REQUEST['action'] : $action = '';
-// isset($_REQUEST['newdate']) ? $newdate = $_REQUEST['newdate'] : $date = '';
+isset($_REQUEST['typcal']) ? $typcal = $_REQUEST['typcal'] : $typcal = '';
 
 session_start();
-$_SESSION['usertest'] = 'Test';
 
-	include_once $conf->root_path . '/app/welcome/WelcomeCtrl.class.php';
-	if (isset($_REQUEST['date']) && !empty($_REQUEST['date'])) {
-		$date_parts = explode(",", $_REQUEST['date']);
-		// valid nextprev
-		// miech do przodu
 
-		if(isset($_REQUEST['nextm'])){
-			$date_parts[1]++;
-			unset($_REQUEST['nextm']);
-		}
-		
-		if(isset($_REQUEST['prevm'])){
-			$date_parts[1]--;
-			unset($_REQUEST['prevm']);
-		}
+include_once $conf->root_path . '/app/welcome/WelcomeCtrl.class.php';
+if (isset($_REQUEST['date']) && !empty($_REQUEST['date'])) {
+	$date_parts = explode(",", $_REQUEST['date']);
+	// valid nextprev
+	// miech do przodu
 
-		if(isset($_REQUEST['nextmd'])){
-			$date_parts[1];
-			unset($_REQUEST['nextmd']);
-		}
-		
-		if(isset($_REQUEST['prevmd'])){
-			$date_parts[1];
-			unset($_REQUEST['prevmd']);
-		}
-
-		if(isset($_REQUEST['nextd'])){
-			// var_dump($date_parts[2]);
-			$date_parts[2];
-			// var_dump($date_parts[2]);
-			unset($_REQUEST['nextd']);
-		}
-		
-		if(isset($_REQUEST['prevd'])){
-			$date_parts[2];
-			unset($_REQUEST['prevd']);
-		}
-
-		$ctrl = new WelcomeCtrl($date_parts[0], $date_parts[1], $date_parts[2]);
-	} else {
-		$date_parts = explode("-", date("Y-m-d", time()));
-		$ctrl = new WelcomeCtrl($date_parts[0], $date_parts[1], $date_parts[2] );
+	if(isset($_REQUEST['nextm'])){
+		$date_parts[1]++;
+		unset($_REQUEST['nextm']);
+	}
+	
+	if(isset($_REQUEST['prevm'])){
+		$date_parts[1]--;
+		unset($_REQUEST['prevm']);
 	}
 
+	if(isset($_REQUEST['nextmd'])){
+		$date_parts[1];
+		unset($_REQUEST['nextmd']);
+	}
+	
+	if(isset($_REQUEST['prevmd'])){
+		$date_parts[1];
+		unset($_REQUEST['prevmd']);
+	}
+
+	if(isset($_REQUEST['nextd'])){
+		// var_dump($date_parts[2]);
+		$date_parts[2];
+		// var_dump($date_parts[2]);
+		unset($_REQUEST['nextd']);
+	}
+	
+	if(isset($_REQUEST['prevd'])){
+		$date_parts[2];
+		unset($_REQUEST['prevd']);
+	}
+
+	$ctrl = new WelcomeCtrl($date_parts[0], $date_parts[1], $date_parts[2]);
+} else {
+	$date_parts = explode("-", date("Y-m-d", time()));
+	$ctrl = new WelcomeCtrl($date_parts[0], $date_parts[1], $date_parts[2] );
+}
+// 3. symulacja logowania
+switch ($typcal) {
+	// default: 
+	
+	case 2 :
+		$_SESSION['usertest'] = 'Test';
+		$ctrl->typeCal=2;
+		break;
+	case 1 :
+		unset($_SESSION['usertest']);
+		$ctrl->typeCal=1;
+		break;
+
+}
 
 //2. wykonanie akcji
 switch ($action) {
@@ -111,3 +124,4 @@ switch ($action) {
 		$ctrl->generateView();
 		break;
 }
+

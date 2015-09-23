@@ -2,7 +2,7 @@
 <div class="calendarMonth" >  {* contentt strony *}
 
 <div id="prevm" class="col-md-4 text-righ"> 
-	<a href="?date={$getYear},{$getMonth},{$getDay}&prevm">PREV</a> 
+	<a href="?date={$getYear},{$getMonth},{$getDay}&prevm&typcal=1">PREV</a> 
 </div>
 
 <div id="centerm" class="col-md-4">
@@ -50,7 +50,7 @@
 </div>
 
 	<div id="nextm" class="col-md-4 text-left">  
-		<a href="?date={$getYear},{$getMonth},{$getDay}&nextm">NEXT</a>
+		<a href="?date={$getYear},{$getMonth},{$getDay}&nextm&typcal=1">NEXT</a>
 	</div>
 	<div class="json" style="clear:both" ></div>
 

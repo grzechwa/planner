@@ -2,12 +2,12 @@
 
 	<div id="navday" class="container">
 		<div id="prevd" class="col-md-2"> 
-			<a href="?date={$getYear},{$getMonth-1},{$getDay}&prevmd">PREVMONTH</a>  <br />
-			<a href="?date={$getYear},{$getMonth},{$getDay-1}&prevd">PREVDAY</a>  <br />
+			<a href="?date={$getYear},{$getMonth-1},{$getDay}&prevmd&typcal=2">PREVMONTH</a>  <br />
+			<a href="?date={$getYear},{$getMonth},{$getDay-1}&prevd&typcal=2">PREVDAY</a>  <br />
 		</div>
 		<div id="nextd" class="col-md-3"> 
-			<a href="?date={$getYear},{$getMonth+1},{$getDay}&nextmd">NEXTMONTH</a> <br >
-			<a href="?date={$getYear},{$getMonth},{$getDay+1}&nextd">NEXTDAY</a> <br >
+			<a href="?date={$getYear},{$getMonth+1},{$getDay}&nextmd&typcal=2">NEXTMONTH</a> <br >
+			<a href="?date={$getYear},{$getMonth},{$getDay+1}&nextd&typcal=2">NEXTDAY</a> <br >
 		</div>
 		<div class="col-md-7"></div>
 	</div>

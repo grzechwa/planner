@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-23 08:14:06
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-23 09:13:53
          compiled from "D:\_programs\xampp\htdocs\plannersmarty\app\snip\welcomeheader.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3246155ffbaf04625e4-33816503%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0a30d992d8e4bfdca1b0917eab3618538827b4c9' => 
     array (
       0 => 'D:\\_programs\\xampp\\htdocs\\plannersmarty\\app\\snip\\welcomeheader.tpl',
-      1 => 1442988844,
+      1 => 1442991778,
       2 => 'file',
     ),
   ),
@@ -37,9 +37,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<div>jestes zalogowany jako <?php echo $_SESSION['usertest'];?>
 </div>
 			<br />
-			<div>wyloguj</div>
+			<div><a href="?typcal=1">wyloguj</a></div>
 		<?php }else{ ?>
-		 	zaloguj
+			<a href="?typcal=2">zaloguj</a>
 		<?php }?>
 	</div>
 </div>
