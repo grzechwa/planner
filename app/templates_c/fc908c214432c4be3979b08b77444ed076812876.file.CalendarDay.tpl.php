@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-23 00:19:52
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-23 18:08:18
          compiled from "/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:113204345255f70d8fc21df9-57397266%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fc908c214432c4be3979b08b77444ed076812876' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl',
-      1 => 1442960189,
+      1 => 1443023782,
       2 => 'file',
     ),
   ),
@@ -35,7 +35,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55f70d8fcc3685_47428157')) {function content_55f70d8fcc3685_47428157($_smarty_tpl) {?><div class="calendarday _fL" >
+<?php if ($_valid && !is_callable('content_55f70d8fcc3685_47428157')) {function content_55f70d8fcc3685_47428157($_smarty_tpl) {?><div class=" _fL" >
 
 	<div id="navday" class="container">
 		<div id="prevd" class="col-md-2"> 
@@ -62,10 +62,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 	<div class="clear"></div>
 	
-	<div class="container">
+	<div class="container line">
 	
 	<table class="table _fL col-md-2"  style="width:15%"  border="0" cellspacing="0" cellpadding="0">
-		<thead class="header ">
+		<thead class="header rowgrey">
 			<th class="text-center">
 			&nbsp;
 			<br />
@@ -88,7 +88,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 	
 	<?php $_smarty_tpl->tpl_vars['var'] = new Smarty_variable(array(), null, 0);?>
 	<table  class="table tab _fL col-md-3" style="width: 25%" border="0" cellspacing="0" cellpadding="0">
-		<thead class="header ">
+		<thead class="header rowgrey">
 			<th class="text-center">
 			<?php echo $_smarty_tpl->tpl_vars['nameDay']->value;?>
 
@@ -139,7 +139,7 @@ $_smarty_tpl->tpl_vars['y']->first = $_smarty_tpl->tpl_vars['y']->iteration == 1
 	<div class="dane _fR col-md-offset-2 col-md-3" >
 		<div class="danetop " >
 			<table class="table" width="100%">
-			<thead class="header ">
+			<thead class="header rowgrey">
 			<th class="text-center">
 			&nbsp;
 			<br />

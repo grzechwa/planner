@@ -4,7 +4,6 @@ require_once $conf->root_path . '/app/util/Messages.class.php';
 require_once $conf->root_path . '/app/calendar/CalendarCtrl.class.php';
 require_once $conf->root_path . '/vendor/smarty/smarty/libs/Smarty.class.php';
 
-	var_dump($_SESSION);
 // klasa
 class WelcomeCtrl {
 
@@ -27,11 +26,13 @@ class WelcomeCtrl {
 			$this->typeCal = 1;
 		}
 	}
-
+	/*
 	public function setCalMonth() {
 		var_dump($this->cal->nextMonth());
 		var_dump($this->cal->setMonth($this->cal->nextMonth()));
 	}
+	 * 
+	 */
 
 	public function addUserToPlanner($planid, $userid) {
 		$this->q = new QueryDB();

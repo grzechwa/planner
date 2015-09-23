@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-22 21:52:12
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-23 18:08:18
          compiled from "/home/greg/www_pv/plannersmarty/app/snip/welcomefooter.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4876084505601ae27a9a468-38148400%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7e87ce93451464790e2fc5a4f77390ba0bcb7c4e' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/snip/welcomefooter.tpl',
-      1 => 1442951519,
+      1 => 1443023555,
       2 => 'file',
     ),
   ),

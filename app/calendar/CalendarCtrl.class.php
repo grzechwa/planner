@@ -26,21 +26,17 @@ class CalendarCtrl {
 
 	// poprzedni m-c
 	public function prevMonth() {
-
 		if ($this->month <= 1) {
 			return 12;
 		}
-
 		return ($this->month - 1);
 	}
 
 	// nastepny m-c
 	public function nextMonth() {
-
 		if ($this->month >= 12) {
 			return 1;
 		}
-
 		return ($this->month + 1);
 	}
 
@@ -57,7 +53,6 @@ class CalendarCtrl {
 
 	// nazwa akutalnego dnia tygodnia
 	public function nameActualDay() {
-
 		return date('D');
 	}
 
@@ -68,6 +63,7 @@ class CalendarCtrl {
 	}
 
 	// ktory tydzien w miesiacu
+
 	public function actualWeek() {
 		$paramTime = $this->year . '-' . $this->month . '-' . $this->day;
 		// valid
@@ -75,22 +71,24 @@ class CalendarCtrl {
 		return intval(date('j', strtotime($paramTime)) / 7) + 1;
 	}
 
+
 	// kotry dzien dzisiaj
+	
 	public function actualDay() {
 		return date('j', time());
 	}
+
 
 	public function actualMonth() {
 		return date('M', time());
 	}
 
+
+
 	public function actualWeekDay() {
 		return date('w', time());
 	}
 
-	public function actualYear() {
-		
-	}
 
 	public function getDay() {
 		return $this->day;
@@ -137,7 +135,6 @@ class CalendarCtrl {
 	// calykal
 	public function calendar() {
 		// format daty do przetwarzania
-		// $time = $this->year . '-' . $this->month . '-' . $this->day;
 		$time = $this->year . '-' . $this->month . '-' . $this->day;
 
 		$curr_mth_days = Array();
@@ -145,7 +142,6 @@ class CalendarCtrl {
 		$next_mth_last_days = Array();
 
 		// format daty dla poprzedniego miesiaca
-		// $prev_time = strtotime($this->year . '-' . $this->prevMonth() . '-' . $this->day);
 		$prev_time = strtotime($this->year . '-' . $this->prevMonth() . '-' . 1);
 
 		$prev_mth_days = $this->Days($prev_time);
@@ -161,7 +157,6 @@ class CalendarCtrl {
 
 
 		// pierwszy tydzien razem z poprzednim
-		// if ($this->numberDay($time) > 1) { //poprawa
 		if ($this->firstDayweekNumber() > 1) { 
 			$a = 0;
 			for ($i = $this->firstDayweekNumber() - 1; $i < 7; $i++) {
@@ -180,13 +175,9 @@ class CalendarCtrl {
 				// $curr_mth_days[0][$i] = ++$a;
 				$curr_mth_days[0][$i] = $this->year . '-' . $this->month . '-' . ++$a;
 			}
-
 			$curr_mth_days[0] = array_merge(array_slice($prev_mth_last_days, 1), $curr_mth_days[0]);
 			$i = 2;
 		}
-
-
-
 
 
 		// podmacierz
@@ -194,12 +185,9 @@ class CalendarCtrl {
 		$x = 1;
 		for ($i; $i <= $this->Days(strtotime($time)); $i++) {
 			if ($rowWeek < 7) {
-				// $curr_mth_days[$x][] = $i;
-
 				$curr_mth_days[$x][] = $this->year . '-' . $this->month . '-' . $i;
 				$rowWeek++;
 			} else {
-				// $curr_mth_days[$x][] = $i;
 				$curr_mth_days[$x][] = $this->year . '-' . $this->month . '-' . $i;
 				$rowWeek = 1;
 				++$x;
@@ -208,12 +196,10 @@ class CalendarCtrl {
 
 		// next
 		for ($i = 1; $i <= 14; $i++) {
-			// $next_mth_last_days[] = $i;
 			$next_mth_last_days[] = $this->year . '-' . $this->nextMonth() . '-' . $i;
 		}
 
 		// uzupelnia ostatni tydzien o liczby
-
 		$y = 0;
 		$next_counter = 0;
 		for ($i = 0; $i < 7; $i++) {

@@ -1,4 +1,3 @@
-
 <div class="calendarMonth" >  {* contentt strony *}
 
 <div id="prevm" class="col-md-4 text-righ"> 
