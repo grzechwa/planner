@@ -4,6 +4,7 @@ require_once $conf->root_path . '/app/util/Messages.class.php';
 require_once $conf->root_path . '/app/calendar/CalendarCtrl.class.php';
 require_once $conf->root_path . '/vendor/smarty/smarty/libs/Smarty.class.php';
 
+	var_dump($_SESSION);
 // klasa
 class WelcomeCtrl {
 
@@ -19,10 +20,11 @@ class WelcomeCtrl {
 		$this->cal = new CalendarCtrl($year, $month, $day);
 		$this->cal->calendar();
 		$this->q = new QueryDB();
-		if(isset($_REQUEST['typecal'])) {
-			$this->typeCal = $_REQUEST['typecal'];
+
+		if(isset($_SESSION['typcal'])) {
+			$this->typeCal = $_SESSION['typcal'];
 		} else {
-			$this->typeCal = 2;
+			$this->typeCal = 1;
 		}
 	}
 

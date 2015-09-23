@@ -7,12 +7,20 @@
 		<h5 style="padding-left: 16%">Fitness</h5>
 	</div>
 	<div id="right_header" class="col-md-4">
-		{if $smarty.session.usertest}
+		
+		{if $type eq 2}
+			{$smarty.session.typcal = !$type}
+			{if $smarty.session.usertest}
 			<div>jestes zalogowany jako {$smarty.session.usertest}</div>
+			{/if}
 			<br />
-			<div>wyloguj</div>
+			<div><a href="?action=logout" >wyloguj</a></div>
 		{else}
-		 	zaloguj
+			
+			{$smarty.session.typcal = !$type}
+			<br /><a href="?action=login">zaloguj</a>
+		
+		 	
 		{/if}
 	</div>
 </div>

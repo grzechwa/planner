@@ -10,6 +10,7 @@ isset($_REQUEST['action']) ? $action = $_REQUEST['action'] : $action = '';
 session_start();
 $_SESSION['usertest'] = 'Test';
 
+
 	include_once $conf->root_path . '/app/welcome/WelcomeCtrl.class.php';
 	if (isset($_REQUEST['date']) && !empty($_REQUEST['date'])) {
 		$date_parts = explode(",", $_REQUEST['date']);
@@ -110,4 +111,17 @@ switch ($action) {
 		$ctrl->dellUserFromPlanner($_REQUEST['planid'], $_REQUEST['userid']);
 		$ctrl->generateView();
 		break;
+
+	case 'logout' :
+		
+		// $ctrl->typeCal=1;
+		$_SESSION['typcal']=1;
+		$ctrl->generateView();
+		break;
+	case 'login' :
+		// $ctrl->typeCal=2;
+		$_SESSION['typcal']=2;
+		$ctrl->generateView();
+		break;
+
 }
