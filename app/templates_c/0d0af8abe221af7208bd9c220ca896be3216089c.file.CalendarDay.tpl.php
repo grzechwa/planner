@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-21 10:40:06
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-23 07:34:22
          compiled from "D:\_programs\xampp\htdocs\plannersmarty\app\calendar\CalendarDay.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2511955f7c7678004f9-25965924%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0d0af8abe221af7208bd9c220ca896be3216089c' => 
     array (
       0 => 'D:\\_programs\\xampp\\htdocs\\plannersmarty\\app\\calendar\\CalendarDay.tpl',
-      1 => 1442824802,
+      1 => 1442986322,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_55f7c7679d8eb7_68191192',
   'variables' => 
   array (
-    '_REQUEST' => 0,
     'getYear' => 0,
     'getMonth' => 0,
     'getDay' => 0,
@@ -37,27 +36,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_55f7c7679d8eb7_68191192')) {function content_55f7c7679d8eb7_68191192($_smarty_tpl) {?><div class="calendarday _fL" >
-<?php echo var_dump($_smarty_tpl->tpl_vars['_REQUEST']->value);?>
 
 	<div id="navday" class="container">
 		<div id="prevd" class="col-md-2"> 
 			<a href="?date=<?php echo $_smarty_tpl->tpl_vars['getYear']->value;?>
-,<?php echo $_smarty_tpl->tpl_vars['getMonth']->value;?>
+,<?php echo $_smarty_tpl->tpl_vars['getMonth']->value-1;?>
 ,<?php echo $_smarty_tpl->tpl_vars['getDay']->value;?>
-&prevm">PREVMONTH</a>  <br />
+&prevmd">PREVMONTH</a>  <br />
 			<a href="?date=<?php echo $_smarty_tpl->tpl_vars['getYear']->value;?>
 ,<?php echo $_smarty_tpl->tpl_vars['getMonth']->value;?>
-,<?php echo $_smarty_tpl->tpl_vars['getDay']->value;?>
+,<?php echo $_smarty_tpl->tpl_vars['getDay']->value-1;?>
 &prevd">PREVDAY</a>  <br />
 		</div>
 		<div id="nextd" class="col-md-3"> 
 			<a href="?date=<?php echo $_smarty_tpl->tpl_vars['getYear']->value;?>
-,<?php echo $_smarty_tpl->tpl_vars['getMonth']->value;?>
+,<?php echo $_smarty_tpl->tpl_vars['getMonth']->value+1;?>
 ,<?php echo $_smarty_tpl->tpl_vars['getDay']->value;?>
-&nextm">NEXTMONTH</a> <br >
+&nextmd">NEXTMONTH</a> <br >
 			<a href="?date=<?php echo $_smarty_tpl->tpl_vars['getYear']->value;?>
 ,<?php echo $_smarty_tpl->tpl_vars['getMonth']->value;?>
-,<?php echo $_smarty_tpl->tpl_vars['getDay']->value;?>
+,<?php echo $_smarty_tpl->tpl_vars['getDay']->value+1;?>
 &nextd">NEXTDAY</a> <br >
 		</div>
 		<div class="col-md-7"></div>
@@ -66,7 +64,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	
 	<div class="container">
 	
-	<table width="30%" class="_fL col-md-2" border="0" cellspacing="0" cellpadding="0">
+	<table class="table _fL col-md-2"  style="width:15%"  border="0" cellspacing="0" cellpadding="0">
 		<thead class="header ">
 			<th class="text-center">
 			&nbsp;
@@ -89,7 +87,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 
 	
 	<?php $_smarty_tpl->tpl_vars['var'] = new Smarty_variable(array(), null, 0);?>
-	<table width="40 %" class="tab _fL col-md-3" border="0" cellspacing="0" cellpadding="0">
+	<table  class="table tab _fL col-md-3" style="width: 25%" border="0" cellspacing="0" cellpadding="0">
 		<thead class="header ">
 			<th class="text-center">
 			<?php echo $_smarty_tpl->tpl_vars['nameDay']->value;?>
@@ -138,9 +136,17 @@ $_smarty_tpl->tpl_vars['y']->first = $_smarty_tpl->tpl_vars['y']->iteration == 1
 	</table>
 
 	
-	<div class="dane _fR col-md-offset-2 col-md-5" >
-		<div class="danetop row" >
-			<h3 class="">Lista zapisanych</h3>
+	<div class="dane _fR col-md-offset-2 col-md-3" >
+		<div class="danetop " >
+			<table class="table" width="100%">
+			<thead class="header ">
+			<th class="text-center">
+			&nbsp;
+			<br />
+			Lista zapisanych
+			</th>
+			</thead>
+			</table>
 		</div>
 		<div class="danemiddle row" >
 	     	</div>
@@ -150,7 +156,7 @@ $_smarty_tpl->tpl_vars['y']->first = $_smarty_tpl->tpl_vars['y']->iteration == 1
 			<form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 add" method="post">
 			    
-			    <button type="submit"> Dopisz sie </button>
+			    
 			</form>
 		</div>
 	</div>
@@ -159,13 +165,12 @@ add" method="post">
 	</div>
 
 <div class="clear" ></div>
-<pre>
-<?php echo print_r($_smarty_tpl->tpl_vars['plan']->value[$_smarty_tpl->tpl_vars['day']->value]);?>
 
-</pre>
 <script>
 // dane z tablicy plan
 var jqplan = <?php echo json_encode($_smarty_tpl->tpl_vars['plan']->value[$_smarty_tpl->tpl_vars['day']->value]);?>
+;
+var reqdate = <?php echo json_encode($_REQUEST['date']);?>
 ;
 
 $(document).ready( function() {
@@ -176,13 +181,14 @@ $(document).ready( function() {
 		if(typeof item !== 'undefined') {
 		// dodanie ukrytych pol do formularza
 		// TODO: usuwanie ukrytych pol przed jq
+		$('div.danebottom form').html('<input type="hidden" value="' + reqdate +'" name="date" id="date" />');
 		$('div.danebottom form').append('<input type="hidden" value="'+ item.planid + '" name="planid" id="plan_' + item.planid +  '"/>');
-		$('div.danebottom form').append('<input type="hidden" value="1" name="userid" id="user_1" />');
+		$('div.danebottom form').append('<input type="hidden" value="1" name="userid" id="user_1" /><br /><button type="submit">Dopisz sie</button>');
 
 		// przygotowanie do wyswietlenia imion
 		var itemName = new Array();
 		itemName = item.imie.toString().split(",");
-		$('.danemiddle').html("<br /><span></span>");
+		$('.danemiddle').html("<span></span>");
 
 
 		var formstart = <?php echo json_encode($_smarty_tpl->tpl_vars['conf']->value->action_root);?>
@@ -190,9 +196,17 @@ $(document).ready( function() {
 		// alert(formstart);
 		// wyswietlenie imion w obszarze danemiddle
 		if(itemName !== 'undefined') {
+				// $('.danemiddle').append("<table>");
+				var tabtd = "";
+				var cltab = "table ";
+				var clcen = "text-center";
 			for(var i in itemName) {
-				$('.danemiddle').append("<br /><span>" + itemName[i] + "</span>");
+				// $('.danemiddle').append("<tr><td>" + itemName[i] + "</td></tr>");
+				tabtd += "<tr><td class=" + clcen + ">" + itemName[i] + "</tr></td>";
+
 			}
+				// $('.danemiddle').append("</table>");
+				 $('.danemiddle').append("<table class=" + cltab +">" + tabtd + "</tabtd>");
 
 			if($(".danemiddle:contains('Kalka')").length){
 				$('.danebottom button').html("Wypisz sie");
@@ -202,8 +216,12 @@ $(document).ready( function() {
 
 		} else {
 			// alert(item);
-			$('.danemiddle').html("<span></span>");
-			$('.danebottom button').html("<div>Dopisz się</di>");
+			$('.danemiddle').html("<table></table>");
+			$('.danebottom form').empty();
+
+
+
+			// $('.danebottom button').html("<div>Dopisz się</di>");
 		}
 
 
@@ -215,10 +233,10 @@ $(document).ready( function() {
 		// alert('hej');
 		// $( ".danemiddle:contains('aaa')" ).css( "text-decoration", "underline" );
 			// if($(".danemiddle").contains("aaa")){
-			if(".danemiddle:contains('aaa')"){
-				$('.danebottom').html("<div>ususn sie</di>");
+			if(".danemiddle:contains('Kalka')"){
+				$('.danebottom').html("<div>Wypisz sie</di>");
 			} else {
-				$('.danebottom').append("<div>bee !!!</di>");
+				$('.danebottom').append("<div>bee !!!</div>");
 			}   		
 		}
 	);

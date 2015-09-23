@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-21 10:08:16
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-23 07:34:22
          compiled from "D:\_programs\xampp\htdocs\plannersmarty\app\welcome\Welcome.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1869155f7cab35b3af9-22268905%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '966db239022eebaa0ca41159473c5d027483cd75' => 
     array (
       0 => 'D:\\_programs\\xampp\\htdocs\\plannersmarty\\app\\welcome\\Welcome.tpl',
-      1 => 1442817308,
+      1 => 1442986322,
       2 => 'file',
     ),
     '0a6f48d3bf9f63ea493158a328e72083dd0993cb' => 
     array (
       0 => 'D:\\_programs\\xampp\\htdocs\\plannersmarty\\templates\\main.tpl',
-      1 => 1442817308,
+      1 => 1442986322,
       2 => 'file',
     ),
   ),
@@ -75,7 +75,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 		</div>
 		<div class="footer">
-			FOOTERLOCAL
+			
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['conf']->value->root_path).("/app/snip/welcomefooter.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+
 		</div>
 	</div>
 </body>
