@@ -196,4 +196,22 @@ class QueryDB {
 		return $result;
 	}
 
+	// ... login ...
+	public function getLogin($login, $haslo) {
+		$this->db->connect();
+		
+		$select = "SELECT user.id_user, user.imie, user.haslo";
+		$from = " FROM user";
+		$join = null;
+		$where = " WHERE imie like '$login' AND haslo like '$haslo'";
+		$orderBy = null;
+		
+		$sql = $select.$from.$join.$where.$orderBy;
+		var_dump($sql);
+
+		$conn = $this->db->getConn();
+		$result = mysqli_query($conn,$sql);
+		$this->db->disconnect();
+		return $result;
+	}
 }

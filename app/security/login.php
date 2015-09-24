@@ -1,7 +1,6 @@
 <?php
-require_once $conf->root_path.'/app/model/QueryDB.php';
-include_once $conf->root_path.'/app/view/snip/header.php';
-
+require_once $conf->root_path.'/app/db/LogDB.php';
+var_dump($_SESSION);
 
 ?>
 <div class="container"> 
@@ -16,7 +15,7 @@ include_once $conf->root_path.'/app/view/snip/header.php';
 
 <div class="col-md-4 col-md-offset-4"> 
 <div class="line-small ">
-<form action="<?php echo $conf->action_root; ?>doLogin" method="post" role="form">
+<form action="<?php echo $conf->action_root; ?>login" method="post" role="form">
 			<div class="form-group">
 			<label for="login">Login: </label> 
 			<input type="text" name="login" class="form-control" required > <br />		

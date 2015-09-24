@@ -1,39 +1,35 @@
 <?php
-require_once $conf->root_path . '/app/model/QueryDB.php';
+require_once $conf->root_path . '/app/db/QueryDB.php';
 
 
 if((isset($_REQUEST['login'])&&(isset($_REQUEST['password'])))){
 	$login = $_REQUEST['login'];
 	$haslo = $_REQUEST['password'];
 	
-	echo $login . ' ' . $haslo;
 	$q = new QueryDB();
 
+	var_dump($login, $haslo);
+
 	$validate = $q->getLogin($login, $haslo);
-	
+
 	if ($validate) {
-		session_start();
 		$_SESSION['isLogged'] = true;
 		foreach ($validate as $key => $value){	
-			if($value['id_stanowisko']==1) { 
+			if($value['imie']=='admin') { 
 				$_SESSION['user'] = 'admin';
-				var_dump($conf->root_path.'/app/view/admin/admin.php');
-				var_dump($conf->server_url.$conf->action_root .'admin');
-				var_dump($conf->server_url.'/app/view/admin/admin.php');
-			
-                // include_once $conf->root_path.'/app/view/admin/admin.php';
-                // include_once $conf->server_url.$conf->action_root .'admin';
-                // include_once $conf->server_url.'/app/view/admin/admin.php';
 				header("Location: " . $conf->server_url.$conf->app_root.'/?action=admin');
 			} else { 
-				$_SESSION['user'] = 'user';
-                // include_once $conf->root_path.'/app/view/empl/empl.php';
-                header("Location: " . $conf->server_url.$conf->app_root.'/?action=empl');
+				$_SESSION['user'] = $login;
+				// header("Location: " . $conf->server_url.$conf->app_root.'/?action=empl');
+				include_once $conf->root_path . '/app/welcome/WelcomeCtrl.class.php';
 			}
 		}
 	} else {
-		include_once $conf->root_path.'/app/view/error.php';
+		include_once $conf->root_path.'/app/db/error.php';
 	}
+
+
 } else {
-	include_once $conf->root_path.'/app/view/error.php';
+	// include_once $conf->root_path.'/app/db/error.php';
+	echo 'nie ma loginu';
 }

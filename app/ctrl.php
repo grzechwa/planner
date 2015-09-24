@@ -111,17 +111,25 @@ switch ($action) {
 		$ctrl->dellUserFromPlanner($_REQUEST['planid'], $_REQUEST['userid']);
 		$ctrl->generateView();
 		break;
+	
 
+	case 'goLogin' :
+		include_once $conf->root_path . '/app/security/login.php';
+		break;
 	case 'logout' :
 		
 		// $ctrl->typeCal=1;
 		$_SESSION['typcal']=1;
+		$_SESSION['isLogged']=false;
+		unset($_SESSION['user']);
 		$ctrl->generateView();
 		break;
 	case 'login' :
 		// $ctrl->typeCal=2;
+		include_once $conf->root_path . '/app/db/LogDB.php';
 		$_SESSION['typcal']=2;
 		$ctrl->generateView();
+		
 		break;
 
 }

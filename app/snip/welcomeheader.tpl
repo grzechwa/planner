@@ -1,4 +1,5 @@
 <div id="header_content">
+	{$smarty.session|@var_dump}
 	<div id="left_header" class="col-md-4"> 
 		<img src="{$conf->app_url}/res/images/zum2_mini.png" alt="logo" />
 	</div>
@@ -18,7 +19,7 @@
 		{else}
 			
 			{$smarty.session.typcal = !$type}
-			<br /><a href="?action=login">zaloguj</a>
+			<br /><a href="?action=goLogin">zaloguj</a>
 		
 		 	
 		{/if}
