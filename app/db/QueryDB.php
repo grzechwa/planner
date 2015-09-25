@@ -207,7 +207,7 @@ class QueryDB {
 		$orderBy = null;
 		
 		$sql = $select.$from.$join.$where.$orderBy;
-		var_dump($sql);
+		// var_dump($sql);
 
 		$conn = $this->db->getConn();
 		$result = mysqli_query($conn,$sql);

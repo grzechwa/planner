@@ -1,5 +1,4 @@
 <?php
-
 require_once $conf->root_path . '/app/util/Messages.class.php';
 require_once $conf->root_path . '/app/calendar/CalendarCtrl.class.php';
 require_once $conf->root_path . '/vendor/smarty/smarty/libs/Smarty.class.php';
@@ -14,25 +13,11 @@ class WelcomeCtrl {
 	public $typeCal;
 
 	public function __construct($year = null, $month = null, $day = NULL) {
-
 		$this->msg = new Messages();
 		$this->cal = new CalendarCtrl($year, $month, $day);
 		$this->cal->calendar();
 		$this->q = new QueryDB();
-
-		if(isset($_SESSION['typcal'])) {
-			$this->typeCal = $_SESSION['typcal'];
-		} else {
-			$this->typeCal = 1;
-		}
 	}
-	/*
-	public function setCalMonth() {
-		var_dump($this->cal->nextMonth());
-		var_dump($this->cal->setMonth($this->cal->nextMonth()));
-	}
-	 * 
-	 */
 
 	public function addUserToPlanner($planid, $userid) {
 		$this->q = new QueryDB();
@@ -83,7 +68,12 @@ class WelcomeCtrl {
 		$smarty->assign('nameDay', $this->cal->getNameDay());
 
 		$smarty->assign('type', $this->typeCal);
-		$smarty->display($conf->root_path . '/app/welcome/Welcome.tpl');
+
+		if(isset($_SESSION['isLogged']) && ($_SESSION['isLogged']==true)){
+			$smarty->display($conf->root_path . '/app/welcome/WelcomeDay.tpl');
+		} else {
+			$smarty->display($conf->root_path . '/app/welcome/WelcomeMonth.tpl');
+		}
 	}
 
 }

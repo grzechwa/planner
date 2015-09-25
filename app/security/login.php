@@ -1,5 +1,5 @@
 <?php
-require_once $conf->root_path.'/app/db/LogDB.php';
+// require_once $conf->root_path.'/app/db/LogDB.php';
 var_dump($_SESSION);
 
 ?>
