@@ -3,14 +3,13 @@
 <h1 class="text-center">
 <div class="line-small" >Panel logowania</div>
 </h1>
-
 </div>
 
 <div class="container">
 
 <div class="col-md-4 col-md-offset-4"> 
 <div class="line-small ">
-<form action="<?php echo $conf->action_root; ?>login" method="post" role="form">
+<form action="<?php echo $conf->action_root; ?>login&date=<?php echo $_REQUEST['date'];?>" method="post" role="form">
 			<div class="form-group">
 			<label for="login">Login: </label> 
 			<input type="text" name="login" class="form-control" required > <br />		

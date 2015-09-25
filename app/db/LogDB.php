@@ -1,7 +1,25 @@
 <?php
 require_once $conf->root_path . '/app/db/QueryDB.php';
+require_once $conf->root_path . '/app/admin/Admin.class.php';
+require_once $conf->root_path . '/app/util/Messages.class.php';
+require_once $conf->root_path . '/app/calendar/CalendarCtrl.class.php';
+require_once $conf->root_path . '/vendor/smarty/smarty/libs/Smarty.class.php';
 
-if((isset($_REQUEST['login'])&&(isset($_REQUEST['password'])))){
+var_dump($_REQUEST);
+
+class LogDB {
+	private $msg;
+	public $cal;
+	public $q; // query
+	public $conf;
+
+	public function __construct() {
+		$this->setRole();
+	}
+
+	
+	public function setRole() {
+	if((isset($_REQUEST['login'])&&(isset($_REQUEST['password'])))){
 	$login = $_REQUEST['login'];
 	$haslo = $_REQUEST['password'];
 	
@@ -18,15 +36,45 @@ if((isset($_REQUEST['login'])&&(isset($_REQUEST['password'])))){
 			if($value['imie']=='admin') { 
 				$_SESSION['user'] = 'admin';
 				// header("Location: " . $conf->server_url.$conf->app_root.'/?action=admin');
-				include_once $conf->root_path . '/app/admin/Admin.class.php';
+					/* @var $conf type */
+					// include_once $conf->root_path . '/app/admin/Admin.class.php';
 			} else { 
 				$_SESSION['user'] = $login;
-				include_once $conf->root_path . '/app/welcome/WelcomeCtrl.class.php';
+				// include_once $conf->root_path . '/app/welcome/WelcomeCtrl.class.php';
 			}
 		}
 
 
-} else {
-	// include_once $conf->root_path.'/app/db/error.php';
-	echo 'nie ma loginu';
+} 	
+	}
+
+	public function getDate() {
+		$date = $_REQUEST['date'];
+		// $_REQUEST['date'] = $ctrl->cal->year . ',' . $ctrl->cal->month . ',' . $ctrl->cal->day;
+		// $ctrl->generateView();
+		return $date;
+	}
+
+	
+	public function generateView() {
+	global $conf, $user;
+
+		$smarty = new Smarty();
+		$smarty->assign('conf', $conf);
+		$smarty->assign('user', $user);
+		$smarty->assign('page_title', 'Welcome page!');
+
+		$smarty->assign('msgs', $this->msg);
+		
+
+		if(isset($_SESSION['user']) && ($_SESSION['user']=='admin')){
+			include_once $conf->action_root . 'admin';
+		} else {
+			include_once $conf->action_root ;
+			// $smarty->display($conf->root_path . '/app/welcome/WelcomeMonth.tpl');
+		}
+	}
 }
+
+
+

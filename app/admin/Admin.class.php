@@ -4,10 +4,12 @@ require_once $conf->root_path.'/app/db/AdminQueryDB.php';
 require_once $conf->root_path.'/app/calendar/CalendarCtrl.class.php';
 require_once $conf->root_path.'/vendor/smarty/smarty/libs/Smarty.class.php';
 
-
+/*
 if(!isset($_SESSION)) {
 	session_start();
 }
+ * 
+ */
 
 /*
 if($_SESSION['isLogged'] == null){

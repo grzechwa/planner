@@ -10,13 +10,13 @@ if (isset($_REQUEST['date']) && !empty($_REQUEST['date'])) {
 	$date_parts = explode(",", $_REQUEST['date']);
 
 	if (isset($_REQUEST['nextm'])) {
-		$date_parts[1] ++;
-		// unset($_REQUEST['nextm']);
+		$date_parts[1];
+		unset($_REQUEST['nextm']);
 	}
 
 	if (isset($_REQUEST['prevm'])) {
-		$date_parts[1] --;
-		// unset($_REQUEST['prevm']);
+		$date_parts[1];
+		unset($_REQUEST['prevm']);
 	}
 
 	if (isset($_REQUEST['nextmd'])) {
@@ -113,7 +113,11 @@ switch ($action) {
 		break;
 	case 'login' :
 		include_once $conf->root_path . '/app/db/LogDB.php';
-		$ctrl->typeCal = 2;
+		$log = new LogDB();
+		// $log->setRole();
+		// $log->generateView();
+
+		$log->getDate();
 		$ctrl->generateView();
 		break;
 }

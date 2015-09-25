@@ -11,11 +11,12 @@
 			<div>jestes zalogowany jako<div>
 			{$smarty.session.user}
 			<br />
-				<a href="?action=logout&date={$getYear},{$getMonth-1},{$getDay}" >wyloguj</a>
+				<a href="?action=logout&date={$getYear},{$getMonth},{$getDay}" >wyloguj</a>
 		{else}
 			<br />
-			<a href="?action=goLogin&date={$getYear},{$getMonth-1},{$getDay}">zaloguj</a>
+			<a href="?action=goLogin&date={$getYear},{$getMonth},{$getDay}">zaloguj</a>
 		{/if}
 	</div>
 </div>
 <div class="clear" ></div>
+{$getYear},{$getMonth},{$getDay}
