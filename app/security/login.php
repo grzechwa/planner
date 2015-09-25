@@ -1,8 +1,3 @@
-<?php
-// require_once $conf->root_path.'/app/db/LogDB.php';
-var_dump($_SESSION);
-
-?>
 <div class="container"> 
 
 <h1 class="text-center">

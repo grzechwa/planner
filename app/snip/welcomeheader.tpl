@@ -1,9 +1,4 @@
 <div id="header_content">
-	{*
-	{$smarty.session|@var_dump}
-	*}
-	{$type|@var_dump}
-
 	<div id="left_header" class="col-md-4"> 
 		<img src="{$conf->app_url}/res/images/zum2_mini.png" alt="logo" />
 	</div>
@@ -12,20 +7,15 @@
 		<h5 style="padding-left: 16%">Fitness</h5>
 	</div>
 	<div id="right_header" class="col-md-4">
-			{if $smarty.session.isLogged}	
+		{if $smarty.session.isLogged}	
 			<div>jestes zalogowany jako<div>
-				{$smarty.session.user}
+			{$smarty.session.user}
 			<br />
-			<div><a href="?action=logout&date={$getYear},{$getMonth-1},{$getDay}" >wyloguj</a></div>
-
-			{else}
-			
-			<br /><a href="?action=goLogin&date={$getYear},{$getMonth-1},{$getDay}">zaloguj</a>
-
-			{/if}
-		
-		 	
-
+				<a href="?action=logout&date={$getYear},{$getMonth-1},{$getDay}" >wyloguj</a>
+		{else}
+			<br />
+			<a href="?action=goLogin&date={$getYear},{$getMonth-1},{$getDay}">zaloguj</a>
+		{/if}
 	</div>
 </div>
 <div class="clear" ></div>

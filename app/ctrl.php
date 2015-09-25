@@ -1,65 +1,53 @@
 <?php
 require_once dirname(__FILE__) . '/../config.php';
-// global $usertest;
 
 // TODO: zastosowac funkcje filtrujace
 isset($_REQUEST['action']) ? $action = $_REQUEST['action'] : $action = '';
-// isset($_REQUEST['newdate']) ? $newdate = $_REQUEST['newdate'] : $date = '';
-
 session_start();
 
+include_once $conf->root_path . '/app/welcome/WelcomeCtrl.class.php';
+if (isset($_REQUEST['date']) && !empty($_REQUEST['date'])) {
+	$date_parts = explode(",", $_REQUEST['date']);
 
-	include_once $conf->root_path . '/app/welcome/WelcomeCtrl.class.php';
-	if (isset($_REQUEST['date']) && !empty($_REQUEST['date'])) {
-		$date_parts = explode(",", $_REQUEST['date']);
-		// valid nextprev
-		// miech do przodu
-
-
-		if(isset($_REQUEST['nextm'])){
-			$date_parts[1]++;
-			// unset($_REQUEST['nextm']);
-		}
-		
-		if(isset($_REQUEST['prevm'])){
-			$date_parts[1]--;
-			// unset($_REQUEST['prevm']);
-		}
-
-		if(isset($_REQUEST['nextmd'])){
-			$date_parts[1];
-			unset($_REQUEST['nextmd']);
-		}
-		
-		if(isset($_REQUEST['prevmd'])){
-			$date_parts[1];
-			unset($_REQUEST['prevmd']);
-		}
-
-		if(isset($_REQUEST['nextd'])){
-			$date_parts[2];
-			unset($_REQUEST['nextd']);
-		}
-		
-		if(isset($_REQUEST['prevd'])){
-			$date_parts[2];
-			unset($_REQUEST['prevd']);
-		}
-
-		$ctrl = new WelcomeCtrl($date_parts[0], $date_parts[1], $date_parts[2]);
-
-	} else {
-		$date_parts = explode("-", date("Y-m-d", time()));
-		$ctrl = new WelcomeCtrl($date_parts[0], $date_parts[1], $date_parts[2] );
+	if (isset($_REQUEST['nextm'])) {
+		$date_parts[1] ++;
+		// unset($_REQUEST['nextm']);
 	}
 
+	if (isset($_REQUEST['prevm'])) {
+		$date_parts[1] --;
+		// unset($_REQUEST['prevm']);
+	}
+
+	if (isset($_REQUEST['nextmd'])) {
+		$date_parts[1];
+		unset($_REQUEST['nextmd']);
+	}
+
+	if (isset($_REQUEST['prevmd'])) {
+		$date_parts[1];
+		unset($_REQUEST['prevmd']);
+	}
+
+	if (isset($_REQUEST['nextd'])) {
+		$date_parts[2];
+		unset($_REQUEST['nextd']);
+	}
+
+	if (isset($_REQUEST['prevd'])) {
+		$date_parts[2];
+		unset($_REQUEST['prevd']);
+	}
+
+	$ctrl = new WelcomeCtrl($date_parts[0], $date_parts[1], $date_parts[2]);
+} else {
+	$date_parts = explode("-", date("Y-m-d", time()));
+	$ctrl = new WelcomeCtrl($date_parts[0], $date_parts[1], $date_parts[2]);
+}
 
 //2. wykonanie akcji
 switch ($action) {
 	default : // 'welcome'
-		if(isset($_REQUEST['nextm'])||isset($_REQUEST['prevm'])){
-			$ctrl->typeCal=1;
-		}
 		$ctrl->generateView();
 		break;
 	case 'admin' :
@@ -68,7 +56,6 @@ switch ($action) {
 		$adm->generateView();
 		break;
 	case 'goAddUser' :
-		// include_once $conf->root_path . '/app/admin/adminadd.tpl';
 		include_once $conf->root_path . '/app/admin/AdminAddUser.class.php';
 		$adm = new AdminAddUser();
 		$adm->generateView();
@@ -81,7 +68,6 @@ switch ($action) {
 
 		break;
 	case 'goAddActiv' :
-		// include_once $conf->root_path . '/app/admin/adminAddActiv.tpl';
 		include_once $conf->root_path . '/app/admin/AdminAddActiv.class.php';
 		$adm = new AdminAddActiv();
 		$adm->generateView();
@@ -104,6 +90,7 @@ switch ($action) {
 		$adm->delActiv($_REQUEST['idelact']);
 		$adm->generateView();
 		break;
+
 	case 'add' :
 		$ctrl->addUserToPlanner($_REQUEST['planid'], $_REQUEST['userid']);
 		$ctrl->generateView();
@@ -112,30 +99,21 @@ switch ($action) {
 		$ctrl->dellUserFromPlanner($_REQUEST['planid'], $_REQUEST['userid']);
 		$ctrl->generateView();
 		break;
-	
 
 	case 'goLogin' :
 		include_once $conf->root_path . '/app/security/login.php';
 		break;
 	case 'logout' :
-		
-		// $ctrl->typeCal=1;
-		// $_SESSION['typcal']=1;
-		$_SESSION['isLogged']=false;
+		$_SESSION['isLogged'] = false;
 		unset($_SESSION['user']);
 		unset($_SESSION['haslo']);
-		// include_once $conf->root_path . '/app/db/LogDB.php';
-		$ctrl->typeCal=1;
-		$_REQUEST['date']=$ctrl->cal->year.','.$ctrl->cal->month.','.$ctrl->cal->day;
+		$ctrl->typeCal = 1;
+		$_REQUEST['date'] = $ctrl->cal->year . ',' . $ctrl->cal->month . ',' . $ctrl->cal->day;
 		$ctrl->generateView();
 		break;
 	case 'login' :
-		// $ctrl->typeCal=2;
-		// $_SESSION['typcal']=2;
 		include_once $conf->root_path . '/app/db/LogDB.php';
-		$ctrl->typeCal=2;
+		$ctrl->typeCal = 2;
 		$ctrl->generateView();
-		
 		break;
-
 }
