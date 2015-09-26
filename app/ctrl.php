@@ -65,7 +65,6 @@ switch ($action) {
 		$adm = new Admin();
 		$adm->addUser($_REQUEST['imie'], $_REQUEST['haslo']);
 		$adm->generateView();
-
 		break;
 	case 'goAddActiv' :
 		include_once $conf->root_path . '/app/admin/AdminAddActiv.class.php';
@@ -104,19 +103,20 @@ switch ($action) {
 		include_once $conf->root_path . '/app/security/login.php';
 		break;
 	case 'logout' :
+		// dodano wartunek
+		// if(isset($_SESSION['isLogged'])){
 		$_SESSION['isLogged'] = false;
+		unset($_SESSION['isLogged']);
 		unset($_SESSION['user']);
 		unset($_SESSION['haslo']);
 		$ctrl->typeCal = 1;
 		$_REQUEST['date'] = $ctrl->cal->year . ',' . $ctrl->cal->month . ',' . $ctrl->cal->day;
+		// }
 		$ctrl->generateView();
 		break;
 	case 'login' :
 		include_once $conf->root_path . '/app/db/LogDB.php';
 		$log = new LogDB();
-		// $log->setRole();
-		// $log->generateView();
-
 		$log->getDate();
 		$ctrl->generateView();
 		break;

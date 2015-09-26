@@ -7,14 +7,18 @@
 		<h5 style="padding-left: 16%">Fitness</h5>
 	</div>
 	<div id="right_header" class="col-md-4">
-		{if $smarty.session.isLogged}	
-			<div>jestes zalogowany jako<div>
-			{$smarty.session.user}
+		{if isset($smarty.session.isLogged)}	
+			{if isset($smarty.session.user)}
+				{if $smarty.session.user === true}
+				<div>jestes zalogowany jako<div>
+				{$smarty.session.user}
+				{/if}
+			{/if}
 			<br />
 				<a href="?action=logout&date={$getYear},{$getMonth},{$getDay}" >wyloguj</a>
 		{else}
 			<br />
-			<a href="?action=goLogin&date={$getYear},{$getMonth},{$getDay}">zaloguj</a>
+				<a href="?action=goLogin&date={$getYear},{$getMonth},{$getDay}">zaloguj</a>
 		{/if}
 	</div>
 </div>

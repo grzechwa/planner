@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-23 18:08:18
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-26 12:25:14
          compiled from "/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:113204345255f70d8fc21df9-57397266%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fc908c214432c4be3979b08b77444ed076812876' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl',
-      1 => 1443023782,
+      1 => 1443259379,
       2 => 'file',
     ),
   ),
@@ -61,108 +61,108 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="col-md-7"></div>
 	</div>
 	<div class="clear"></div>
-	
+
 	<div class="container line">
-	
-	<table class="table _fL col-md-2"  style="width:15%"  border="0" cellspacing="0" cellpadding="0">
-		<thead class="header rowgrey">
-			<th class="text-center">
-			&nbsp;
-			<br />
-			Godz
-			</th>
-		</thead>
 		
-		<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+		<table class="table _fL col-md-2"  style="width:15%"  border="0" cellspacing="0" cellpadding="0">
+			<thead class="header rowgrey">
+			<th class="text-center">
+				&nbsp;
+				<br />
+				Godz
+			</th>
+			</thead>
+
+			<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['getAllHours']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
 $_smarty_tpl->tpl_vars['item']->_loop = true;
 ?>
-			<tr><td align="center">
-			<?php echo $_smarty_tpl->tpl_vars['item']->value['od'];?>
+			  <tr><td align="center">
+					  <?php echo $_smarty_tpl->tpl_vars['item']->value['od'];?>
  
-			</td></tr>
-		<?php } ?>
-	</table>
+				  </td></tr>
+			  <?php } ?>
+		</table>
 
-	
-	<?php $_smarty_tpl->tpl_vars['var'] = new Smarty_variable(array(), null, 0);?>
-	<table  class="table tab _fL col-md-3" style="width: 25%" border="0" cellspacing="0" cellpadding="0">
-		<thead class="header rowgrey">
+		
+		<?php $_smarty_tpl->tpl_vars['var'] = new Smarty_variable(array(), null, 0);?>
+		<table  class="table tab _fL col-md-3" style="width: 25%" border="0" cellspacing="0" cellpadding="0">
+			<thead class="header rowgrey">
 			<th class="text-center">
-			<?php echo $_smarty_tpl->tpl_vars['nameDay']->value;?>
+				<?php echo $_smarty_tpl->tpl_vars['nameDay']->value;?>
 
-			<br />
-			<?php $_smarty_tpl->tpl_vars['day'] = new Smarty_variable($_smarty_tpl->tpl_vars['getDate']->value, null, 0);?>
-			<?php echo $_smarty_tpl->tpl_vars['day']->value;?>
+				<br />
+				<?php $_smarty_tpl->tpl_vars['day'] = new Smarty_variable($_smarty_tpl->tpl_vars['getDate']->value, null, 0);?>
+				<?php echo $_smarty_tpl->tpl_vars['day']->value;?>
 
 			</th>
-		</thead>
-		<?php if (array_key_exists($_smarty_tpl->tpl_vars['day']->value,$_smarty_tpl->tpl_vars['plan']->value)){?>
-			<?php if (is_array($_smarty_tpl->tpl_vars['plan']->value[$_smarty_tpl->tpl_vars['day']->value])){?>
-				<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+			</thead>
+			<?php if (array_key_exists($_smarty_tpl->tpl_vars['day']->value,$_smarty_tpl->tpl_vars['plan']->value)){?>
+			  <?php if (is_array($_smarty_tpl->tpl_vars['plan']->value[$_smarty_tpl->tpl_vars['day']->value])){?>
+			    <?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['plan']->value[$_smarty_tpl->tpl_vars['day']->value]; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
 $_smarty_tpl->tpl_vars['item']->_loop = true;
  $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
 ?>
-					<?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['nazwa'];?>
+			      <?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['item']->value['nazwa'];?>
 <?php $_tmp1=ob_get_clean();?><?php $_smarty_tpl->createLocalArrayVariable('var', null, 0);
 $_smarty_tpl->tpl_vars['var']->value[$_smarty_tpl->tpl_vars['item']->value['id']] = $_tmp1;?>
-				<?php } ?>
+			    <?php } ?>
+			  <?php }?>
 			<?php }?>
-		<?php }?>
 
-		
-		<?php $_smarty_tpl->tpl_vars['count'] = new Smarty_variable(0, null, 0);?>
-		<?php $_smarty_tpl->tpl_vars['y'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['y']->step = 1;$_smarty_tpl->tpl_vars['y']->total = (int)ceil(($_smarty_tpl->tpl_vars['y']->step > 0 ? 6+1 - (0) : 0-(6)+1)/abs($_smarty_tpl->tpl_vars['y']->step));
+			
+			<?php $_smarty_tpl->tpl_vars['count'] = new Smarty_variable(0, null, 0);?>
+			<?php $_smarty_tpl->tpl_vars['y'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['y']->step = 1;$_smarty_tpl->tpl_vars['y']->total = (int)ceil(($_smarty_tpl->tpl_vars['y']->step > 0 ? 6+1 - (0) : 0-(6)+1)/abs($_smarty_tpl->tpl_vars['y']->step));
 if ($_smarty_tpl->tpl_vars['y']->total > 0){
 for ($_smarty_tpl->tpl_vars['y']->value = 0, $_smarty_tpl->tpl_vars['y']->iteration = 1;$_smarty_tpl->tpl_vars['y']->iteration <= $_smarty_tpl->tpl_vars['y']->total;$_smarty_tpl->tpl_vars['y']->value += $_smarty_tpl->tpl_vars['y']->step, $_smarty_tpl->tpl_vars['y']->iteration++){
 $_smarty_tpl->tpl_vars['y']->first = $_smarty_tpl->tpl_vars['y']->iteration == 1;$_smarty_tpl->tpl_vars['y']->last = $_smarty_tpl->tpl_vars['y']->iteration == $_smarty_tpl->tpl_vars['y']->total;?>
-		<tr>
-			<?php if (isset($_smarty_tpl->tpl_vars['var']->value[$_smarty_tpl->tpl_vars['y']->value])){?>
-			<td id=<?php echo $_smarty_tpl->tpl_vars['count']->value++;?>
+			  <tr>
+				  <?php if (isset($_smarty_tpl->tpl_vars['var']->value[$_smarty_tpl->tpl_vars['y']->value])){?>
+				    <td id=<?php echo $_smarty_tpl->tpl_vars['count']->value++;?>
  align='center' class="today">	
-			<?php echo $_smarty_tpl->tpl_vars['var']->value[$_smarty_tpl->tpl_vars['y']->value];?>
+					    <?php echo $_smarty_tpl->tpl_vars['var']->value[$_smarty_tpl->tpl_vars['y']->value];?>
 
-			<?php }else{ ?>
-			<td align='center' class="today">	
-			&nbsp;
-			<?php }?>
-			</td>
-		</tr>
-		<?php }} ?>
-	</table>
+				    <?php }else{ ?>
+				    <td align='center' class="today">	
+					    &nbsp;
+				    <?php }?>
+				  </td>
+			  </tr>
+			<?php }} ?>
+		</table>
 
-	
-	<div class="dane _fR col-md-offset-2 col-md-3" >
-		<div class="danetop " >
-			<table class="table" width="100%">
-			<thead class="header rowgrey">
-			<th class="text-center">
-			&nbsp;
-			<br />
-			Lista zapisanych
-			</th>
-			</thead>
-			</table>
-		</div>
-		<div class="danemiddle row" >
-	     	</div>
+		
+		<div class="dane _fR col-md-offset-2 col-md-3" >
+			<div class="danetop " >
+				<table class="table" width="100%">
+					<thead class="header rowgrey">
+					<th class="text-center">
+						&nbsp;
+						<br />
+						Lista zapisanych
+					</th>
+					</thead>
+				</table>
+			</div>
+			<div class="danemiddle row" >
+			</div>
 
-		<div class="danebottom row" >
+			<div class="danebottom row" >
 
-			<form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+				<form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 add" method="post">
-			    
-			    
-			</form>
+					
+					
+				</form>
+			</div>
 		</div>
 	</div>
-	</div>
 
-	</div>
+</div>
 
 <div class="clear" ></div>
 
