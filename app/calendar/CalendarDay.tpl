@@ -29,7 +29,7 @@
 			</th>
 			</thead>
 
-			{foreach idplan=idplan from=$getAllHours}
+			{foreach item=idplan from=$getAllHours}
 			  <tr><td align="center">
 					  {$idplan.od} 
 				  </td></tr>
@@ -50,7 +50,7 @@
 			</thead>
 			{if array_key_exists($day, $plan)}
 			  {if is_array($plan.$day)}
-			    {foreach key=key idplan=idplan from=$plan.$day}
+			    {foreach key=key item=idplan from=$plan.$day}
 			      {$var[$idplan.id] = {$idplan.nazwa}}
 			    {/foreach}
 			  {/if}
