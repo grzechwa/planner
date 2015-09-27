@@ -5,8 +5,6 @@ require_once $conf->root_path . '/app/util/Messages.class.php';
 require_once $conf->root_path . '/app/calendar/CalendarCtrl.class.php';
 require_once $conf->root_path . '/vendor/smarty/smarty/libs/Smarty.class.php';
 
-var_dump($_REQUEST);
-
 class LogDB {
 	private $msg;
 	public $cal;

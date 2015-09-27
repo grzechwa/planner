@@ -19,7 +19,7 @@
 
   <div class="container line">
 		{* godziny *}
-		<table class="table _fL col-md-2"  
+		<table class="table tableday _fL col-md-2"  
 		       style="width:15%"  border="0" cellspacing="0" cellpadding="0">
 			<thead class="header rowgrey">
 			<th class="text-center">
@@ -38,7 +38,7 @@
 
 		{* zajecia *}
 		{$var = array() }
-		<table  class="table tab _fL col-md-3" 
+		<table  class="table tab tableday _fL col-md-3" 
 			style="width: 25%" border="0" cellspacing="0" cellpadding="0">
 			<thead class="header rowgrey">
 			<th class="text-center">
@@ -95,77 +95,77 @@
 					{*<button type="submit"> Dopisz sie </button>*}
 				</form>
 			</div>
-		</div>
-	</div>
+</div>
+</div>
 
 </div>
 <div class="clear" ></div>
 
 <script>
 // dane z tablicy plan
-	var jqplan = {json_encode($plan.$day)};
-	var requestDate = {json_encode($smarty.request.date)};
+var jqplan = {json_encode($plan.$day)};
+var requestDate = {json_encode($smarty.request.date)};
 
-	$(document).ready(function () {
-					$('.tab td').click(
-									function () {
-													var idplan = jqplan[$(this).attr("id")];
-													if (typeof idplan !== 'undefined') {
+$(document).ready(function () {
+$('.tab td').click(
+function () {
+	var idplan = jqplan[$(this).attr("id")];
+	if (typeof idplan !== 'undefined') {
 
-																	// TODO: usuwanie ukrytych pol przed jq
-																	$('div.danebottom form').html('<input type="hidden" value="' + requestDate + '" name="date" id="date" />');
-																	$('div.danebottom form').append('<input type="hidden" value="' + idplan.planid + '" name="planid" id="plan_' + idplan.planid + '"/>');
-																	// TODO: zmienic na zmienne id_user
-																	$('div.danebottom form').append('<input type="hidden" value="1" name="userid" id="user_1" /><br /><button type="submit">Dopisz sie</button>');
+		// TODO: usuwanie ukrytych pol przed jq
+		$('div.danebottom form').html('<input type="hidden" value="' + requestDate + '" name="date" id="date" />');
+		$('div.danebottom form').append('<input type="hidden" value="' + idplan.planid + '" name="planid" id="plan_' + idplan.planid + '"/>');
+		// TODO: zmienic na zmienne id_user
+		$('div.danebottom form').append('<input type="hidden" value="1" name="userid" id="user_1" /><br /><button type="submit">Dopisz sie</button>');
 
-																	// przygotowanie do wyswietlenia imion
-																	var idplanName = new Array();
-																	idplanName = idplan.imie.toString().split(",");
-																	$('.danemiddle').html("<span></span>");
+		// przygotowanie do wyswietlenia imion
+		var idplanName = new Array();
+		idplanName = idplan.imie.toString().split(",");
+		$('.danemiddle').html("<span></span>");
 
-																	// formularz dla danebottom
-																	var formstart = {json_encode($conf->action_root)};
+		// formularz dla danebottom
+		var formstart = {json_encode($conf->action_root)};
 
-																	// wyswietlenie imion w obszarze danemiddle
-																	if (idplanName !== 'undefined') {
+		// wyswietlenie imion w obszarze danemiddle
+		if (idplanName !== 'undefined') {
 
-																					// elementy css
-																					var tableTd = "";
-																					var classTable = "table ";
-																					var classCenter = "text-center";
+													// elementy css
+													var tableTd = "";
+													var classTable = "table ";
+													var classCenter = "text-center";
 
-																					for (var i in idplanName) {
-																									tableTd += "<tr><td class="
-																									+ classCenter + ">"
-																									+ idplanName[i]
-																									+ "</tr></td>";
-																					}
-
-																					$('.danemiddle').append("<table class="
-																									+ classTable + ">"
-																									+ tableTd
-																									+ "</tableTd>");
-
-																					// TODO: zmienic warunek na zmienna
-																					if ($(".danemiddle:contains('Kalka')").length) {
-																									$('.danebottom button').html("Wypisz sie");
-																									$('.danebottom form').attr('action', formstart + 'del');
-																					}
-																	}
-													} else {
-
-																	$('.danemiddle').html("<table></table>");
-																	$('.danebottom form').empty();
-
+													for (var i in idplanName) {
+																	tableTd += "<tr><td class="
+																	+ classCenter + ">"
+																	+ idplanName[i]
+																	+ "</tr></td>";
 													}
-									}),
-									$('.danemiddle').change(
-									function () {
-													if (".danemiddle:contains('Kalka')") {
-																	$('.danebottom').html("<div>Wypisz sie</di>");
-													} else {
-																	$('.danebottom').append("<div>bee !!!</div>");
+
+													$('.danemiddle').append("<table class="
+																	+ classTable + ">"
+																	+ tableTd
+																	+ "</tableTd>");
+
+													// TODO: zmienic warunek na zmienna
+													if ($(".danemiddle:contains('Kalka')").length) {
+																	$('.danebottom button').html("Wypisz sie");
+																	$('.danebottom form').attr('action', formstart + 'del');
 													}
-									});
-	});
+									}
+					} else {
+
+												$('.danemiddle').html("<table></table>");
+												$('.danebottom form').empty();
+
+								}
+				}),
+				$('.danemiddle').change(
+				function () {
+								if (".danemiddle:contains('Kalka')") {
+												$('.danebottom').html("<div>Wypisz sie</di>");
+								} else {
+												$('.danebottom').append("<div>bee !!!</div>");
+								}
+				});
+});
 </script>

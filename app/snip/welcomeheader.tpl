@@ -23,4 +23,3 @@
 	</div>
 </div>
 <div class="clear" ></div>
-{$getYear},{$getMonth},{$getDay}
