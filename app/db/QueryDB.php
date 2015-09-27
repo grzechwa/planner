@@ -1,5 +1,4 @@
 <?php
-
 require_once $conf->root_path . '/app/db/Connector.php';
 
 /**
@@ -7,14 +6,12 @@ require_once $conf->root_path . '/app/db/Connector.php';
  * 	przechowuje zapytania
  */
 class QueryDB {
-
 	private $db;
 
 	public function __construct() {
 		$this->db = new Connector();
 	}
 
-	// ... main methods ....
 	/**
 	 * Pobiera wszystkie rokordy z tabeli
 	 * Plan
@@ -207,7 +204,6 @@ class QueryDB {
 		$orderBy = null;
 		
 		$sql = $select.$from.$join.$where.$orderBy;
-		// var_dump($sql);
 
 		$conn = $this->db->getConn();
 		$result = mysqli_query($conn,$sql);

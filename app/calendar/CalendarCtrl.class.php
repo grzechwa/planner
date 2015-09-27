@@ -1,23 +1,25 @@
 <?php
-
 require_once dirname(__FILE__) . '/../../config.php';
 require_once $conf->root_path . '/app/util/Messages.class.php';
 require_once $conf->root_path . '/app/db/Connector.php';
 require_once $conf->root_path . '/app/db/QueryDB.php';
 require_once $conf->root_path . '/vendor/smarty/smarty/libs/Smarty.class.php';
 
-// klasa
+/*
+ * 
+ * 
+ */
 class CalendarCtrl {
 
-	public $year;
-	public $month;
-	public $day;
-	public $arrtime = array(); // tablica kalendarza
+	private $year;
+	private $month;
+	private $day;
+	public $calendarMonth = array(); // tablica kalendarza
 	public $plan = array();	   // tablica zajec
 	public $q;
 	public $nameDayPl = array('Pon', 'Wt', 'Sr', 'Czw', 'Pt', 'Sb', 'Nd');
 
-	public function __construct($year = null, $month = null, $day = null) {
+	public function __construct($year=null, $month=null, $day=null) {
 		$this->year = $year;
 		$this->month = $month;
 		$this->day = $day;
@@ -40,9 +42,9 @@ class CalendarCtrl {
 		return ($this->month + 1);
 	}
 
-	// ile dni
-	public function Days($unixtimestamp = 0) {
-		return ($unixtimestamp == 0) ? date("t") : date("t", $unixtimestamp);
+	// ile dni w miesiacu
+	public function Days($time = 0) {
+		return ($time == 0) ? date("t") : date("t", $time);
 	}
 
 	// nazwa dnia tygodnia
@@ -51,45 +53,38 @@ class CalendarCtrl {
 		return date('D', $time);
 	}
 
+/*
 	// nazwa akutalnego dnia tygodnia
 	public function nameActualDay() {
 		return date('D');
 	}
-
 	// ktory dzien tygodnia
 	public function numberDay($paramTime) {
 		// valid
 		return (int) date('w', strtotime($paramTime));
 	}
-
+ * 
+ */
 	// ktory tydzien w miesiacu
-
+	/*
 	public function actualWeek() {
 		$paramTime = $this->year . '-' . $this->month . '-' . $this->day;
-		// valid
-		// +1, bo zwraca od zaera
 		return intval(date('j', strtotime($paramTime)) / 7) + 1;
 	}
-
-
-	// kotry dzien dzisiaj
-	
 	public function actualDay() {
 		return date('j', time());
 	}
-
 
 	public function actualMonth() {
 		return date('M', time());
 	}
 
-
-
 	public function actualWeekDay() {
 		return date('w', time());
 	}
-
-
+	
+	 */
+	// accessors
 	public function getDay() {
 		return $this->day;
 	}
@@ -97,35 +92,32 @@ class CalendarCtrl {
 	public function setDay($day) {
 		$this->day = $day;
 	}
-
-	public function setMonth($month) {
-
-		$this->month = $month;
-
-	}
-
-	public function setYear($year) {
-		$this->year = $year;
-	}
-
+	
 	public function getMonth() {
 		return $this->month;
+	}
+
+	public function setMonth($month) {
+		$this->month = $month;
 	}
 
 	public function getYear() {
 		return $this->year;
 	}
 
+	public function setYear($year) {
+		$this->year = $year;
+	}
+
+	// zwraca date w formacie z '-'
 	public function getTime() {
 		return $this->year . '-' . $this->month . '-' . $this->day;
 	}
-
-	public function firstDayweekNumber()
-	{
-		// $this->_validateDates();
+	
+	// @temp: imp
+	public function firstDayweekNumber() {
 		$time = strtotime($this->year . '-' . $this->month. '-' . 1);
-		if($time)
-		{
+		if($time){
 			return ((int)date("w", $time));
 		}
 		
@@ -218,7 +210,7 @@ class CalendarCtrl {
 		}
 
 
-		$this->arrtime[] = $curr_mth_days;
+		$this->calendarMonth[] = $curr_mth_days;
 	
 	}
 
@@ -229,7 +221,7 @@ class CalendarCtrl {
 	 */
 	public function addPlanner() {
 
-		foreach ($this->arrtime as $t) {
+		foreach ($this->calendarMonth as $t) {
 
 			foreach ($t as $key => $tmp) {
 				foreach ($tmp as $key2 => $tmp2) {
@@ -264,3 +256,5 @@ class CalendarCtrl {
 	}
 
 }
+
+// TODO: dodac klase Plan przeniesc metode addPlanner

@@ -5,7 +5,8 @@
 </div>
 
 <div id="centerm" class="col-md-4">
-	<table class="table table-bordered table-hover" width="100%"  border="0" cellspacing="0" cellpadding="0">
+	<table class="table table-bordered table-hover" 
+         width="100%"  border="0" cellspacing="0" cellpadding="0">
 		<thead class="header">
 			{foreach item=name from=$nameDayPl}
 			<th class="text-center" >
@@ -20,12 +21,12 @@
 			{foreach key=key item=item from=$cal}
 				{foreach item=value from=$item}
 					{assign var="day" value="-"|explode:$value}
-					{if $getTime == $value}
+					{if $getDate == $value}
 						<td align="center" valign="middle" 
 						    style="background-color: silver; width: 10%" >
 							<div id={$counter++} class="inner vcenter" style="height: 100%"
 								 data-toggle="popover" data-html="true" title="popver header" 
-								 data-content="brak zajec">
+								 data-content="brak zajec" data-trigger="hover">
 								<span>{$day[2]}</span>
 							</div>
 						</td>
@@ -33,7 +34,7 @@
 						<td  align="center" style="width: 10%">
 							<div id={$counter++} class="inner vcenter" style="height: 100%"
 								 data-toggle="popover" data-html="true" title="popver header" 
-								 data-content="brak zajec">
+								 data-content="brak zajec" data-trigger="hover">
 								<span>{$day[2]}</span>
 							</div>
 						</td>

@@ -100,7 +100,9 @@ switch ($action) {
 		break;
 
 	case 'goLogin' :
-		include_once $conf->root_path . '/app/security/login.php';
+		include_once $conf->root_path . '/app/security/LoginCtrl.class.php';
+		$log = new Login();
+		$log->generateView();
 		break;
 	case 'logout' :
 		// dodano wartunek
@@ -110,7 +112,9 @@ switch ($action) {
 		unset($_SESSION['user']);
 		unset($_SESSION['haslo']);
 		$ctrl->typeCal = 1;
-		$_REQUEST['date'] = $ctrl->cal->year . ',' . $ctrl->cal->month . ',' . $ctrl->cal->day;
+		$_REQUEST['date'] = $ctrl->getCal()->getYear() . ',' 
+				. $ctrl->getCal()->getMonth() . ',' 
+				. $ctrl->getCal()->getDay();
 		// }
 		$ctrl->generateView();
 		break;

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-26 12:59:22
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-27 01:27:16
          compiled from "/home/greg/www_pv/plannersmarty/app/calendar/CalendarMonth.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:43919055456005fae82c464-91460889%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cc1f90d4f75a12a3cbdab2390cfc3fb90094a9eb' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/calendar/CalendarMonth.tpl',
-      1 => 1443265156,
+      1 => 1443310034,
       2 => 'file',
     ),
   ),
@@ -28,7 +28,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cal' => 0,
     'item' => 0,
     'value' => 0,
-    'getTime' => 0,
+    'getDate' => 0,
     'counter' => 0,
     'day' => 0,
     'plan' => 0,
@@ -45,7 +45,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </div>
 
 <div id="centerm" class="col-md-4">
-	<table class="table table-bordered table-hover" width="100%"  border="0" cellspacing="0" cellpadding="0">
+	<table class="table table-bordered table-hover" 
+         width="100%"  border="0" cellspacing="0" cellpadding="0">
 		<thead class="header">
 			<?php  $_smarty_tpl->tpl_vars['name'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['name']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['nameDayPl']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -79,13 +80,13 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->key => $_smarty_tpl->tpl_var
 $_smarty_tpl->tpl_vars['value']->_loop = true;
 ?>
 					<?php $_smarty_tpl->tpl_vars["day"] = new Smarty_variable(explode("-",$_smarty_tpl->tpl_vars['value']->value), null, 0);?>
-					<?php if ($_smarty_tpl->tpl_vars['getTime']->value==$_smarty_tpl->tpl_vars['value']->value){?>
+					<?php if ($_smarty_tpl->tpl_vars['getDate']->value==$_smarty_tpl->tpl_vars['value']->value){?>
 						<td align="center" valign="middle" 
 						    style="background-color: silver; width: 10%" >
 							<div id=<?php echo $_smarty_tpl->tpl_vars['counter']->value++;?>
  class="inner vcenter" style="height: 100%"
 								 data-toggle="popover" data-html="true" title="popver header" 
-								 data-content="brak zajec">
+								 data-content="brak zajec" data-trigger="hover">
 								<span><?php echo $_smarty_tpl->tpl_vars['day']->value[2];?>
 </span>
 							</div>
@@ -95,7 +96,7 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 							<div id=<?php echo $_smarty_tpl->tpl_vars['counter']->value++;?>
  class="inner vcenter" style="height: 100%"
 								 data-toggle="popover" data-html="true" title="popver header" 
-								 data-content="brak zajec">
+								 data-content="brak zajec" data-trigger="hover">
 								<span><?php echo $_smarty_tpl->tpl_vars['day']->value[2];?>
 </span>
 							</div>

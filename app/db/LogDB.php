@@ -16,48 +16,38 @@ class LogDB {
 	public function __construct() {
 		$this->setRole();
 	}
-
 	
 	public function setRole() {
-	if((isset($_REQUEST['login'])&&(isset($_REQUEST['password'])))){
-	$login = $_REQUEST['login'];
-	$haslo = $_REQUEST['password'];
+		if((isset($_REQUEST['login'])&&(isset($_REQUEST['password'])))){
+			$login = $_REQUEST['login'];
+			$haslo = $_REQUEST['password'];
 	
-	$q = new QueryDB();
+			$q = new QueryDB();
 
 
-	$validate = $q->getLogin($login, $haslo);
-	// sprawdz w bazie
+			$validate = $q->getLogin($login, $haslo);
+			// sprawdz w bazie
 
 
-	// w bazie istnieja 
-		foreach ($validate as $key => $value){	
-		$_SESSION['isLogged'] = true;
-			if($value['imie']=='admin') { 
-				$_SESSION['user'] = 'admin';
-				// header("Location: " . $conf->server_url.$conf->app_root.'/?action=admin');
-					/* @var $conf type */
-					// include_once $conf->root_path . '/app/admin/Admin.class.php';
-			} else { 
-				$_SESSION['user'] = $login;
-				// include_once $conf->root_path . '/app/welcome/WelcomeCtrl.class.php';
+			// w bazie istnieja 
+			foreach ($validate as $key => $value){	
+			$_SESSION['isLogged'] = true;
+				if($value['imie']=='admin') { 
+					$_SESSION['user'] = 'admin';
+				} else { 
+					$_SESSION['user'] = $login;
+				}
 			}
-		}
-
-
-} 	
+		} 	
 	}
 
 	public function getDate() {
 		$date = $_REQUEST['date'];
-		// $_REQUEST['date'] = $ctrl->cal->year . ',' . $ctrl->cal->month . ',' . $ctrl->cal->day;
-		// $ctrl->generateView();
 		return $date;
 	}
 
-	
 	public function generateView() {
-	global $conf, $user;
+		global $conf, $user;
 
 		$smarty = new Smarty();
 		$smarty->assign('conf', $conf);
@@ -71,7 +61,6 @@ class LogDB {
 			include_once $conf->action_root . 'admin';
 		} else {
 			include_once $conf->action_root ;
-			// $smarty->display($conf->root_path . '/app/welcome/WelcomeMonth.tpl');
 		}
 	}
 }

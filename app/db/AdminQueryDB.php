@@ -74,7 +74,7 @@ class AdminQueryDB {
 		$values = " VALUES(null, '" . $nazwa . "')";
 
 		$sql = $insert . $values; 
-		var_dump($sql);
+
 		$conn = $this->db->getConn();
 		$result = mysqli_query($conn, $sql);
 		$this->db->disconnect();
@@ -91,7 +91,7 @@ class AdminQueryDB {
 		$where = " WHERE id_user=$id";
 
 		$sql = $delete . $from . $where;
-		var_dump($sql);
+
 		$conn = $this->db->getConn();
 		$result = mysqli_query($conn, $sql);
 		$this->db->disconnect();
@@ -109,7 +109,7 @@ class AdminQueryDB {
 		$where = " WHERE id=$id";
 
 		$sql = $delete . $from . $where;
-		var_dump($sql);
+
 		$conn = $this->db->getConn();
 		$result = mysqli_query($conn, $sql);
 		$this->db->disconnect();

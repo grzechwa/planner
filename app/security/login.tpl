@@ -1,3 +1,11 @@
+{extends file=$conf->root_path|cat:"/templates/login.tpl"}
+
+{block name=header}
+{/block}
+{block name=footer}
+{/block}
+
+{block name=content}
 <div class="container"> 
 
 <h1 class="text-center">
@@ -9,7 +17,7 @@
 
 <div class="col-md-4 col-md-offset-4"> 
 <div class="line-small ">
-<form action="<?php echo $conf->action_root; ?>login&date=<?php echo $_REQUEST['date'];?>" method="post" role="form">
+<form action="{$conf->action_root}login&date={$smarty.request.date}" method="post" role="form">
 			<div class="form-group">
 			<label for="login">Login: </label> 
 			<input type="text" name="login" class="form-control" required > <br />		
@@ -26,6 +34,6 @@
 </div>
 </div>
 </div>
-
+{/block}
 
 

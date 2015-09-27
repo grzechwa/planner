@@ -2,14 +2,13 @@
 require_once $conf->root_path.'/config.php';
 
 /**
- * 		Klasa zarzadzajaca polaczeniam z bd
+ * Klasa zarzadzajaca polaczeniam z bd
  */
 class Connector {
 	private $url;
 	private $name;
 	private $username;
 	private $password;
-	
 	private $conn;
 	
 	public function __construct() {
