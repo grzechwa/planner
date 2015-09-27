@@ -1,4 +1,5 @@
 <?php
+
 require_once dirname(__FILE__) . '/../../config.php';
 require_once $conf->root_path . '/app/util/Messages.class.php';
 require_once $conf->root_path . '/app/db/Connector.php';
@@ -9,16 +10,18 @@ require_once $conf->root_path . '/vendor/smarty/smarty/libs/Smarty.class.php';
  * 
  * 
  */
+
 class CalendarCtrl {
+
 	private $year;
 	private $month;
 	private $day;
 	public $calendarMonth = array(); // tablica kalendarza
-	public $plan = array();	   // tablica zajec
+	public $plan = array();	// tablica zajec
 	public $q;
 	public $nameDayPl = array('Pon', 'Wt', 'Sr', 'Czw', 'Pt', 'Sb', 'Nd');
 
-	public function __construct($year=null, $month=null, $day=null) {
+	public function __construct($year = null, $month = null, $day = null) {
 		$this->year = $year;
 		$this->month = $month;
 		$this->day = $day;
@@ -52,37 +55,6 @@ class CalendarCtrl {
 		return date('D', $time);
 	}
 
-/*
-	// nazwa akutalnego dnia tygodnia
-	public function nameActualDay() {
-		return date('D');
-	}
-	// ktory dzien tygodnia
-	public function numberDay($paramTime) {
-		// valid
-		return (int) date('w', strtotime($paramTime));
-	}
- * 
- */
-	// ktory tydzien w miesiacu
-	/*
-	public function actualWeek() {
-		$paramTime = $this->year . '-' . $this->month . '-' . $this->day;
-		return intval(date('j', strtotime($paramTime)) / 7) + 1;
-	}
-	public function actualDay() {
-		return date('j', time());
-	}
-
-	public function actualMonth() {
-		return date('M', time());
-	}
-
-	public function actualWeekDay() {
-		return date('w', time());
-	}
-	
-	 */
 	// accessors
 	public function getDay() {
 		return $this->day;
@@ -91,7 +63,7 @@ class CalendarCtrl {
 	public function setDay($day) {
 		$this->day = $day;
 	}
-	
+
 	public function getMonth() {
 		return $this->month;
 	}
@@ -112,14 +84,14 @@ class CalendarCtrl {
 	public function getTime() {
 		return $this->year . '-' . $this->month . '-' . $this->day;
 	}
-	
+
 	// @temp: imp
 	public function firstDayweekNumber() {
-		$time = strtotime($this->year . '-' . $this->month. '-' . 1);
-		if($time){
-			return ((int)date("w", $time));
+		$time = strtotime($this->year . '-' . $this->month . '-' . 1);
+		if ($time) {
+			return ((int) date("w", $time));
 		}
-		
+
 		return false;
 	}
 
@@ -148,19 +120,19 @@ class CalendarCtrl {
 
 
 		// pierwszy tydzien razem z poprzednim
-		if ($this->firstDayweekNumber() > 1) { 
+		if ($this->firstDayweekNumber() > 1) {
 			$a = 0;
 			for ($i = $this->firstDayweekNumber() - 1; $i < 7; $i++) {
 				$curr_mth_days[0][$i] = $this->year . '-' . $this->month . '-' . ++$a;
 			}
 
 			$curr_mth_days[0] = array_merge(
-				array_slice($prev_mth_last_days, (($this->firstDayweekNumber() - 1) * -1)), $curr_mth_days[0]);
+					array_slice($prev_mth_last_days, (($this->firstDayweekNumber() - 1) * -1)), $curr_mth_days[0]);
 			$i = 7 - $this->firstDayweekNumber() + 2;
-		} else if($this->firstDayweekNumber() == 1) {
+		} else if ($this->firstDayweekNumber() == 1) {
 			$curr_mth_days[0] = $prev_mth_last_days;
 			$i = 1;
-		} else if($this->firstDayweekNumber() == 0) {
+		} else if ($this->firstDayweekNumber() == 0) {
 			$a = 0;
 			for ($i = 6; $i < 7; $i++) {
 				// $curr_mth_days[0][$i] = ++$a;
@@ -210,7 +182,6 @@ class CalendarCtrl {
 
 
 		$this->calendarMonth[] = $curr_mth_days;
-	
 	}
 
 	// TODO: przepisac te metode, za duzo petli

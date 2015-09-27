@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-25 21:30:03
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-27 18:04:17
          compiled from "/home/greg/www_pv/plannersmarty/app/welcome/WelcomeMonth.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11969606405605a0bb53ddf6-77344614%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -13,7 +13,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b8f53d7dd0dd9cb25cf4d2b53469db3cab0bbd71' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/templates/main.tpl',
-      1 => 1443023556,
+      1 => 1443347958,
       2 => 'file',
     ),
   ),
@@ -21,14 +21,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_5605a0bb5c78e4_00979605',
   'variables' => 
   array (
     'conf' => 0,
     'page_title' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_5605a0bb5c78e4_00979605',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5605a0bb5c78e4_00979605')) {function content_5605a0bb5c78e4_00979605($_smarty_tpl) {?><!doctype html>
 <html lang="pl">
@@ -47,9 +47,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
 </head>
-
 <body>
 	<div class="container">
 		<div class="navheader">

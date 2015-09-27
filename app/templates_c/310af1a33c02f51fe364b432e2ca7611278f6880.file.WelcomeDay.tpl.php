@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-25 21:27:25
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-27 18:04:11
          compiled from "/home/greg/www_pv/plannersmarty/app/welcome/WelcomeDay.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:9659221385605a01d7777d6-39246808%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '310af1a33c02f51fe364b432e2ca7611278f6880' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/welcome/WelcomeDay.tpl',
-      1 => 1443208988,
+      1 => 1443345681,
       2 => 'file',
     ),
     'b8f53d7dd0dd9cb25cf4d2b53469db3cab0bbd71' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/templates/main.tpl',
-      1 => 1443023556,
+      1 => 1443347958,
       2 => 'file',
     ),
   ),
@@ -21,14 +21,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_5605a01d7ec877_32019841',
   'variables' => 
   array (
     'conf' => 0,
     'page_title' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_5605a01d7ec877_32019841',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5605a01d7ec877_32019841')) {function content_5605a01d7ec877_32019841($_smarty_tpl) {?><!doctype html>
 <html lang="pl">
@@ -47,9 +47,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
 </head>
-
 <body>
 	<div class="container">
 		<div class="navheader">
@@ -58,7 +56,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['conf']->value->root_path).("/app/snip/welcomeheader.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 	</div>
-
 
 		</div>
 		<div id="content">
