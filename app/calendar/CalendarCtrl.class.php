@@ -10,7 +10,6 @@ require_once $conf->root_path . '/vendor/smarty/smarty/libs/Smarty.class.php';
  * 
  */
 class CalendarCtrl {
-
 	private $year;
 	private $month;
 	private $day;

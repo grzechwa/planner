@@ -3,14 +3,14 @@ require_once $conf->root_path . '/app/util/Messages.class.php';
 require_once $conf->root_path . '/app/calendar/CalendarCtrl.class.php';
 require_once $conf->root_path . '/vendor/smarty/smarty/libs/Smarty.class.php';
 
-// klasa
+/*
+ * 
+ */
 class WelcomeCtrl {
 
 	private $msg;
 	private $cal;
 	private $q; // query
-	// private $data; // parameter
-	// public $typeCal;
 	
 	public function getCal() {
 		return $this->cal;
@@ -45,34 +45,17 @@ class WelcomeCtrl {
 		$smarty->assign('user', $user);
 		$smarty->assign('page_title', 'Welcome page!');
 		$smarty->assign('msgs', $this->msg);
-
 		$smarty->assign('getDay', $this->cal->getDay());
 		$smarty->assign('getMonth', $this->cal->getMonth());
 		$smarty->assign('getYear', $this->cal->getYear());
-		// $smarty->assign('getTime', $this->cal->getTime());
 		$smarty->assign('getDate', $this->cal->getTime());
-		// $smarty->assign('getDay', $this->q->getDay($this->cal->getTime()));
 
-
-
-		// $smarty->assign('getAllPlan', $this->q->getAllPlan());
 		$smarty->assign('getAllHours', $this->q->getAllHours());
-		// $smarty->assign('getSinceTo', $this->q->getSinceTo());
-		// $smarty->assign('getPlanZajecia', $this->q->getPlanZajecia());
-
-
-
-		// $smarty->assign('actualDay', $this->cal->actualDay());
-		// $smarty->assign('actualWeek', $this->cal->actualWeek());
-		// $smarty->assign('actualMonth', $this->cal->actualMonth());
-		// $smarty->assign('actualWeekDay', $this->cal->actualWeekDay());
 		$smarty->assign('calendar', $this->cal->calendarMonth);
 		$smarty->assign('plan', $this->cal->addPlanner());
 
 		$smarty->assign('nameDayPl', $this->cal->nameDayPl);
 		$smarty->assign('nameDay', $this->cal->getNameDay());
-
-		// $smarty->assign('type', $this->typeCal);
 
 		if(isset($_SESSION['isLogged']) && ($_SESSION['isLogged']==true)){
 			$smarty->display($conf->root_path . '/app/welcome/WelcomeDay.tpl');
@@ -80,7 +63,6 @@ class WelcomeCtrl {
 			$smarty->display($conf->root_path . '/app/welcome/WelcomeMonth.tpl');
 		}
 	}
-
 }
 
 // widok

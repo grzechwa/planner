@@ -5,44 +5,38 @@ require_once dirname(__FILE__) . '/../config.php';
 isset($_REQUEST['action']) ? $action = $_REQUEST['action'] : $action = '';
 session_start();
 
+// 1. sprawdzenie podanej daty 
 include_once $conf->root_path . '/app/welcome/WelcomeCtrl.class.php';
 if (isset($_REQUEST['date']) && !empty($_REQUEST['date'])) {
 	$date_parts = explode(",", $_REQUEST['date']);
-
 	if (isset($_REQUEST['nextm'])) {
 		$date_parts[1];
 		unset($_REQUEST['nextm']);
 	}
-
 	if (isset($_REQUEST['prevm'])) {
 		$date_parts[1];
 		unset($_REQUEST['prevm']);
 	}
-
 	if (isset($_REQUEST['nextmd'])) {
 		$date_parts[1];
 		unset($_REQUEST['nextmd']);
 	}
-
 	if (isset($_REQUEST['prevmd'])) {
 		$date_parts[1];
 		unset($_REQUEST['prevmd']);
 	}
-
 	if (isset($_REQUEST['nextd'])) {
 		$date_parts[2];
 		unset($_REQUEST['nextd']);
 	}
-
 	if (isset($_REQUEST['prevd'])) {
 		$date_parts[2];
 		unset($_REQUEST['prevd']);
 	}
-
 	$ctrl = new WelcomeCtrl($date_parts[0], $date_parts[1], $date_parts[2]);
 } else {
-	$date_parts = explode("-", date("Y-m-d", time()));
-	$ctrl = new WelcomeCtrl($date_parts[0], $date_parts[1], $date_parts[2]);
+		$date_parts = explode("-", date("Y-m-d", time()));
+		$ctrl = new WelcomeCtrl($date_parts[0], $date_parts[1], $date_parts[2]);
 }
 
 //2. wykonanie akcji
@@ -105,8 +99,6 @@ switch ($action) {
 		$log->generateView();
 		break;
 	case 'logout' :
-		// dodano wartunek
-		// if(isset($_SESSION['isLogged'])){
 		$_SESSION['isLogged'] = false;
 		unset($_SESSION['isLogged']);
 		unset($_SESSION['user']);
@@ -115,7 +107,6 @@ switch ($action) {
 		$_REQUEST['date'] = $ctrl->getCal()->getYear() . ',' 
 				. $ctrl->getCal()->getMonth() . ',' 
 				. $ctrl->getCal()->getDay();
-		// }
 		$ctrl->generateView();
 		break;
 	case 'login' :
@@ -123,5 +114,9 @@ switch ($action) {
 		$log = new LogDB();
 		$log->getDate();
 		$ctrl->generateView();
+		break;
+
+	case 'error' :
+		include_once $conf->root_path . '/app/security/error.php';
 		break;
 }

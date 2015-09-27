@@ -1,7 +1,5 @@
 <div class="container text-center">
-
-Hello Adder
-
+	Hello Adder
 <form action="?action=addUser" method="post" >
     <label for="imie">imie</label>
     <input type="text" name="imie" />

@@ -4,8 +4,8 @@
 	<div class="row">
 	{include file=$conf->root_path|cat:"/app/snip/welcomeheader.tpl"}
 	</div>
-
 {/block}
+
 {block name=footer}
 	<div class="row">
 	{include file=$conf->root_path|cat:"/app/snip/welcomefooter.tpl"}

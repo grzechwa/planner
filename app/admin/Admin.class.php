@@ -5,26 +5,10 @@ require_once $conf->root_path.'/app/calendar/CalendarCtrl.class.php';
 require_once $conf->root_path.'/vendor/smarty/smarty/libs/Smarty.class.php';
 
 /*
-if(!isset($_SESSION)) {
-	session_start();
-}
  * 
  */
-
-/*
-if($_SESSION['isLogged'] == null){
-	// header("Location: " . $conf->app_url);
-} else {
-	if($_SESSION['user']=='user'){
-		// header("Location: " . $conf->app_url.'/?action=empl');
-	}
-}
-*/
-
-
 class Admin {
 	public $q;
-
 
 	public function __construct() {
 		$this->q = new AdminQueryDB();
@@ -51,7 +35,6 @@ class Admin {
 		return $this->q->delActiv($nazwa);
 	}
 
-
 	public function listUsers() {
 		return $this->q->getListUsers();
 	}
@@ -71,9 +54,6 @@ class Admin {
 		$smarty->assign('activs', $this->listActivs());
 		$smarty->display($conf->root_path . '/app/admin/adminwelcome.tpl');
 	}
-
-
-
 }
 
 

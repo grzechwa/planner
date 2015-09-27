@@ -1,4 +1,7 @@
 <?php
+/*
+ * 
+ */
 require_once 'Config.class.php';
 
 $conf = new Config();

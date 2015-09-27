@@ -60,7 +60,7 @@ class LogDB {
 		if(isset($_SESSION['user']) && ($_SESSION['user']=='admin')){
 			include_once $conf->action_root . 'admin';
 		} else {
-			include_once $conf->action_root ;
+			include_once $conf->action_root . 'error';
 		}
 	}
 }
