@@ -29,13 +29,16 @@ class LogDB {
 
 			// w bazie istnieja 
 			foreach ($validate as $key => $value){	
+
 			$_SESSION['isLogged'] = true;
 				if($value['imie']=='admin') { 
 					$_SESSION['user'] = 'admin';
 				} else { 
 					$_SESSION['user'] = $login;
 				}
+				$_SESSION['id_user'] = $value['id_user'];
 			}
+
 		} 	
 	}
 

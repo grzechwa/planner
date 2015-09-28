@@ -2,7 +2,9 @@
 
 	<div class="col-md-3 text-center" >
 	<table class="table" width="60%" >
-	<caption class="text-center"">Uzytkownicy</caption>
+	<caption class="text-center">Uzytkownicy</caption>
+		<th class="text-center">imie</th>
+		<th class="text-center">opcje</th>
 	<tbody>
 	{foreach item=item key=key from=$users}
 		{strip}
@@ -27,6 +29,8 @@
 	<div class="col-md-offset-1 col-md-3">
 	<table class="table "  >
 	<caption class="text-center">Zajecia</caption>
+		<th class="text-center">nazwa zajec</th>
+		<th class="text-center">opcje</th>
 	<tbody>
 	{foreach item=i key=k from=$activs}
 	{strip}
@@ -51,25 +55,26 @@
 	<div class="col-md-offset-1 col-md-3  text-center">
 	<table class="table col-md-offset-1 col-md-3 "  >
 	<caption class="text-center">Rozklad zajec</caption>
+		<th class="text-center">data</th>
+		<th class="text-center">godz_id</th>
+		<th class="text-center">zajecia_id</th>
+		<th class="text-center">opcje</th>
 	<tbody>
-	{foreach item=i key=k from=$activs}
+	{foreach item=j key=k from=$plans}
 		{strip}
-		<form action="{$conf->action_root}delActiv" method="post" >
+		<form action="{$conf->action_root}delPlan" method="post" >
 			<tr>
 				<td>
-					{$i.nazwa}
+					{$j.data}
 				</td>
 				<td>
-					test1
+					{$j.godz_id}
 				</td>
 				<td>
-					test2
+					{$j.zajecia_id}
 				</td>
 				<td>
-					test3
-				</td>
-				<td>
-					<input type="hidden" name="idelact" value="{$i.id}"/>
+					<input type="hidden" name="idelplan" value="{$j.id}"/>
 					<button>usun</button>
 				</td>
 			</tr>
@@ -78,7 +83,7 @@
 	{/foreach}
 	</tbody>
 	</table>
-	<span class="row"><a href="?action=goAddActiv" >Dodaj nowy rozkald zajec</a></span>
+	<span class="row"><a href="?action=goAddPlan" >Dodaj nowy rozklad zajec </a></span>
 	</div>
 	
 	<div class ="clear" ></div>

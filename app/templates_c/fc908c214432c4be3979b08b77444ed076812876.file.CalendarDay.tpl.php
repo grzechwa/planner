@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-28 01:05:14
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-28 17:41:33
          compiled from "/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:113204345255f70d8fc21df9-57397266%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fc908c214432c4be3979b08b77444ed076812876' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/calendar/CalendarDay.tpl',
-      1 => 1443395111,
+      1 => 1443454757,
       2 => 'file',
     ),
   ),
@@ -154,7 +154,7 @@ $_smarty_tpl->tpl_vars['y']->first = $_smarty_tpl->tpl_vars['y']->iteration == 1
 					</thead>
 				</table>
 			</div>
-			<div class="danemiddle row" >
+			<div class="danemiddle tableday row" >
 			</div>
 
 			<div class="danebottom row" >
@@ -177,6 +177,10 @@ var jqplan = <?php echo json_encode($_smarty_tpl->tpl_vars['plan']->value[$_smar
 ;
 var requestDate = <?php echo json_encode($_REQUEST['date']);?>
 ;
+var userSessionDate = <?php echo json_encode($_SESSION['user']);?>
+;
+var idSessionDate = <?php echo json_encode($_SESSION['id_user']);?>
+;
 
 $(document).ready(function () {
 $('.tab td').click(
@@ -184,11 +188,14 @@ function () {
 	var idplan = jqplan[$(this).attr("id")];
 	if (typeof idplan !== 'undefined') {
 
-		// TODO: usuwanie ukrytych pol przed jq
-		$('div.danebottom form').html('<input type="hidden" value="' + requestDate + '" name="date" id="date" />');
-		$('div.danebottom form').append('<input type="hidden" value="' + idplan.planid + '" name="planid" id="plan_' + idplan.planid + '"/>');
-		// TODO: zmienic na zmienne id_user
-		$('div.danebottom form').append('<input type="hidden" value="1" name="userid" id="user_1" /><br /><button type="submit">Dopisz sie</button>');
+		$('div.danebottom form').html('<input type="hidden" \n\
+			value="' + requestDate + '" name="date" id="date" />');
+		$('div.danebottom form').append('<input type="hidden" \n\
+			value="' + idplan.planid + '" name="planid" \n\
+			id="plan_' + idplan.planid + '"/>');
+		$('div.danebottom form').append('<input type="hidden" \n\
+			value="'+ idSessionDate +'" name="userid" \n\
+			id="user_id" /><br /><button type="submit">Dopisz sie</button>');
 
 		// przygotowanie do wyswietlenia imion
 		var idplanName = new Array();
@@ -202,43 +209,43 @@ function () {
 		// wyswietlenie imion w obszarze danemiddle
 		if (idplanName !== 'undefined') {
 
-										// elementy css
-										var tableTd = "";
-										var classTable = "table ";
-										var classCenter = "text-center";
+			// elementy css
+			var tableTd = "";
+			var classTable = "table tableday";
+			var classCenter = "text-center";
 
-										for (var i in idplanName) {
-														tableTd += "<tr><td class="
-														+ classCenter + ">"
-														+ idplanName[i]
-														+ "</tr></td>";
-										}
+			for (var i in idplanName) {
+							tableTd += "<tr><td class="
+							+ classCenter + ">"
+							+ idplanName[i]
+							+ "</tr></td>";
+			}
 
-										$('.danemiddle').append("<table class="
-														+ classTable + ">"
-														+ tableTd
-														+ "</tableTd>");
+			$('.danemiddle').append("<table class="
+							+ classTable + ">"
+							+ tableTd
+							+ "</tableTd>");
 
-										// TODO: zmienic warunek na zmienna
-										if ($(".danemiddle:contains('Kalka')").length) {
-														$('.danebottom button').html("Wypisz sie");
-														$('.danebottom form').attr('action', formstart + 'del');
-										}
-						}
-		} else {
+			if ($(".danemiddle:contains('"+ userSessionDate+"')").length) {
+							$('.danebottom button').html("Wypisz sie");
+							$('.danebottom form').attr('action', 
+												formstart + 'del');
+			}
+		}
+	} else {
 
-									$('.danemiddle').html("<table></table>");
-									$('.danebottom form').empty();
+		$('.danemiddle').html("<table></table>");
+		$('.danebottom form').empty();
 
-					}
-	}),
-	$('.danemiddle').change(
+	}
+}),
+$('.danemiddle').change(
 	function () {
-					if (".danemiddle:contains('Kalka')") {
-									$('.danebottom').html("<div>Wypisz sie</di>");
-					} else {
-									$('.danebottom').append("<div>bee !!!</div>");
-					}
+		if (".danemiddle:contains('Kalka')") {
+			$('.danebottom').html("<div>Wypisz sie</di>");
+		} else {
+			$('.danebottom').append("<div>bee !!!</div>");
+		}
 	});
 });
 </script><?php }} ?>

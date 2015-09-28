@@ -85,7 +85,7 @@
 					</thead>
 				</table>
 			</div>
-			<div class="danemiddle row" >
+			<div class="danemiddle tableday row" >
 			</div>
 
 			<div class="danebottom row" >
@@ -105,6 +105,8 @@
 // dane z tablicy plan
 var jqplan = {json_encode($plan.$day)};
 var requestDate = {json_encode($smarty.request.date)};
+var userSessionDate = {json_encode($smarty.session.user)};
+var idSessionDate = {json_encode($smarty.session.id_user)};
 
 $(document).ready(function () {
 $('.tab td').click(
@@ -112,11 +114,14 @@ function () {
 	var idplan = jqplan[$(this).attr("id")];
 	if (typeof idplan !== 'undefined') {
 
-		// TODO: usuwanie ukrytych pol przed jq
-		$('div.danebottom form').html('<input type="hidden" value="' + requestDate + '" name="date" id="date" />');
-		$('div.danebottom form').append('<input type="hidden" value="' + idplan.planid + '" name="planid" id="plan_' + idplan.planid + '"/>');
-		// TODO: zmienic na zmienne id_user
-		$('div.danebottom form').append('<input type="hidden" value="1" name="userid" id="user_1" /><br /><button type="submit">Dopisz sie</button>');
+		$('div.danebottom form').html('<input type="hidden" \n\
+			value="' + requestDate + '" name="date" id="date" />');
+		$('div.danebottom form').append('<input type="hidden" \n\
+			value="' + idplan.planid + '" name="planid" \n\
+			id="plan_' + idplan.planid + '"/>');
+		$('div.danebottom form').append('<input type="hidden" \n\
+			value="'+ idSessionDate +'" name="userid" \n\
+			id="user_id" /><br /><button type="submit">Dopisz sie</button>');
 
 		// przygotowanie do wyswietlenia imion
 		var idplanName = new Array();
@@ -129,43 +134,43 @@ function () {
 		// wyswietlenie imion w obszarze danemiddle
 		if (idplanName !== 'undefined') {
 
-													// elementy css
-													var tableTd = "";
-													var classTable = "table ";
-													var classCenter = "text-center";
+			// elementy css
+			var tableTd = "";
+			var classTable = "table tableday";
+			var classCenter = "text-center";
 
-													for (var i in idplanName) {
-																	tableTd += "<tr><td class="
-																	+ classCenter + ">"
-																	+ idplanName[i]
-																	+ "</tr></td>";
-													}
+			for (var i in idplanName) {
+							tableTd += "<tr><td class="
+							+ classCenter + ">"
+							+ idplanName[i]
+							+ "</tr></td>";
+			}
 
-													$('.danemiddle').append("<table class="
-																	+ classTable + ">"
-																	+ tableTd
-																	+ "</tableTd>");
+			$('.danemiddle').append("<table class="
+							+ classTable + ">"
+							+ tableTd
+							+ "</tableTd>");
 
-													// TODO: zmienic warunek na zmienna
-													if ($(".danemiddle:contains('Kalka')").length) {
-																	$('.danebottom button').html("Wypisz sie");
-																	$('.danebottom form').attr('action', formstart + 'del');
-													}
-									}
-					} else {
+			if ($(".danemiddle:contains('"+ userSessionDate+"')").length) {
+							$('.danebottom button').html("Wypisz sie");
+							$('.danebottom form').attr('action', 
+												formstart + 'del');
+			}
+		}
+	} else {
 
-												$('.danemiddle').html("<table></table>");
-												$('.danebottom form').empty();
+		$('.danemiddle').html("<table></table>");
+		$('.danebottom form').empty();
 
-								}
-				}),
-				$('.danemiddle').change(
-				function () {
-								if (".danemiddle:contains('Kalka')") {
-												$('.danebottom').html("<div>Wypisz sie</di>");
-								} else {
-												$('.danebottom').append("<div>bee !!!</div>");
-								}
-				});
+	}
+}),
+$('.danemiddle').change(
+	function () {
+		if (".danemiddle:contains('Kalka')") {
+			$('.danebottom').html("<div>Wypisz sie</di>");
+		} else {
+			$('.danebottom').append("<div>bee !!!</div>");
+		}
+	});
 });
 </script>

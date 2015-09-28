@@ -117,5 +117,54 @@ class AdminQueryDB {
 
 	}
 
+	public function delPlan($id) {
+		$this->db->connect();
+		$delete = "DELETE";
+		$from = " FROM plan";
+		$where = " WHERE id=$id";
+
+		$sql = $delete . $from . $where;
+
+		$conn = $this->db->getConn();
+		$result = mysqli_query($conn, $sql);
+		$this->db->disconnect();
+		return $result;
+
+	}
+
+	/*
+	 * Pobiera liste daty, godzin, zajec
+	 */
+	public function getListPlans() {
+		$this->db->connect();
+		$select = "SELECT *";
+		$from = " FROM plan";
+
+		$sql = $select . $from; 
+
+		$conn = $this->db->getConn();
+		$result = mysqli_query($conn, $sql);
+		$this->db->disconnect();
+		return $result;
+	}
+
+	/*
+	 * Dodanie daty i godziny zajec
+	 */
+	public function addNewPlan($data, $godz_id, $zajecia_id) {
+		$this->db->connect();
+		$insert = "INSERT INTO plan";
+		$values = " VALUES(null, '" . $data . "', '". $godz_id ."', '" . $zajecia_id ."' )";
+
+		$sql = $insert . $values; 
+		// var_dump($sql);
+
+		$conn = $this->db->getConn();
+		$result = mysqli_query($conn, $sql);
+		$this->db->disconnect();
+		return $result;
+	}
+	
+
 	// ... other methods ...
 }

@@ -11,8 +11,10 @@
 	<hr />
 	{if $showid eq 1}
 		{include file=$conf->root_path|cat:"/app/admin/adminAddUser.tpl"}
-	{else}
+	{elseif $showid eq 2}
 		{include file=$conf->root_path|cat:"/app/admin/adminAddActiv.tpl"}
+	{else}
+		{include file=$conf->root_path|cat:"/app/admin/adminAddPlan.tpl"}
 	{/if}
 	<hr />
 {/block}

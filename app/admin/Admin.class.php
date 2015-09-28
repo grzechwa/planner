@@ -35,12 +35,24 @@ class Admin {
 		return $this->q->delActiv($nazwa);
 	}
 
+	public function addPlan($data, $godz, $zaj){
+		return $this->q->addNewPlan($data, $godz, $zaj);
+	}
+
+	public function delPlan($id){
+		return $this->q->delPlan($id);
+	}
+
 	public function listUsers() {
 		return $this->q->getListUsers();
 	}
 
 	public function listActivs() {
 		return $this->q->getListActivs();
+	}
+
+	public function listPlans() {
+		return $this->q->getListPlans();
 	}
 
 	public function generateView() {
@@ -52,6 +64,7 @@ class Admin {
 
 		$smarty->assign('users', $this->listUsers());
 		$smarty->assign('activs', $this->listActivs());
+		$smarty->assign('plans', $this->listPlans());
 		$smarty->display($conf->root_path . '/app/admin/adminwelcome.tpl');
 	}
 }

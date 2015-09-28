@@ -71,6 +71,20 @@ switch ($action) {
 		$adm->addActiv($_REQUEST['nazwa']);
 		$adm->generateView();
 		break;
+	case 'goAddPlan' :
+		include_once $conf->root_path . '/app/admin/AdminAddPlan.class.php';
+		$adm = new AdminAddPlan();
+		$adm->generateView();
+		break;
+	case 'addPlan' :
+		include_once $conf->root_path . '/app/admin/Admin.class.php';
+		$adm = new Admin();
+		$adm->addPlan($_REQUEST['data'], $_REQUEST['godz'], $_REQUEST['zajecia']);
+		$adm->generateView();
+		break;
+
+
+
 	case 'delUser' :
 		include_once $conf->root_path . '/app/admin/Admin.class.php';
 		$adm = new Admin();
@@ -83,8 +97,14 @@ switch ($action) {
 		$adm->delActiv($_REQUEST['idelact']);
 		$adm->generateView();
 		break;
+	case 'delPlan' :
+		include_once $conf->root_path . '/app/admin/Admin.class.php';
+		$adm = new Admin();
+		$adm->delPlan($_REQUEST['idelplan']);
+		$adm->generateView();
+		break;
 
-	case 'add' :
+		case 'add' :
 		$ctrl->addUserToPlanner($_REQUEST['planid'], $_REQUEST['userid']);
 		$ctrl->generateView();
 		break;

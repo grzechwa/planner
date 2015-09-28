@@ -1,15 +1,15 @@
 <div class="calendarMonth" >  {* contentt strony *}
 
-<div id="prevm" class="col-md-4 text-righ"> 
+<div id="" class="col-md-1 text-right"> 
 	<a href="?date={$getYear},{$getMonth-1},{$getDay}&prevm">PREV</a> 
 </div>
 
-<div id="centerm" class="col-md-4">
+<div id="" class="col-md-10">
 	<table class="table table-bordered table-hover" 
          width="100%"  border="0" cellspacing="0" cellpadding="0">
 		<thead class="header">
 			{foreach item=name from=$nameDayPl}
-			<th class="text-center" >
+			<th class="text-center rowgrey" >
 				{$name}
 			</th>
 			{/foreach}
@@ -23,7 +23,7 @@
 					{assign var="day" value="-"|explode:$value}
 					{if $getDate == $value}
 						<td align="center" valign="middle" 
-						    style="background-color: silver; width: 10%" >
+						    style="background-color: #D9E0E5 ; width: 10%" >
 							<div id={$counter++} class="inner vcenter" style="height: 100%"
 								 data-toggle="popover" data-html="true" title="popver header" 
 								 data-content="brak zajec" data-trigger="hover">
@@ -46,7 +46,7 @@
 	</table>
 </div>
 
-<div id="nextm" class="col-md-4 text-left">  
+<div id="" class="col-md-1 text-left">  
 	<a href="?date={$getYear},{$getMonth+1},{$getDay}&nextm">NEXT</a>
 </div>
 <div class="json" style="clear:both" ></div>

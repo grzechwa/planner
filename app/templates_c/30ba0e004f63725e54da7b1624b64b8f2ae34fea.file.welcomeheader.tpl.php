@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-28 00:57:41
+<?php /* Smarty version Smarty-3.1-DEV, created on 2015-09-28 17:41:33
          compiled from "/home/greg/www_pv/plannersmarty/app/snip/welcomeheader.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:81384915355fc9c2ead15a2-37670443%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '30ba0e004f63725e54da7b1624b64b8f2ae34fea' => 
     array (
       0 => '/home/greg/www_pv/plannersmarty/app/snip/welcomeheader.tpl',
-      1 => 1443394655,
+      1 => 1443454839,
       2 => 'file',
     ),
   ),
@@ -38,11 +38,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div id="right_header" class="col-md-4">
 		<?php if (isset($_SESSION['isLogged'])){?>	
 			<?php if (isset($_SESSION['user'])){?>
-				<?php if ($_SESSION['user']===true){?>
-				<div>jestes zalogowany jako<div>
+				
+				<div>jestes zalogowany jako
 				<?php echo $_SESSION['user'];?>
-
-				<?php }?>
+<div>
+				
 			<?php }?>
 			<br />
 				<a href="?action=logout&date=<?php echo $_smarty_tpl->tpl_vars['getYear']->value;?>
